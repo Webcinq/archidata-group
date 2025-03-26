@@ -41,7 +41,7 @@ jobs:
           local-dir: ./ARCHIDATAmain/
           server-dir: ${{ secrets.FTP_PATH }}/ARCHIDATAmain/
           exclude: |
-            **/storage/**
+            **/storage/** 
             **/.git**/
             **/node_modules/**
             **/vendor/**
