@@ -27,19 +27,19 @@ jobs:
       - name: Prepare Deploy Files
         run: |
           rm -rf storage  # Remove local storage to avoid accidental uploads
-          mkdir -p MainApp  # Create MainApp folder
+          mkdir -p ARCHIDATAmain  # Create ARCHIDATAmain folder
           shopt -s extglob
-          mv !(public|MainApp) MainApp/  # Move all files except public/ into MainApp/
-          echo "Moved Laravel files to MainApp/"
+          mv !(public|ARCHIDATAmain) ARCHIDATAmain/  # Move all files except public/ into ARCHIDATAmain/
+          echo "Moved Laravel files to ARCHIDATAmain/"
 
-      - name: Upload MainApp Folder to FTP
+      - name: Upload ARCHIDATAmain Folder to FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.1
         with:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USERNAME }} 
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./MainApp/
-          server-dir: ${{ secrets.FTP_PATH }}/MainApp/
+          local-dir: ./ARCHIDATAmain/
+          server-dir: ${{ secrets.FTP_PATH }}/ARCHIDATAmain/
           exclude: |
             **/storage/**
             **/.git**/
