@@ -38,7 +38,7 @@
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, tenetur, veritatis? Commodi cupiditate, deserunt eius odio placeat possimus rerum similique. Eius exercitationem hic labore molestias mollitia nemo pariatur repellat sunt!
                 </p>
             </div>
-            <div class="col-lg-3></div>
+            <div class="col-lg-3"></div>
         </div>
 
     </div>
