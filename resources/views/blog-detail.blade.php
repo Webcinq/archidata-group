@@ -1,5 +1,15 @@
 @extends('layout')
 @section('content')
+    <style>
+        .image{
+            width: 1000px;height: 500px;
+        }
+        @media (max-width: 768px) {
+            .image{
+                width: 350px;height: 300px;
+            }
+        }
+    </style>
     <div class="container-fluid page-header mb-5 py-5">
         <div class="container">
             <h1 class="display-3 text-white mb-3 animated slideInDown">Blog Detail</h1>
@@ -12,7 +22,7 @@
         </div>
     </div>
     <div style="padding: 0 30px; text-align: center;">
-        <img style="width: 1000px;height: 500px" src="{{asset('img/service-1.png')}}" alt="">
+        <img class="image"   src="{{asset('img/service-1.png')}}" alt="">
         <br><br>
         <div class="row">
             <div class="col-lg-3"></div>

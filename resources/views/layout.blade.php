@@ -147,11 +147,11 @@
         <div class="copyright">
             <div class="row">
                 <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                    &copy; <a class="border-bottom" href="#">Nom de votre site</a>
+                    &copy; <a class="border-bottom" href="#">ARCHIDATA</a>
                 </div>
                 <div class="col-md-6 text-center text-md-end">
                     <!--/*** Ce template est gratuit tant que vous conservez le lien / l'attribution à l'auteur dans le pied de page. Pour l'utiliser sans ce lien, vous pouvez acheter la Licence d'Exclusion de Crédit sur "https://htmlcodex.com/credit-removal". Merci de votre soutien. ***/-->
-                    Designé par <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
+                    Designé par <a class="border-bottom" href="">Webcinq</a>
                 </div>
             </div>
         </div>

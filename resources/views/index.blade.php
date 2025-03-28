@@ -1,6 +1,13 @@
 @extends('layout')
 @section('content')
+    <style>
+        @media (max-width: 768px) {
+            .triangle{
+                display: none;
+            }
 
+        }
+    </style>
     <div class="container-fluid p-0 mb-5">
         <div class="owl-carousel header-carousel position-relative">
             <div class="owl-carousel-item position-relative">
@@ -90,13 +97,13 @@
                         </div>
                         <div class="ms-3">
                             <p class="fs-5 fw-medium mb-2 text-white">Intervention 24/7</p>
-                            <h3 class="m-0 text-secondary">+012 345 6789</h3>
+                            <h3 class="m-0 text-secondary">+212-601-632963</h3>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 pt-4" style="min-height: 500px;">
+                <div class="col-lg-6 pt-4 triangle" style="min-height: 500px;">
                     <div class="position-relative h-100 wow fadeInUp" data-wow-delay="0.5s">
-                        <img  src="{{asset('img/triangle.png')}}" style="object-fit: cover; padding: 0 0 50px 100px;height: 540px;width: 900px" alt="">
+                        <img class="" src="{{asset('img/triangle.png')}}" style="object-fit: cover; padding: 0 0 50px 100px;height: 540px;width: 900px" alt="">
                     </div>
                 </div>
             </div>
