@@ -72,6 +72,8 @@
                         </div>
                         <a class="btn btn-square btn-outline-primary border-2 border-white flex-shrink-0"  href="{{route('blog-detail')}}"><i class="fa fa-arrow-right"></i></a>
                     </div>
+
+                    
                 </div>
             </div>
         </div>

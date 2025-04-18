@@ -60,33 +60,47 @@
 
         <!-- About Start -->
         <div class="container-xxl py-5">
-            <div class="container">
-                <div class="row g-5">
-                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <h6 class="text-secondary text-uppercase">À propos</h6>
-                        <h1 class="mb-4">Nous Sommes une Entreprise Fiable Depuis 2010</h1>
-                        <p class="mb-4">ArchiData révolutionne le secteur du bâtiment grâce à des solutions BIM et des processus collaboratifs. Notre mission est d'assurer la transparence, l'efficacité et la durabilité dans chaque projet.</p>
-                        <p class="fw-medium text-primary"><i class="fa fa-check text-success me-3"></i>Projets résidentiels et commerciaux</p>
-                        <p class="fw-medium text-primary"><i class="fa fa-check text-success me-3"></i>Services de qualité à des prix accessibles</p>
-                        <p class="fw-medium text-primary"><i class="fa fa-check text-success me-3"></i>Assistance urgente 24/7</p>
-                        <div class="bg-primary d-flex align-items-center p-4 mt-5">
-                            <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-white" style="width: 60px; height: 60px;">
-                                <i class="fa fa-phone-alt fa-2x text-primary"></i>
-                            </div>
-                            <div class="ms-3">
-                                <p class="fs-5 fw-medium mb-2 text-white">Intervention 24/7</p>
-                                <h3 class="m-0 text-secondary">+212-601-632963</h3>
-                            </div>
-                        </div>
+    <div class="container">
+        <div class="row g-5 justify-content-center">
+            <div class="col-lg-8 text-center">
+                <!-- Triangle Image -->
+                <div class="position-relative wow fadeInUp" data-wow-delay="0.5s">
+                    <img src="{{ asset('img/triangle-removebg-preview.png') }}" alt="Triangle" style="object-fit: cover; max-width: 100%; height: auto;">
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-5 justify-content-center mt-5">
+            <div class="col-lg-8 text-center wow fadeInUp" data-wow-delay="0.1s">
+                <!-- Text block centered -->
+                <h6 class="text-secondary text-uppercase">À propos</h6>
+                <h1 class="mb-4">Nous Sommes une Entreprise Fiable Depuis 2010</h1>
+                <p class="mb-4">
+                    ArchiData révolutionne le secteur du bâtiment grâce à des solutions BIM et des processus collaboratifs.
+                    Notre mission est d'assurer la transparence, l'efficacité et la durabilité dans chaque projet.
+                </p>
+                <p class="fw-medium text-primary">
+                    <i class="fa fa-check text-success me-3"></i>Projets résidentiels et commerciaux
+                </p>
+                <p class="fw-medium text-primary">
+                    <i class="fa fa-check text-success me-3"></i>Services de qualité à des prix accessibles
+                </p>
+                <p class="fw-medium text-primary">
+                    <i class="fa fa-check text-success me-3"></i>Assistance urgente 24/7
+                </p>
+                <div class="bg-primary d-flex align-items-center justify-content-center p-4 mt-5">
+                    <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-white" style="width: 60px; height: 60px;">
+                        <i class="fa fa-phone-alt fa-2x text-primary"></i>
                     </div>
-                    <div class="col-lg-6 pt-4 triangle" style="min-height: 500px;">
-                        <div class="position-relative h-100 wow fadeInUp" data-wow-delay="0.5s">
-                            <img class="" src="{{asset('img/triangle.png')}}" style="object-fit: cover; padding: 0 0 50px 100px;height: 540px;width: 900px" alt="">
-                        </div>
+                    <div class="ms-3 text-start">
+                        <p class="fs-5 fw-medium mb-2 text-white">Intervention 24/7</p>
+                        <h3 class="m-0 text-secondary">+212-601-632963</h3>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+</div>
         <!-- About End -->
 
 
