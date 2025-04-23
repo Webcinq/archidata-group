@@ -1,0 +1,449 @@
+/* Fond global de la section */
+.triangle-section-container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 0;
+    z-index: 1;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    border-radius: 12px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    color: white;
+}
+
+/* Effet de particules/grille en arrière-plan */
+.triangle-section-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px),
+        linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 20px 20px, 20px 20px, 20px 20px;
+    background-position: 0 0, 0 0, 0 0;
+    opacity: 0.5;
+    z-index: -1;
+}
+
+/* Ajouter des formes géométriques abstraites en arrière-plan */
+.triangle-section-container::after {
+    content: "";
+    position: absolute;
+    top: -30%;
+    right: -20%;
+    width: 80%;
+    height: 80%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    z-index: -1;
+    border-radius: 50%;
+}
+
+.triangle-section-title {
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    max-width: 800px;
+    position: relative;
+    text-shadow: 0 0 10px rgba(0,0,0,0.5);
+    margin: 0 auto;
+    color: white;
+}
+
+/* Ligne décorative sous le titre */
+.triangle-section-title::after {
+    content: "";
+    display: block;
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent);
+    margin: 15px auto 0;
+}
+
+.triangle-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    height: 500px;
+    margin: 3rem auto;
+    perspective: 1000px;
+}
+
+.triangle-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+
+.triangle {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    background-color: #2a2a2a;
+    overflow: hidden;
+    transition: transform 0.5s ease;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.triangle-section {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+/* Top section */
+.section-top {
+    height: 33.33%;
+    clip-path: polygon(50% 0%, 25% 100%, 75% 100%);
+    background-color: #2E5798;
+    top: 0px;
+}
+
+/* Middle section */
+.section-middle {
+    top: 33.33%;
+    height: 33.33%;
+    clip-path: polygon(25% 0%, 75% 0%, 87.5% 100%, 12.5% 100%);
+    background-color: #2E5798;
+}
+
+/* Bottom section */
+.section-bottom {
+    top: 66.66%;
+    height: 33.34%;
+    background-color: #2E5798;
+}
+
+/* Hover effects for each section */
+.section-top:hover {
+    height: 40%;
+    top: -3%;
+    clip-path: polygon(50% -5%, 20% 105%, 80% 105%);
+    background-color: #294e89;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    z-index: 10;
+}
+
+.section-middle:hover {
+    height: 40%;
+    top: 30%;
+    clip-path: polygon(20% -5%, 80% -5%, 95% 105%, 5% 105%);
+    background-color: #294e89;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    z-index: 10;
+}
+
+.section-bottom:hover {
+    height: 40%;
+    top: 63%;
+    clip-path: polygon(5% -5%, 95% -5%, 110% 105%, -10% 105%);
+    background-color:#294e89;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    z-index: 10;
+}
+
+.section-content {
+    display: flex;
+    width: 100%;
+    max-width: 500px;
+    padding: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    transition: all 0.5s ease;
+    text-align: center;
+    flex-direction: column;
+}
+
+/* Ajustement spécifique pour la section du haut */
+.section-top .section-content {
+    padding-top: 15%;
+    transform: translateY(-10px);
+}
+
+/* Ajustement spécifique pour la section du milieu */
+.section-middle .section-content {
+    padding-top: 5%;
+}
+
+.triangle-section:hover .section-content {
+    transform: translateY(0) scale(1.05);
+}
+
+.icon-container {
+    flex: 0 0 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 0.5rem;
+}
+
+.icon {
+    font-size: 1.2rem;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 0;
+    background-color: transparent;
+    transition: all 0.3s ease;
+}
+
+.triangle-section:hover .icon {
+    transform: rotate(360deg);
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: white;
+}
+
+.text-container {
+    flex: 1;
+    max-width: 70%;
+}
+
+.section-title {
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-bottom: 0.2rem;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.section-subtitle {
+    font-size: 0.75rem;
+    opacity: 0.8;
+    color: #ccc;
+    transition: all 0.3s ease;
+}
+
+.triangle-section:hover .section-title {
+    color: #fff;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.triangle-section:hover .section-subtitle {
+    opacity: 1;
+    color: #fff;
+}
+
+.description {
+    margin: 2rem auto;
+    max-width: 800px;
+    line-height: 1.6;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-left: 3px solid rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Divider lines with animation */
+.divider {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.2);
+    z-index: 5;
+    transition: all 0.5s ease;
+}
+
+.divider-horizontal-1 {
+    width: 50%;
+    height: 1px;
+    top: 33.33%;
+    left: 25%;
+}
+
+.divider-horizontal-2 {
+    width: 75%;
+    height: 1px;
+    top: 66.66%;
+    left: 12.5%;
+}
+
+/* Animation de pulse subtile pour les dividers */
+@keyframes dividerPulse {
+    0% { opacity: 0.2; }
+    50% { opacity: 0.6; }
+    100% { opacity: 0.2; }
+}
+
+.divider {
+    animation: dividerPulse 4s infinite ease-in-out;
+}
+
+/* Animation pour le background (effet subtil de mouvement) */
+@keyframes backgroundMove {
+    0% { background-position: 0 0, 0 0, 0 0; }
+    100% { background-position: 40px 40px, 20px 0, 0 20px; }
+}
+
+/* SECTION RESPONSIVE AMÉLIORÉE */
+
+/* Écrans larges */
+@media (min-width: 1200px) {
+    .triangle-container {
+        height: 550px;
+    }
+    
+    .section-title {
+        font-size: 1.1rem;
+    }
+    
+    .section-subtitle {
+        font-size: 0.85rem;
+    }
+    
+    .icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.3rem;
+    }
+}
+
+/* Tablettes et petits écrans */
+@media (max-width: 992px) {
+    .triangle-section-container {
+        padding: 2rem 1rem;
+    }
+    
+    .triangle-section-title {
+        font-size: 1.8rem;
+    }
+    
+    .triangle-container {
+        height: 450px;
+        margin: 2rem auto;
+    }
+}
+
+/* Tablettes */
+@media (max-width: 768px) {
+    .triangle-container {
+        height: 400px;
+    }
+    
+    .section-title {
+        font-size: 0.85rem;
+    }
+    
+    .section-subtitle {
+        font-size: 0.7rem;
+    }
+    
+    .icon {
+        font-size: 1rem;
+        width: 30px;
+        height: 30px;
+    }
+    
+    .description {
+        padding: 1.25rem;
+        font-size: 0.9rem;
+    }
+    
+    /* Ajuster les sections pour qu'elles soient plus lisibles sur mobile */
+    .section-top .section-content,
+    .section-middle .section-content,
+    .section-bottom .section-content {
+        padding: 0.3rem;
+    }
+}
+
+/* Mobiles */
+@media (max-width: 576px) {
+    .triangle-section-container {
+        padding: 1.5rem 0.5rem;
+    }
+    
+    .triangle-section-title {
+        font-size: 1.5rem;
+    }
+    
+    .triangle-container {
+        height: 350px;
+    }
+    
+    .section-title {
+        font-size: 0.75rem;
+    }
+    
+    .section-subtitle {
+        font-size: 0.65rem;
+    }
+    
+    .icon {
+        width: 28px;
+        height: 28px;
+        font-size: 0.9rem;
+    }
+    
+    .text-container {
+        max-width: 85%;
+    }
+    
+    /* Simplifier les animations sur mobile pour de meilleures performances */
+    .triangle-section:hover {
+        transform: none;
+    }
+    
+    .section-top:hover,
+    .section-middle:hover,
+    .section-bottom:hover {
+        transform: none;
+        height: 33.33%;
+        top: auto;
+    }
+    
+    .section-top:hover {
+        top: 0;
+    }
+    
+    .section-middle:hover {
+        top: 33.33%;
+    }
+    
+    .section-bottom:hover {
+        top: 66.66%;
+    }
+}
+
+/* Très petits écrans */
+@media (max-width: 400px) {
+    .triangle-container {
+        height: 300px;
+    }
+    
+    .section-title {
+        font-size: 0.7rem;
+    }
+    
+    .section-subtitle {
+        font-size: 0.6rem;
+    }
+    
+    .icon {
+        width: 25px;
+        height: 25px;
+        font-size: 0.85rem;
+    }
+    
+    .description {
+        padding: 1rem;
+        font-size: 0.85rem;
+    }
+}

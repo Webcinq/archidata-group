@@ -2,8 +2,11 @@
 @section('content')
     <style>
         @media (max-width: 768px) {
-            .triangle {
-                display: none;
+            .txt {
+                font-size: 8px;
+            }
+            .section-top{
+               margin-top: 2px
             }
 
         }
@@ -24,7 +27,7 @@
                                 <p class="fs-5 fw-medium text-white mb-4 pb-2">Nous utilisons des approches BIM avancées
                                     pour assurer une transparence totale, une anticipation des coûts et des délais, et une
                                     meilleure durabilité.</p>
-                                <a href="" style="color: black"
+                                <a href="" style="color: black ; background-color: #edf1fc;"
                                     class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">En savoir plus</a>
                                 <a href="" class="btn btn-secondary py-md-3 px-md-5 animated slideInRight">Devis gratuit</a>
                             </div>
@@ -46,7 +49,7 @@
                                 <p class="fs-5 fw-medium text-white mb-4 pb-2">Grâce à une planification minutieuse et une
                                     gestion de données collaborative, nous répondons aux défis des grands projets en toute
                                     efficacité.</p>
-                                <a href="" style="color: black"
+                                    <a href="" style="color: black ; background-color: #edf1fc;"
                                     class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">En savoir plus</a>
                                 <a href="" class="btn btn-secondary py-md-3 px-md-5 animated slideInRight">Devis gratuit</a>
                             </div>
@@ -62,12 +65,15 @@
     <div class="container-xxl py-5">
         <div class="container">
             <div class="row g-4">
+                <h1 class="text-black d-flex justify-content-center mb-4">Nos services</h1>
+
                 <div class="col-lg-3 col-md-6 service-item-top wow fadeInUp" data-wow-delay="0.1s">
+
                     <div class="overflow-hidden">
                         <img class="img-fluid w-100 h-100" src="{{asset('img/service-1.png')}}" alt="">
                     </div>
                     <div class="d-flex align-items-center justify-content-between bg-light p-4">
-                        <h5 class="text-truncate me-3 mb-0">BIM Management et Synthèse</h5>
+                        <h5 class="text-truncate me-3 mb-0">BIM Management  et <br>Synthèse</h5>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 service-item-top wow fadeInUp" data-wow-delay="0.3s">
@@ -92,7 +98,6 @@
                     </div>
                     <div class="d-flex align-items-center justify-content-between bg-light p-4">
                         <h5 class="text-truncate me-3 mb-0">Facility Management</h5>
-                        <!-- <a href="" class="btn bg-white text-primary">En savoir plus<i class="fa fa-arrow-right text-secondary ms-2"></i></a> -->
                     </div>
                 </div>
             </div>
@@ -103,13 +108,79 @@
     <!-- About Start -->
     <div class="container-xxl py-5">
     <div class="container">
-        <div class="row g-5 justify-content-center">
-            <div class="col-lg-8 text-center">
-                <!-- Triangle Image -->
-                <div class="position-relative wow fadeInUp" data-wow-delay="0.5s">
-                    <img src="{{ asset('img/triangle-removebg-preview.png') }}" alt="Triangle" style="object-fit: cover; max-width: 100%; height: auto;">
+        <div class="row g-5 justify-content-center triangle-section-container">
+            <h1 class="text-white d-flex justify-content-center">Analyse de l'Existant et Création du Jumeau Numérique</h1>
+        
+            <div class="triangle-container">
+                <div class="triangle-wrapper">
+                    <div class="triangle">
+                        <!-- Dividers -->
+                        <div class="divider divider-horizontal-1"></div>
+                        <div class="divider divider-horizontal-2"></div>
+                        
+                        <!-- Top section -->
+                        <div class="triangle-section section-top" data-page="transparence">
+                            <div class="section-content">
+                                <div class="icon-container">
+                                    <div class="icon">◉</div>
+                                </div>
+                                <div class="text-container">
+                                    <div class="section-title txt">TRANSPARENCE </div>
+                                    <div class="section-subtitle txt">Communication claire</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Middle section -->
+                        <div class="triangle-section section-middle" data-page="maitrise-des-couts">
+                            <div class="section-content">
+                                <div class="icon-container">
+                                    <div class="icon">⌂</div>
+                                </div>
+                                <div class="text-container">
+                                    <div style="" class="section-title">MAÎTRISE DES COÛTS</div>
+                                    <div class="section-subtitle">Suivi quantitatif</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Bottom section -->
+                        <div class="triangle-section section-bottom" data-page="maitrise-des-delais">
+                            <div class="section-content">
+                                <div class="icon-container">
+                                    <div class="icon">✓</div>
+                                </div>
+                                <div class="text-container">
+                                    <div class="section-title">MAÎTRISE DES DÉLAIS</div>
+                                    <div class="section-subtitle">Simulations BIM avancées</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+            
+            <p class="description">
+                Le Triangle d'Or du BIM représente notre approche fondamentale pour une construction optimisée. Ces trois piliers interconnectés garantissent des projets réussis.
+            </p>
+            
+            <script>
+                // Script pour ajouter l'interactivité avec redirection
+                document.querySelectorAll('.triangle-section').forEach(section => {
+                    section.addEventListener('click', function() {
+                        // Récupérer l'URL de la page depuis l'attribut data-page
+                        const pageURL = this.getAttribute('data-page');
+                        
+                        // Rediriger vers la page spécifiée
+                        if (pageURL) {
+                            window.location.href = pageURL;
+                        }
+                    });
+                    
+                    // Ajouter un style de curseur pointer pour indiquer que c'est cliquable
+                    section.style.cursor = 'pointer';
+                });
+            </script>        
         </div>
 
         <div class="row g-5 justify-content-center mt-5">
@@ -121,6 +192,7 @@
                     ArchiData révolutionne le secteur du bâtiment grâce à des solutions BIM et des processus collaboratifs.
                     Notre mission est d'assurer la transparence, l'efficacité et la durabilité dans chaque projet.
                 </p>
+                <div class="d-flex">
                 <p class="fw-medium text-primary">
                     <i class="fa fa-check text-success me-3"></i>Projets résidentiels et commerciaux
                 </p>
@@ -130,13 +202,14 @@
                 <p class="fw-medium text-primary">
                     <i class="fa fa-check text-success me-3"></i>Assistance urgente 24/7
                 </p>
+            </div>
                 <div class="bg-primary d-flex align-items-center justify-content-center p-4 mt-5">
                     <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-white" style="width: 60px; height: 60px;">
                         <i class="fa fa-phone-alt fa-2x text-primary"></i>
                     </div>
                     <div class="ms-3 text-start">
                         <p class="fs-5 fw-medium mb-2 text-white">Intervention 24/7</p>
-                        <h3 class="m-0 text-secondary">+212-601-632963</h3>
+                        <h3 class="m-0 text-white">+212 661-243730</h3>
                     </div>
                 </div>
             </div>
@@ -384,7 +457,7 @@
                         <small class="fa fa-star text-secondary"></small>
                         <small class="fa fa-star text-secondary"></small>
                     </div>
-                    <h5 class="mb-1">Nom Client</h5>
+                    <h5 class="mb-1">Lina Khattabi</h5>
                     <p class="m-0">Profession</p>
                 </div>
                 <div class="testimonial-item text-center">
@@ -401,7 +474,7 @@
                         <small class="fa fa-star text-secondary"></small>
                         <small class="fa fa-star text-secondary"></small>
                     </div>
-                    <h5 class="mb-1">Nom Client</h5>
+                    <h5 class="mb-1">Yassir El Fadili</h5>
                     <p class="m-0">Profession</p>
                 </div>
                 <div class="testimonial-item text-center">
@@ -418,7 +491,7 @@
                         <small class="fa fa-star text-secondary"></small>
                         <small class="fa fa-star text-secondary"></small>
                     </div>
-                    <h5 class="mb-1">Nom Client</h5>
+                    <h5 class="mb-1">Adam Bennani</h5>
                     <p class="m-0">Profession</p>
                 </div>
                 <div class="testimonial-item text-center">
@@ -435,7 +508,7 @@
                         <small class="fa fa-star text-secondary"></small>
                         <small class="fa fa-star text-secondary"></small>
                     </div>
-                    <h5 class="mb-1">Nom Client</h5>
+                    <h5 class="mb-1">Sara Malki</h5>
                     <p class="m-0">Profession</p>
                 </div>
             </div>
