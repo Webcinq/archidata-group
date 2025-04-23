@@ -137,7 +137,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-white p-3 py-lg-0 px-lg-4">
         <!-- Logo visible sur petits écrans -->
         <a href="{{ route('index') }}" class="navbar-brand d-flex align-items-center m-0 p-0 d-lg-none">
-            <img src="img/logo-archidata.png" alt="Logo" style="height: 40px;">
+            <img src="img/logo5.png" alt="Logo" style="height: 40px;">
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -147,7 +147,7 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <!-- Logo visible sur grands écrans -->
             <a href="{{ route('index') }}" class="navbar-brand d-none d-lg-flex align-items-center me-4">
-                <img src="img/logo-archidata.png"  alt="Logo" style="height: 70px;">
+                <img src="img/logo5.png"  alt="Logo" style="height: 70px;">
             </a>
 
             <div class="navbar-nav me-auto">
