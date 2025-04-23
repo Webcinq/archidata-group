@@ -79,6 +79,8 @@
                     ArchiData révolutionne le secteur du bâtiment grâce à des solutions BIM et des processus collaboratifs.
                     Notre mission est d'assurer la transparence, l'efficacité et la durabilité dans chaque projet.
                 </p>
+                <div class="d-flex">
+
                 <p class="fw-medium text-primary">
                     <i class="fa fa-check text-success me-3"></i>Projets résidentiels et commerciaux
                 </p>
@@ -88,13 +90,14 @@
                 <p class="fw-medium text-primary">
                     <i class="fa fa-check text-success me-3"></i>Assistance urgente 24/7
                 </p>
+                </div>
                 <div class="bg-primary d-flex align-items-center justify-content-center p-4 mt-5">
                     <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-white" style="width: 60px; height: 60px;">
                         <i class="fa fa-phone-alt fa-2x text-primary"></i>
                     </div>
                     <div class="ms-3 text-start">
                         <p class="fs-5 fw-medium mb-2 text-white">Intervention 24/7</p>
-                        <h3 class="m-0 text-secondary">+212 661-2437302963</h3>
+                        <h3 class="m-0 text-white">+212 661-243730</h3>
                     </div>
                 </div>
             </div>
@@ -135,7 +138,7 @@
 
 
         <!-- Team Start -->
-        <div class="container-xxl py-5">
+        {{-- <div class="container-xxl py-5">
             <div class="container">
                 <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                     <h6 class="text-secondary text-uppercase">Notre Équipe</h6>
@@ -216,7 +219,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         <!-- Team End -->
 

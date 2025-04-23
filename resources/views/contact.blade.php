@@ -45,7 +45,7 @@
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <button class="btn btn-primary w-100 py-3" type="submit">Envoyer</button>
+                                    <button style="background-color: #124698" class="btn text-white w-100 py-3" type="submit">Envoyer</button>
                                 </div>
                             </div>
                         </form>
