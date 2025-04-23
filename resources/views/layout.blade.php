@@ -137,7 +137,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-white p-3 py-lg-0 px-lg-4">
         <!-- Logo visible sur petits écrans -->
         <a href="{{ route('index') }}" class="navbar-brand d-flex align-items-center m-0 p-0 d-lg-none">
-            <img src="img/logo5.png" alt="Logo" style="height: 40px;">
+            <img src="img/image67.png" alt="Logo" style="height: 40px;">
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -147,7 +147,7 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <!-- Logo visible sur grands écrans -->
             <a href="{{ route('index') }}" class="navbar-brand d-none d-lg-flex align-items-center me-4">
-                <img src="img/logo5.png"  alt="Logo" style="height: 70px;">
+                <img src="img/image67.png"  alt="Logo" style="height: 70px;">
             </a>
 
             <div class="navbar-nav me-auto">
@@ -201,7 +201,7 @@
                 <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
                 <div class="position-relative mx-auto" style="max-width: 400px;">
                     <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Votre email">
-                    <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">S'inscrire</button>
+                    <button type="button"  style="background-color: #90abd7" class="btn text-white py-2 position-absolute top-0 end-0 mt-2 me-2">S'inscrire</button>
                 </div>
             </div>
         </div>
@@ -224,7 +224,7 @@
 
 
 <!-- Back to Top -->
-<a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-0 back-to-top"><i class="bi bi-arrow-up"></i></a>
+<a href="#" style="background-color: #90abd7" class="btn btn-lg  btn-lg-square rounded-0 back-to-top"><i class="bi bi-arrow-up"></i></a>
 
 
 <!-- JavaScript Libraries -->

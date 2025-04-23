@@ -360,7 +360,8 @@
     .section-top .section-content,
     .section-middle .section-content,
     .section-bottom .section-content {
-        padding: 0.3rem;
+        padding:-2.3rem;
+        ;
     }
 }
 

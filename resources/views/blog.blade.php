@@ -29,7 +29,7 @@
                         <div class="d-flex flex-column">
                             <a href="{{route('blog-detail')}}">
 
-                                <h5 class="text-truncate me-3 mb-0">BIM Management et Synthèse</h5></a>
+                                <h5 class="text-truncate me-3 mb-0">Facility Management</h5></a>
                             <br>
                             <p class="mb-0">BIM Management et Synthèse BIM Management et Synthèse BIM Management et Synthèse</p>
                         </div>
@@ -65,7 +65,7 @@
                         <div class="d-flex flex-column">
                             <a href="{{route('blog-detail')}}">
 
-                                <h5 class="text-truncate me-3 mb-0">BIM Management et Synthèse</h5></a>
+                                <h5 class="text-truncate me-3 mb-0">BIM GEM et Modélisation</h5></a>
                             <br>
 
                             <p class="mb-0">BIM Management et Synthèse BIM Management et Synthèse BIM Management et Synthèse</p>

@@ -144,7 +144,7 @@
                                     <textarea class="form-control border-0" placeholder="Demande Spéciale"></textarea>
                                 </div>
                                 <div class="col-12">
-                                    <button class="btn btn-primary w-100 py-3" type="submit">Réserver Maintenant</button>
+                                    <button style="background-color: #124698" class="btn text-white w-100 py-3" type="submit">Réserver Maintenant</button>
                                 </div>
                             </div>
                         </form>

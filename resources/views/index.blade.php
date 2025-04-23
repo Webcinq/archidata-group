@@ -6,7 +6,7 @@
                 font-size: 8px;
             }
             .section-top{
-               margin-top: 2px
+               margin-top: 1px
             }
 
         }
