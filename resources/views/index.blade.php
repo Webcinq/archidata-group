@@ -132,7 +132,7 @@
                         </div>
                         
                         <!-- Middle section -->
-                        <div class="triangle-section section-middle" data-page="maitrise-des-couts">
+                        <div class="triangle-section section-middle" data-page="couts">
                             <div class="section-content">
                                 <div class="icon-container">
                                     <div class="icon">⌂</div>
@@ -145,7 +145,7 @@
                         </div>
                         
                         <!-- Bottom section -->
-                        <div class="triangle-section section-bottom" data-page="maitrise-des-delais">
+                        <div class="triangle-section section-bottom" data-page="delais">
                             <div class="section-content">
                                 <div class="icon-container">
                                     <div class="icon">✓</div>
