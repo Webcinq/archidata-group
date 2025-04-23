@@ -66,39 +66,53 @@
         <div class="container">
             <div class="row g-4">
                 <h1 class="text-black d-flex justify-content-center mb-4">Nos services</h1>
-
+            
                 <div class="col-lg-3 col-md-6 service-item-top wow fadeInUp" data-wow-delay="0.1s">
-
-                    <div class="overflow-hidden">
-                        <img class="img-fluid w-100 h-100" src="{{asset('img/service-1.png')}}" alt="">
-                    </div>
-                    <div class="d-flex align-items-center justify-content-between bg-light p-4">
-                        <h5 class="text-truncate me-3 mb-0">BIM Management  et <br>Synthèse</h5>
-                    </div>
+                    <a href="{{route('blog-detail')}}" class="text-decoration-none">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid w-100 h-100" src="{{asset('img/service-1.png')}}" alt="">
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between bg-light p-4">
+                            <h5 class="text-truncate me-3 mb-0">BIM Management et <br>Synthèse</h5>
+                            <i class="fa fa-arrow-right text-primary"></i>
+                        </div>
+                    </a>
                 </div>
+            
                 <div class="col-lg-3 col-md-6 service-item-top wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="overflow-hidden">
-                        <img class="img-fluid w-100 h-100" src="{{asset('img/service-2.png')}}" alt="">
-                    </div>
-                    <div class="d-flex align-items-center justify-content-between bg-light p-4">
-                        <h5 class="text-truncate me-3 mb-0">Conseil et Formation</h5>
-                    </div>
+                    <a href="{{route('blog-detail')}}" class="text-decoration-none">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid w-100 h-100" src="{{asset('img/service-2.png')}}" alt="">
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between bg-light p-4">
+                            <h5 class="text-truncate me-3 mb-0">Conseil et Formation</h5>
+                            <i class="fa fa-arrow-right text-primary"></i>
+                        </div>
+                    </a>
                 </div>
+            
                 <div class="col-lg-3 col-md-6 service-item-top wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="overflow-hidden">
-                        <img class="img-fluid w-100 h-100" src="{{asset('img/service-3.png')}}" alt="">
-                    </div>
-                    <div class="d-flex align-items-center justify-content-between bg-light p-4">
-                        <h5 class="text-truncate me-3 mb-0">BIM GEM et Modélisation</h5>
-                    </div>
+                    <a href="{{route('blog-detail')}}" class="text-decoration-none">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid w-100 h-100" src="{{asset('img/service-3.png')}}" alt="">
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between bg-light p-4">
+                            <h5 class="text-truncate me-3 mb-0">BIM GEM et Modélisation</h5>
+                            <i class="fa fa-arrow-right text-primary"></i>
+                        </div>
+                    </a>
                 </div>
+            
                 <div class="col-lg-3 col-md-6 service-item-top wow fadeInUp" data-wow-delay="0.7s">
-                <div class="overflow-hidden">
-                        <img class="img-fluid w-100 h-100" src="{{asset('img/service-1.png')}}" alt="">
-                    </div>
-                    <div class="d-flex align-items-center justify-content-between bg-light p-4">
-                        <h5 class="text-truncate me-3 mb-0">Facility Management</h5>
-                    </div>
+                    <a href="{{route('blog-detail')}}" class="text-decoration-none">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid w-100 h-100" src="{{asset('img/service-1.png')}}" alt="">
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between bg-light p-4">
+                            <h5 class="text-truncate me-3 mb-0">Facility Management</h5>
+                            <i class="fa fa-arrow-right text-primary"></i>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
