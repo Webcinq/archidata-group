@@ -1,4 +1,4 @@
-name: Deploy Laravel to Shared Hosting
+name: Deploy to test 
 
 on:
   push:
