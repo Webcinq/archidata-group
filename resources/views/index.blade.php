@@ -133,7 +133,7 @@
                         <div class="divider divider-horizontal-2"></div>
                         
                         <!-- Top section -->
-                        <div class="triangle-section section-top" data-page="transparence">
+                        <div class="triangle-section section-top" data-page="first_stage">
                             <div class="section-content">
                                 <div class="icon-container">
                                     <div class="icon">◉</div>
