@@ -49,6 +49,7 @@ jobs:
             **/.env**
             **/.github/**
             **/tests/**
+            **/vendor/**
             **/README.md**
             **/package.json**
             **/webpack.mix.js**
