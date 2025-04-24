@@ -123,8 +123,8 @@
             <div class="h-100 d-inline-flex align-items-center ms-4">
                 <a class="btn btn-sm-square bg-white text-primary me-1" href="#"><i class="fab fa-facebook-f"></i></a>
                 <a class="btn btn-sm-square bg-white text-primary me-1" href="#"><i class="fab fa-twitter"></i></a>
-                <a class="btn btn-sm-square bg-white text-primary me-1" href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a class="btn btn-sm-square bg-white text-primary me-0" href="#"><i class="fab fa-instagram"></i></a>
+                <a class="btn btn-sm-square bg-white text-primary me-1" href="https://www.linkedin.com/in/mehdi-rasfi/"><i class="fab fa-linkedin-in"></i></a>
+                <a class="btn btn-sm-square bg-white text-primary me-0" href="#"><i class="fab fa-whatsap"></i></a>
             </div>
         </div>
     </div>
@@ -179,7 +179,7 @@
                     <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
                     <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
                     <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
-                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-outline-light btn-social" href="https://www.linkedin.com/in/mehdi-rasfi/"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">

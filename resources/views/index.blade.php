@@ -291,7 +291,7 @@
                                 Client</p>
                             <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Assistance 24/7
                             </p>
-                            <a href="" class="btn bg-white text-primary w-100 mt-2">En savoir plus<i
+                            <a href="{{route('blog-detail')}}" class="btn bg-white text-primary w-100 mt-2">En savoir plus<i
                                     class="fa fa-arrow-right text-secondary ms-2"></i></a>
                         </div>
                         <div class="bg-light p-4">
@@ -308,7 +308,7 @@
                                 Client</p>
                             <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Assistance 24/7
                             </p>
-                            <a href="" class="btn bg-white text-primary w-100 mt-2">En savoir plus<i
+                            <a href="{{route('blog-detail')}}" class="btn bg-white text-primary w-100 mt-2">En savoir plus<i
                                     class="fa fa-arrow-right text-secondary ms-2"></i></a>
                         </div>
                         <div class="bg-light p-4">
@@ -326,7 +326,7 @@
                                 Client</p>
                             <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Assistance 24/7
                             </p>
-                            <a href="" class="btn bg-white text-primary w-100 mt-2">En savoir plus<i
+                            <a href="{{route('blog-detail')}}" class="btn bg-white text-primary w-100 mt-2">En savoir plus<i
                                     class="fa fa-arrow-right text-secondary ms-2"></i></a>
                         </div>
                         <div class="bg-light p-4">
@@ -343,7 +343,7 @@
                                 Client</p>
                             <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Assistance 24/7
                             </p>
-                            <a href="" class="btn bg-white text-primary w-100 mt-2">En savoir plus<i
+                            <a href="{{route('blog-detail')}}" class="btn bg-white text-primary w-100 mt-2">En savoir plus<i
                                     class="fa fa-arrow-right text-secondary ms-2"></i></a>
                         </div>
                         <!-- New Facility Management Service Card -->
@@ -361,7 +361,7 @@
                                 Client</p>
                             <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Assistance 24/7
                             </p>
-                            <a href="facility-management.html" class="btn bg-white text-primary w-100 mt-2">En savoir plus<i
+                            <a href="{{route('blog-detail')}}" class="btn bg-white text-primary w-100 mt-2">En savoir plus<i
                                     class="fa fa-arrow-right text-secondary ms-2"></i></a>
                         </div>
                         <!-- End New Service Card -->
