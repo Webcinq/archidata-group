@@ -47,7 +47,7 @@
                         <div class="d-flex flex-column">
                             <a href="{{route('blog-detail')}}">
 
-                                <h5 class="text-truncate me-3 mb-0">BIM Management et Synthèse</h5></a>
+                                <h5 class="text-truncate me-3 mb-0">BIM Management et <br> Synthèse</h5></a>
                             <br>
                         </div>
                         <a class="btn btn-square btn-outline-primary border-2 border-white flex-shrink-0"  href="{{route('blog-detail')}}"><i class="fa fa-arrow-right"></i></a>
