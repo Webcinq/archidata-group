@@ -46,6 +46,7 @@ jobs:
             **/node_modules/**
             **/.env**
             **/.github/**
+            **/vendor/**
             **/tests/**
             **/README.md**
             **/package.json**
