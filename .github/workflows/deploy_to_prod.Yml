@@ -36,11 +36,11 @@ jobs:
       - name: Upload ARCHIDATAmain Folder to FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.1
         with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USERNAME }} 
-          password: ${{ secrets.FTP_PASSWORD }}
+          server: ${{ secrets.PROD_FTP_HOST }}
+          username: ${{ secrets.PROD_FTP_USERNAME }} 
+          password: ${{ secrets.PROD_FTP_PASSWORD }}
           local-dir: ./ARCHIDATAmain/
-          server-dir: ${{ secrets.FTP_PATH }}/ARCHIDATAmain/
+          server-dir: ${{ secrets.PROD_FTP_PATH }}/ARCHIDATAmain/
           exclude: |
             **/storage/** 
             **/.git**/
@@ -57,11 +57,11 @@ jobs:
       - name: Upload Public Folder to Root
         uses: SamKirkland/FTP-Deploy-Action@v4.3.1
         with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USERNAME }} 
-          password: ${{ secrets.FTP_PASSWORD }}
+          server: ${{ secrets.PROD_FTP_HOST }}
+          username: ${{ secrets.PROD_FTP_USERNAME }} 
+          password: ${{ secrets.PROD_FTP_PASSWORD }}
           local-dir: ./public/
-          server-dir: ${{ secrets.FTP_PUBLIC_PATH }}/
+          server-dir: ${{ secrets.PROD_FTP_PUBLIC_PATH }}/
           exclude: |
             **/storage/** 
  
