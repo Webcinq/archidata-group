@@ -13,3 +13,6 @@ Route::get('/couts', function () {return view('couts');})->name('couts');
 Route::get('/delais', function () {return view('delais');})->name('delais');
 
 
+Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])->name('contact');
+Route::post('/contact', [App\Http\Controllers\ContactController::class, 'sendMail'])->name('contact.send');
+Route::get('/reload-captcha', [App\Http\Controllers\ContactController::class, 'reloadCaptcha']);
