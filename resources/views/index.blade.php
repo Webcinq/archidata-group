@@ -122,9 +122,10 @@
     <!-- About Start -->
     <div class="container-xxl py-5">
     <div class="container">
-        <div class="row g-5 justify-content-center triangle-section-container">
-            <h1 class="text-white d-flex justify-content-center">Analyse de l'Existant et Création du Jumeau Numérique</h1>
-        
+        <div class="triangle-section-container">
+            <div class="bg-accent"></div>
+            <h1 class="triangle-section-title">Analyse de l'Existant et Création du Jumeau Numérique</h1>
+            
             <div class="triangle-container">
                 <div class="triangle-wrapper">
                     <div class="triangle">
@@ -139,8 +140,8 @@
                                     <div class="icon">◉</div>
                                 </div>
                                 <div class="text-container">
-                                    <div class="section-title txt">TRANSPARENCE </div>
-                                    <div class="section-subtitle txt">Communication claire</div>
+                                    <div class="section-title">TRANSPARENCE</div>
+                                    <div class="section-subtitle">Communication claire</div>
                                 </div>
                             </div>
                         </div>
@@ -152,7 +153,7 @@
                                     <div class="icon">⌂</div>
                                 </div>
                                 <div class="text-container">
-                                    <div style="" class="section-title">MAÎTRISE DES COÛTS</div>
+                                    <div class="section-title">MAÎTRISE DES COÛTS</div>
                                     <div class="section-subtitle">Suivi quantitatif</div>
                                 </div>
                             </div>
@@ -175,28 +176,50 @@
             </div>
             
             <p class="description">
-                Le Triangle d'Or du BIM représente notre approche fondamentale pour une construction optimisée. Ces trois piliers interconnectés garantissent des projets réussis.
+                Le Triangle d'Or du BIM représente notre approche fondamentale pour une construction optimisée. Ces trois piliers interconnectés garantissent des projets réussis tout en maintenant l'équilibre parfait entre transparence, coûts et délais.
             </p>
-            
-            <script>
-                // Script pour ajouter l'interactivité avec redirection
-                document.querySelectorAll('.triangle-section').forEach(section => {
-                    section.addEventListener('click', function() {
-                        // Récupérer l'URL de la page depuis l'attribut data-page
-                        const pageURL = this.getAttribute('data-page');
-                        
-                        // Rediriger vers la page spécifiée
-                        if (pageURL) {
-                            window.location.href = pageURL;
-                        }
-                    });
-                    
-                    // Ajouter un style de curseur pointer pour indiquer que c'est cliquable
-                    section.style.cursor = 'pointer';
-                });
-            </script>        
         </div>
-
+        
+        <script>
+            // Animation fluide au survol du triangle entier
+            const triangleWrapper = document.querySelector('.triangle-wrapper');
+            const triangleSections = document.querySelectorAll('.triangle-section');
+            
+            // Effet de perspective au survol
+            triangleWrapper.addEventListener('mousemove', (e) => {
+                const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+                const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+                triangleWrapper.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+            });
+            
+            triangleWrapper.addEventListener('mouseleave', () => {
+                triangleWrapper.style.transform = 'rotateY(0deg) rotateX(0deg)';
+                triangleWrapper.style.transition = 'all 0.5s ease';
+            });
+            
+            triangleWrapper.addEventListener('mouseenter', () => {
+                triangleWrapper.style.transition = 'none';
+            });
+            
+            triangleSections.forEach(section => {
+                section.addEventListener('click', function() {
+                    // Animation de clic
+                    this.style.transform = 'scale(0.98)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1)';
+                    }, 200);
+                    
+                    const pageURL = this.getAttribute('data-page');
+                    
+                    // Rediriger vers la page spécifiée avec un léger délai pour l'animation
+                    if (pageURL) {
+                        setTimeout(() => {
+                            window.location.href = pageURL;
+                        }, 300);
+                    }
+                });
+            });
+        </script>
         <div class="row g-5 justify-content-center mt-5">
             <div class="col-lg-8 text-center wow fadeInUp" data-wow-delay="0.1s">
                 <!-- Text block centered -->

@@ -1,19 +1,33 @@
+  /* Styles de base */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: #f5f7fa;
+    color: #333;
+    font-family: 'Poppins', sans-serif;
+}
+
 /* Fond global de la section */
 .triangle-section-container {
     position: relative;
     width: 100%;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 20px auto;
     padding: 3rem 0;
     z-index: 1;
-    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-    border-radius: 12px;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #0d253f 0%, #1a4373 100%);
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
     overflow: hidden;
     color: white;
 }
 
-/* Effet de particules/grille en arrière-plan */
+/* Effet de particules en arrière-plan */
 .triangle-section-container::before {
     content: "";
     position: absolute;
@@ -22,16 +36,17 @@
     width: 100%;
     height: 100%;
     background-image: 
-        radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px),
-        linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
-    background-size: 20px 20px, 20px 20px, 20px 20px;
+        radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px),
+        linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 25px 25px, 25px 25px, 25px 25px;
     background-position: 0 0, 0 0, 0 0;
-    opacity: 0.5;
+    opacity: 0.6;
     z-index: -1;
+    animation: backgroundFloat 40s linear infinite;
 }
 
-/* Ajouter des formes géométriques abstraites en arrière-plan */
+/* Forme géométrique abstraite en arrière-plan */
 .triangle-section-container::after {
     content: "";
     position: absolute;
@@ -39,39 +54,56 @@
     right: -20%;
     width: 80%;
     height: 80%;
-    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    background: radial-gradient(ellipse, rgba(77, 166, 255, 0.07) 0%, transparent 70%);
     z-index: -1;
     border-radius: 50%;
+    animation: pulseGlow 15s ease-in-out infinite alternate;
+}
+
+/* Ajout d'un second élément de fond pour plus de profondeur */
+.bg-accent {
+    position: absolute;
+    bottom: -10%;
+    left: -10%;
+    width: 50%;
+    height: 50%;
+    background: radial-gradient(circle, rgba(125, 213, 255, 0.05) 0%, transparent 70%);
+    z-index: -1;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    animation: floatRotate 20s ease-in-out infinite alternate;
 }
 
 .triangle-section-title {
-    font-size: 2.2rem;
-    margin-bottom: 2rem;
+    font-size: 2.4rem;
+    margin-bottom: 2.5rem;
     text-align: center;
-    max-width: 800px;
+    max-width: 820px;
     position: relative;
-    text-shadow: 0 0 10px rgba(0,0,0,0.5);
-    margin: 0 auto;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    margin: 0 auto 1.5rem;
     color: white;
+    font-weight: 300;
+    letter-spacing: 0.5px;
 }
 
 /* Ligne décorative sous le titre */
 .triangle-section-title::after {
     content: "";
     display: block;
-    width: 100px;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent);
+    width: 120px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(77, 166, 255, 0.8), transparent);
     margin: 15px auto 0;
+    animation: widthPulse 3s ease-in-out infinite;
 }
 
 .triangle-container {
     position: relative;
     width: 100%;
     max-width: 800px;
-    height: 500px;
+    height: 520px;
     margin: 3rem auto;
-    perspective: 1000px;
+    perspective: 1200px;
 }
 
 .triangle-wrapper {
@@ -79,6 +111,8 @@
     width: 100%;
     height: 100%;
     transform-style: preserve-3d;
+    transition: transform 0.8s ease;
+    animation: subtleFloat 6s ease-in-out infinite alternate;
 }
 
 .triangle {
@@ -86,10 +120,13 @@
     width: 100%;
     height: 100%;
     clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-    background-color: #2a2a2a;
+    background-color: rgba(21, 56, 99, 0.6);
     overflow: hidden;
     transition: transform 0.5s ease;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .triangle-section {
@@ -97,7 +134,7 @@
     width: 100%;
     left: 0;
     cursor: pointer;
-    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000);
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -108,52 +145,56 @@
 /* Top section */
 .section-top {
     height: 33.33%;
-    clip-path: polygon(50% 0%, 25% 100%, 75% 100%);
-    background-color: #2E5798;
+    clip-path: polygon(50% 0%, 30% 100%, 70% 100%);
+    background: linear-gradient(to bottom, #4facfe 0%, #3a7bd5 100%);
     top: 0px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 /* Middle section */
 .section-middle {
     top: 33.33%;
     height: 33.33%;
-    clip-path: polygon(25% 0%, 75% 0%, 87.5% 100%, 12.5% 100%);
-    background-color: #2E5798;
+    clip-path: polygon(30% 0%, 70% 0%, 82.5% 100%, 17.5% 100%);
+    background: linear-gradient(to bottom, #3a7bd5 0%, #2664b9 100%);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 /* Bottom section */
 .section-bottom {
     top: 66.66%;
     height: 33.34%;
-    background-color: #2E5798;
+    clip-path: polygon(17.5% 0%, 82.5% 0%, 100% 100%, 0% 100%);
+    background: linear-gradient(to bottom, #2664b9 0%, #00396b 100%);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Hover effects for each section */
+/* Hover effects for each section with smoother transitions */
 .section-top:hover {
-    height: 40%;
-    top: -3%;
-    clip-path: polygon(50% -5%, 20% 105%, 80% 105%);
-    background-color: #294e89;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    height: 38%;
+    top: -2%;
+    clip-path: polygon(50% -5%, 28% 105%, 72% 105%);
+    box-shadow: 0 0 25px rgba(79, 172, 254, 0.5);
     z-index: 10;
+    background: linear-gradient(to bottom, #4facfe 0%, #3a7bd5 120%);
 }
 
 .section-middle:hover {
-    height: 40%;
+    height: 38%;
     top: 30%;
-    clip-path: polygon(20% -5%, 80% -5%, 95% 105%, 5% 105%);
-    background-color: #294e89;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    clip-path: polygon(28% -5%, 72% -5%, 85% 105%, 15% 105%);
+    box-shadow: 0 0 25px rgba(58, 123, 213, 0.5);
     z-index: 10;
+    background: linear-gradient(to bottom, #3a7bd5 -20%, #2664b9 120%);
 }
 
 .section-bottom:hover {
-    height: 40%;
-    top: 63%;
-    clip-path: polygon(5% -5%, 95% -5%, 110% 105%, -10% 105%);
-    background-color:#294e89;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    height: 38%;
+    top: 64%;
+    clip-path: polygon(15% -5%, 85% -5%, 105% 105%, -5% 105%);
+    box-shadow: 0 0 25px rgba(38, 100, 185, 0.5);
     z-index: 10;
+    background: linear-gradient(to bottom, #2664b9 -20%, #00396b 120%);
 }
 
 .section-content {
@@ -171,8 +212,8 @@
 
 /* Ajustement spécifique pour la section du haut */
 .section-top .section-content {
-    padding-top: 15%;
-    transform: translateY(-10px);
+    padding-top: 10%;
+    transform: translateY(-5px);
 }
 
 /* Ajustement spécifique pour la section du milieu */
@@ -185,30 +226,32 @@
 }
 
 .icon-container {
-    flex: 0 0 40px;
+    flex: 0 0 50px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 0.5rem;
+    margin: 0 0 0.8rem 0;
 }
 
 .icon {
-    font-size: 1.2rem;
-    width: 35px;
-    height: 35px;
+    font-size: 1.3rem;
+    width: 50px;
+    height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgba(255, 255, 255, 0.7);
-    border-radius: 0;
-    background-color: transparent;
-    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.05);
+    transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .triangle-section:hover .icon {
-    transform: rotate(360deg);
-    background-color: rgba(255, 255, 255, 0.1);
-    border-color: white;
+    transform: rotate(360deg) scale(1.1);
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
 }
 
 .text-container {
@@ -217,46 +260,54 @@
 }
 
 .section-title {
-    font-size: 0.9rem;
-    font-weight: bold;
-    margin-bottom: 0.2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
     color: white;
     transition: all 0.3s ease;
+    letter-spacing: 0.5px;
 }
 
 .section-subtitle {
-    font-size: 0.75rem;
+    font-size: 0.85rem;
     opacity: 0.8;
-    color: #ccc;
+    color: rgba(255, 255, 255, 0.8);
     transition: all 0.3s ease;
+    letter-spacing: 0.2px;
 }
 
 .triangle-section:hover .section-title {
     color: #fff;
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
 }
 
 .triangle-section:hover .section-subtitle {
     opacity: 1;
     color: #fff;
+    transform: translateY(-2px);
 }
 
 .description {
     margin: 2rem auto;
     max-width: 800px;
-    line-height: 1.6;
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    border-left: 3px solid rgba(255, 255, 255, 0.3);
-    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.7;
+    background-color: rgba(255, 255, 255, 0.06);
+    padding: 1.8rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-left: 3px solid rgba(79, 172, 254, 0.5);
+    color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    font-size: 1.05rem;
+    letter-spacing: 0.2px;
 }
 
 /* Divider lines with animation */
 .divider {
     position: absolute;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.1);
     z-index: 5;
     transition: all 0.5s ease;
 }
@@ -275,21 +326,43 @@
     left: 12.5%;
 }
 
-/* Animation de pulse subtile pour les dividers */
+/* Animations */
 @keyframes dividerPulse {
-    0% { opacity: 0.2; }
-    50% { opacity: 0.6; }
-    100% { opacity: 0.2; }
+    0% { opacity: 0.1; box-shadow: 0 0 0 transparent; }
+    50% { opacity: 0.8; box-shadow: 0 0 10px rgba(255, 255, 255, 0.3); }
+    100% { opacity: 0.1; box-shadow: 0 0 0 transparent; }
+}
+
+@keyframes backgroundFloat {
+    0% { background-position: 0 0, 0 0, 0 0; }
+    100% { background-position: 50px 50px, 30px 0, 0 30px; }
+}
+
+@keyframes subtleFloat {
+    0% { transform: translateY(0) rotateX(0deg); }
+    50% { transform: translateY(-5px) rotateX(2deg); }
+    100% { transform: translateY(0) rotateX(0deg); }
+}
+
+@keyframes pulseGlow {
+    0% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.1); }
+    100% { opacity: 0.4; transform: scale(1); }
+}
+
+@keyframes floatRotate {
+    0% { transform: rotate(0deg) translateY(0); }
+    100% { transform: rotate(5deg) translateY(-20px); }
+}
+
+@keyframes widthPulse {
+    0% { width: 80px; }
+    50% { width: 150px; }
+    100% { width: 80px; }
 }
 
 .divider {
-    animation: dividerPulse 4s infinite ease-in-out;
-}
-
-/* Animation pour le background (effet subtil de mouvement) */
-@keyframes backgroundMove {
-    0% { background-position: 0 0, 0 0, 0 0; }
-    100% { background-position: 40px 40px, 20px 0, 0 20px; }
+    animation: dividerPulse 6s infinite ease-in-out;
 }
 
 /* SECTION RESPONSIVE AMÉLIORÉE */
@@ -297,21 +370,21 @@
 /* Écrans larges */
 @media (min-width: 1200px) {
     .triangle-container {
-        height: 550px;
+        height: 580px;
     }
     
     .section-title {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
     }
     
     .section-subtitle {
-        font-size: 0.85rem;
+        font-size: 0.9rem;
     }
     
     .icon {
-        width: 40px;
-        height: 40px;
-        font-size: 1.3rem;
+        width: 55px;
+        height: 55px;
+        font-size: 1.4rem;
     }
 }
 
@@ -322,11 +395,11 @@
     }
     
     .triangle-section-title {
-        font-size: 1.8rem;
+        font-size: 2rem;
     }
     
     .triangle-container {
-        height: 450px;
+        height: 480px;
         margin: 2rem auto;
     }
 }
@@ -334,34 +407,30 @@
 /* Tablettes */
 @media (max-width: 768px) {
     .triangle-container {
-        height: 400px;
+        height: 420px;
     }
     
     .section-title {
-        font-size: 0.85rem;
+        font-size: 0.95rem;
     }
     
     .section-subtitle {
-        font-size: 0.7rem;
+        font-size: 0.8rem;
     }
     
     .icon {
-        font-size: 1rem;
-        width: 30px;
-        height: 30px;
+        font-size: 1.1rem;
+        width: 45px;
+        height: 45px;
     }
     
     .description {
-        padding: 1.25rem;
-        font-size: 0.9rem;
+        padding: 1.5rem;
+        font-size: 0.95rem;
     }
-    
-    /* Ajuster les sections pour qu'elles soient plus lisibles sur mobile */
-    .section-top .section-content,
-    .section-middle .section-content,
-    .section-bottom .section-content {
-        padding:-2.3rem;
-        ;
+    .section-top .section-content {
+        line-height: 1;
+        padding-top: 12%;
     }
 }
 
@@ -372,79 +441,77 @@
     }
     
     .triangle-section-title {
-        font-size: 1.5rem;
+        font-size: 1.7rem;
     }
     
     .triangle-container {
-        height: 350px;
+        height: 380px;
     }
     
     .section-title {
-        font-size: 0.75rem;
+        font-size: 0.85rem;
     }
     
     .section-subtitle {
-        font-size: 0.65rem;
+        font-size: 0.75rem;
     }
     
     .icon {
-        width: 28px;
-        height: 28px;
-        font-size: 0.9rem;
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
     }
     
     .text-container {
         max-width: 85%;
     }
-    
-    /* Simplifier les animations sur mobile pour de meilleures performances */
-    .triangle-section:hover {
-        transform: none;
+
+    .section-top .section-content {
+        line-height: 1;
+        padding-top: 12%;
     }
-    
+    /* Animations simplifiées pour mobile, mais toujours présentes */
     .section-top:hover,
     .section-middle:hover,
     .section-bottom:hover {
-        transform: none;
-        height: 33.33%;
-        top: auto;
+        height: 36%;
     }
     
     .section-top:hover {
-        top: 0;
+        top: -1%;
     }
     
     .section-middle:hover {
-        top: 33.33%;
+        top: 32%;
     }
     
     .section-bottom:hover {
-        top: 66.66%;
+        top: 65%;
     }
 }
 
 /* Très petits écrans */
 @media (max-width: 400px) {
     .triangle-container {
-        height: 300px;
+        height: 350px;
     }
     
     .section-title {
-        font-size: 0.7rem;
+        font-size: 0.8rem;
     }
     
     .section-subtitle {
-        font-size: 0.6rem;
+        font-size: 0.7rem;
     }
     
     .icon {
-        width: 25px;
-        height: 25px;
-        font-size: 0.85rem;
+        width: 35px;
+        height: 35px;
+        font-size: 0.95rem;
     }
     
     .description {
-        padding: 1rem;
-        font-size: 0.85rem;
+        padding: 1.2rem;
+        font-size: 0.9rem;
     }
 }
