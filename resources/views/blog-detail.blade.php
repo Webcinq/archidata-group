@@ -169,7 +169,7 @@
                     Nos experts sont à votre disposition pour vous accompagner dans tous vos projets BIM, 
                     de la conception à l'exploitation de vos bâtiments.
                 </p>
-                <a href="#contact" class="btn btn-primary py-3 px-5">Contactez-nous</a>
+                <a href="{{route('contact')}}" class="btn btn-primary py-3 px-5">Contactez-nous</a>
             </div>
         </div>
     </div>

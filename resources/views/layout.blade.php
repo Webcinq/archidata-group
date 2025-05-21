@@ -190,10 +190,10 @@
             </div>
             <div class="col-lg-3 col-md-6">
                 <h4 class="text-light mb-4">Services</h4>
-                <a class="btn btn-link" href="">BIM Management et Synthèse</a>
-                <a class="btn btn-link" href="">Conseil et Formation</a>
-                <a class="btn btn-link" href="">BIM GEM et Modélisation</a>
-                <a class="btn btn-link" href="">Applications et Plugins BIM
+                <a class="btn btn-link" href="{{route('blog-detail')}}">BIM Management et Synthèse</a>
+                <a class="btn btn-link" href="{{route('blog-detail')}}">Conseil et Formation</a>
+                <a class="btn btn-link" href="{{route('blog-detail')}}">BIM GEM et Modélisation</a>
+                <a class="btn btn-link" href="{{route('blog-detail')}}">Applications et Plugins BIM
                 </a>
             </div>
             <div class="col-lg-3 col-md-6">

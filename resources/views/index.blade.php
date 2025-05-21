@@ -422,51 +422,125 @@
             <h1 class="text-white mb-4">Assistance en Urgence</h1>
             <h3 class="text-white mb-0">24 Heures / 7 Jours</h3>
         </div>
-        <div class="container position-relative wow fadeInUp" data-wow-delay="0.1s" style="margin-top: -6rem;">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="bg-light text-center p-5">
-                        <h1 class="mb-4">Demandez un Service</h1>
-                        <form>
-                            <div class="row g-3">
-                                <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control border-0" placeholder="Votre Nom"
-                                        style="height: 55px;">
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <input type="email" class="form-control border-0" placeholder="Votre Email"
-                                        style="height: 55px;">
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <select class="form-select border-0" style="height: 55px;">
-                                        <option selected>Choisissez un Service</option>
-                                        <option value="1">Service 1</option>
-                                        <option value="2">Service 2</option>
-                                        <option value="3">Service 3</option>
-                                        <option value="4">Facility Management</option>
-                                    </select>
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <div class="date" id="date1" data-target-input="nearest">
-                                        <input type="text" class="form-control border-0 datetimepicker-input"
-                                            placeholder="Date de Service" data-target="#date1" data-toggle="datetimepicker"
-                                            style="height: 55px;">
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <textarea class="form-control border-0" placeholder="Demande Spéciale"></textarea>
-                                </div>
-                                <div class="col-12">
-                                    <button style="background-color: #124698" class="btn w-100 py-3" type="submit">
-                                        <span style="color: white"> Réserver Maintenant</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
+   <div class="container position-relative wow fadeInUp" data-wow-delay="0.1s" style="margin-top: -6rem;">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="bg-light text-center p-5">
+                <h1 class="mb-4">Demandez un Service</h1>
+                
+                <!-- Messages de succès et d'erreur -->
+                @if(session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
                     </div>
-                </div>
+                @endif
+
+                @if(session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
+
+                @if($errors->any())
+                    <div class="alert alert-danger">
+                        <ul class="mb-0">
+                            @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                <form action="{{ route('reservation.store') }}" method="POST">
+                    @csrf
+                    <div class="row g-3">
+                        <div class="col-12 col-sm-6">
+                            <input type="text" 
+                                   name="nom" 
+                                   class="form-control border-0 @error('nom') is-invalid @enderror" 
+                                   placeholder="Votre Nom"
+                                   value="{{ old('nom') }}"
+                                   style="height: 55px;" 
+                                   required>
+                            @error('nom')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        
+                        <div class="col-12 col-sm-6">
+                            <input type="email" 
+                                   name="email" 
+                                   class="form-control border-0 @error('email') is-invalid @enderror" 
+                                   placeholder="Votre Email"
+                                   value="{{ old('email') }}"
+                                   style="height: 55px;" 
+                                   required>
+                            @error('email')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        
+                        <div class="col-12 col-sm-6">
+                            <select name="service" 
+                                    class="form-select border-0 @error('service') is-invalid @enderror" 
+                                    style="height: 55px;" 
+                                    required>
+                                <option value="">Choisissez un Service</option>
+                                <option value="BIM GEM et Modélisation" {{ old('service') == 'BIM GEM et Modélisation' ? 'selected' : '' }}>
+                                    BIM GEM et Modélisation
+                                </option>
+                                <option value="Conseil et Formation" {{ old('service') == 'Conseil et Formation' ? 'selected' : '' }}>
+                                    Conseil et Formation
+                                </option>
+                                <option value="BIM Management et Synthèse" {{ old('service') == 'BIM Management et Synthèse' ? 'selected' : '' }}>
+                                    BIM Management et Synthèse
+                                </option>
+                                <option value="Facility Management" {{ old('service') == 'Facility Management' ? 'selected' : '' }}>
+                                    Facility Management
+                                </option>
+                            </select>
+                            @error('service')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        
+                        <div class="col-12 col-sm-6">
+                            <input type="date" 
+                                   name="date_service" 
+                                   class="form-control border-0 @error('date_service') is-invalid @enderror"
+                                   placeholder="Date de Service"
+                                   value="{{ old('date_service') }}"
+                                   min="{{ date('Y-m-d', strtotime('+1 day')) }}"
+                                   style="height: 55px;" 
+                                   required>
+                            @error('date_service')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        
+                        <div class="col-12">
+                            <textarea name="demande_speciale" 
+                                      class="form-control border-0 @error('demande_speciale') is-invalid @enderror" 
+                                      placeholder="Demande Spéciale"
+                                      rows="4">{{ old('demande_speciale') }}</textarea>
+                            @error('demande_speciale')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        
+                        <div class="col-12">
+                            <button style="background-color: #124698" 
+                                    class="btn w-100 py-3" 
+                                    type="submit">
+                                <span style="color: white">Réserver Maintenant</span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
+    </div>
+</div>
     </div>
     <!-- Booking End -->
 
