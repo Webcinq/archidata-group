@@ -229,7 +229,8 @@
                     ArchiData révolutionne le secteur du bâtiment grâce à des solutions BIM et des processus collaboratifs.
                     Notre mission est d'assurer la transparence, l'efficacité et la durabilité dans chaque projet.
                 </p>
-                <div class="d-flex">
+                <div class="d-flex" style="    flex-wrap: wrap;
+">
                 <p class="fw-medium text-primary">
                     <i class="fa fa-check text-success me-3"></i>Projets résidentiels et commerciaux
                 </p>
@@ -452,7 +453,7 @@
                 @endif
 
                 <form action="{{ route('reservation.store') }}" method="POST">
-                    @csrf
+                        @csrf
                     <div class="row g-3">
                         <div class="col-12 col-sm-6">
                             <input type="text" 

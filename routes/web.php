@@ -18,12 +18,9 @@ Route::get('/contact', [App\Http\Controllers\ContactController::class, 'index'])
 Route::post('/contact', [App\Http\Controllers\ContactController::class, 'sendMail'])->name('contact.send');
 Route::get('/reload-captcha', [App\Http\Controllers\ContactController::class, 'reloadCaptcha']);
 
+
 Route::post('/reservation', [ReservationController::class, 'store'])->name('reservation.store');
 
-Route::middleware(['auth'])->group(function () {
-    // Liste des réservations
-    Route::get('/admin/reservations', [ReservationController::class, 'list'])->name('reservation.list');
-    
-    // Mettre à jour le statut d'une réservation
-    Route::patch('/admin/reservations/{reservation}/status', [ReservationController::class, 'updateStatus'])->name('reservation.update-status');
+Route::get('/reservation', function () {
+    return redirect()->route('index');
 });

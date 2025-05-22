@@ -61,7 +61,7 @@ class ReservationController extends Controller
             // Envoyer l'email de notification
             $this->sendNotificationEmail($reservation);
 
-            return redirect()->back()->with('success', 'Votre réservation a été enregistrée avec succès. Vous recevrez une confirmation par email.');
+        return redirect()->route('index')->with('success', 'Réservation créée avec succès!');
 
         } catch (\Exception $e) {
             return redirect()->back()
