@@ -31,53 +31,56 @@
                         <h6 class="text-secondary text-uppercase">Nos Services</h6>
                         <h1 class="mb-5">Découvrez Nos Prestations</h1>
                     </div>
-                    <div class="owl-carousel service-carousel position-relative wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="bg-light p-4">
-                            <div class="d-flex align-items-center justify-content-center border border-5 border-white mb-4" style="width: 75px; height: 75px;">
-                                <i class="fa fa-water fa-2x text-primary"></i>
-                            </div>
-                            <h4 class="mb-3">Maintenance des Données</h4>
-                            <p>Garantir la collaboration entre toutes les parties prenantes grâce à un environnement de données commun et accessible.</p>
-                            <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Service de Qualité</p>
-                            <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Satisfaction Client</p>
-                            <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Assistance 24/7</p>
-                            <a href="{{route('blog-detail')}}" class="btn bg-white text-primary w-100 mt-2">En savoir plus<i class="fa fa-arrow-right text-secondary ms-2"></i></a>
-                        </div>
-                        <div class="bg-light p-4">
-                            <div class="d-flex align-items-center justify-content-center border border-5 border-white mb-4" style="width: 75px; height: 75px;">
-                                <i class="fa fa-toilet fa-2x text-primary"></i>
-                            </div>
-                            <h4 class="mb-3">Gestion Budgétaire</h4>
-                            <p>Un suivi précis des coûts et une anticipation efficace des dépassements budgétaires garantissent des projets plus rentables.</p>
-                            <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Service de Qualité</p>
-                            <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Satisfaction Client</p>
-                            <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Assistance 24/7</p>
-                            <a href="{{route('blog-detail')}}" class="btn bg-white text-primary w-100 mt-2">En savoir plus<i class="fa fa-arrow-right text-secondary ms-2"></i></a>
-                        </div>
-                        <div class="bg-light p-4">
-                            <div class="d-flex align-items-center justify-content-center border border-5 border-white mb-4" style="width: 75px; height: 75px;">
-                                <i class="fa fa-shower fa-2x text-primary"></i>
-                            </div>
-                            <h4 class="mb-3">Simulations & Délais</h4>
-                            <p>
-                                Une planification avancée et une détection proactive des conflits assurent le respect des échéances et l’anticipation des problèmes.                            </p>
-                            <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Service de Qualité</p>
-                            <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Satisfaction Client</p>
-                            <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Assistance 24/7</p>
-                            <a href="{{route('blog-detail')}}" class="btn bg-white text-primary w-100 mt-2">En savoir plus<i class="fa fa-arrow-right text-secondary ms-2"></i></a>
-                        </div>
-                        <div class="bg-light p-4">
-                            <div class="d-flex align-items-center justify-content-center border border-5 border-white mb-4" style="width: 75px; height: 75px;">
-                                <i class="fa fa-tint fa-2x text-primary"></i>
-                            </div>
-                            <h4 class="mb-3">Solutions Durables</h4>
-                            <p>Intégration de matériaux à faible empreinte carbone et approche écoresponsable pour réduire l'impact environnemental.</p>
-                            <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Service de Qualité</p>
-                            <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Satisfaction Client</p>
-                            <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Assistance 24/7</p>
-                            <a href="{{route('blog-detail')}}" class="btn bg-white text-primary w-100 mt-2">En savoir plus<i class="fa fa-arrow-right text-secondary ms-2"></i></a>
-                        </div>
-                    </div>
+                <div class="owl-carousel service-carousel position-relative wow fadeInUp" data-wow-delay="0.1s">
+    <div class="bg-light p-4">
+        <div class="d-flex align-items-center justify-content-center border border-5 border-white mb-4" style="width: 75px; height: 75px;">
+            <i class="fa fa-database fa-2x text-primary"></i> <!-- Maintenance des Données -->
+        </div>
+        <h4 class="mb-3">Maintenance des Données</h4>
+        <p>Garantir la collaboration entre toutes les parties prenantes grâce à un environnement de données commun et accessible.</p>
+        <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Service de Qualité</p>
+        <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Satisfaction Client</p>
+        <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Assistance 24/7</p>
+        <a href="{{route('blog-detail')}}" class="btn bg-white text-primary w-100 mt-2">En savoir plus<i class="fa fa-arrow-right text-secondary ms-2"></i></a>
+    </div>
+
+    <div class="bg-light p-4">
+        <div class="d-flex align-items-center justify-content-center border border-5 border-white mb-4" style="width: 75px; height: 75px;">
+            <i class="fa fa-chart-line fa-2x text-primary"></i> <!-- Gestion Budgétaire -->
+        </div>
+        <h4 class="mb-3">Gestion Budgétaire</h4>
+        <p>Un suivi précis des coûts et une anticipation efficace des dépassements budgétaires garantissent des projets plus rentables.</p>
+        <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Service de Qualité</p>
+        <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Satisfaction Client</p>
+        <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Assistance 24/7</p>
+        <a href="{{route('blog-detail')}}" class="btn bg-white text-primary w-100 mt-2">En savoir plus<i class="fa fa-arrow-right text-secondary ms-2"></i></a>
+    </div>
+
+    <div class="bg-light p-4">
+        <div class="d-flex align-items-center justify-content-center border border-5 border-white mb-4" style="width: 75px; height: 75px;">
+            <i class="fa fa-clock fa-2x text-primary"></i> <!-- Simulations & Délais -->
+        </div>
+        <h4 class="mb-3">Simulations & Délais</h4>
+        <p>Une planification avancée et une détection proactive des conflits assurent le respect des échéances et l’anticipation des problèmes.</p>
+        <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Service de Qualité</p>
+        <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Satisfaction Client</p>
+        <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Assistance 24/7</p>
+        <a href="{{route('blog-detail')}}" class="btn bg-white text-primary w-100 mt-2">En savoir plus<i class="fa fa-arrow-right text-secondary ms-2"></i></a>
+    </div>
+
+    <div class="bg-light p-4">
+        <div class="d-flex align-items-center justify-content-center border border-5 border-white mb-4" style="width: 75px; height: 75px;">
+            <i class="fa fa-leaf fa-2x text-primary"></i> <!-- Solutions Durables -->
+        </div>
+        <h4 class="mb-3">Solutions Durables</h4>
+        <p>Intégration de matériaux à faible empreinte carbone et approche écoresponsable pour réduire l'impact environnemental.</p>
+        <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Service de Qualité</p>
+        <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Satisfaction Client</p>
+        <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Assistance 24/7</p>
+        <a href="{{route('blog-detail')}}" class="btn bg-white text-primary w-100 mt-2">En savoir plus<i class="fa fa-arrow-right text-secondary ms-2"></i></a>
+    </div>
+</div>
+
                 </div>
             </div>
         </div>

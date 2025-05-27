@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use App\Mail\ReservationNotification;
+use Log;
 
 class ReservationController extends Controller
 {
@@ -18,57 +19,63 @@ class ReservationController extends Controller
         return view('reservations.index');
     }
 
+    
     /**
      * Traiter la soumission du formulaire
      */
-    public function store(Request $request)
-    {
-        // Validation des données
-        $validator = Validator::make($request->all(), [
-            'nom' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'service' => 'required|in:BIM GEM et Modélisation,Conseil et Formation,BIM Management et Synthèse,Facility Management',
-            'date_service' => 'required|date|after:today',
-            'demande_speciale' => 'nullable|string|max:1000'
-        ], [
-            'nom.required' => 'Le nom est obligatoire',
-            'email.required' => 'L\'email est obligatoire',
-            'email.email' => 'L\'email doit être valide',
-            'service.required' => 'Veuillez choisir un service',
-            'service.in' => 'Le service sélectionné n\'est pas valide',
-            'date_service.required' => 'La date de service est obligatoire',
-            'date_service.after' => 'La date de service doit être ultérieure à aujourd\'hui',
-            'demande_speciale.max' => 'La demande spéciale ne peut pas dépasser 1000 caractères'
-        ]);
+  public function store(Request $request)
+{
+    Log::info('Début de la soumission du formulaire', $request->all());
 
-        if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput();
-        }
+    // Validation des données
+    $validator = Validator::make($request->all(), [
+        'nom' => 'required|string|max:255',
+        'email' => 'required|email|max:255',
+        'service' => 'required|in:BIM GEM et Modélisation,Conseil et Formation,BIM Management et Synthèse,Facility Management',
+        'date_service' => 'required|date|after:today',
+        'demande_speciale' => 'nullable|string|max:1000'
+    ], [
+        // ... vos messages d'erreur
+    ]);
 
-        try {
-            // Créer la réservation
-            $reservation = Reservation::create([
-                'nom' => $request->nom,
-                'email' => $request->email,
-                'service' => $request->service,
-                'date_service' => $request->date_service,
-                'demande_speciale' => $request->demande_speciale,
-                'statut' => 'en_attente'
-            ]);
-
-            // Envoyer l'email de notification
-            $this->sendNotificationEmail($reservation);
-
-        return redirect()->route('index')->with('success', 'Réservation créée avec succès!');
-
-        } catch (\Exception $e) {
-            return redirect()->back()
-                ->with('error', 'Une erreur est survenue lors de l\'enregistrement de votre réservation. Veuillez réessayer.')
-                ->withInput();
-        }
+    if ($validator->fails()) {
+        Log::error('Échec de la validation', $validator->errors()->toArray());
+        return redirect()->back()
+            ->withErrors($validator)
+            ->withInput();
     }
+
+    Log::info('Validation réussie');
+
+    try {
+        Log::info('Tentative de création de la réservation');
+        $reservation = Reservation::create([
+            'nom' => $request->nom,
+            'email' => $request->email,
+            'service' => $request->service,
+            'date_service' => $request->date_service,
+            'demande_speciale' => $request->demande_speciale,
+            'statut' => 'en_attente'
+        ]);
+        Log::info('Réservation créée', $reservation->toArray());
+
+        Log::info('Envoi de l\'email de notification');
+        $this->sendNotificationEmail($reservation);
+        Log::info('Email envoyé avec succès');
+
+        return redirect()->back()->with('success', 'Réservation créée avec succès!');
+
+    } catch (\Exception $e) {
+        Log::error('Erreur lors de la création de la réservation', [
+            'message' => $e->getMessage(),
+            'trace' => $e->getTraceAsString()
+        ]);
+        return redirect()->back()
+            ->with('error', 'Une erreur est survenue lors de l\'enregistrement de votre réservation. Veuillez réessayer.')
+            ->withInput();
+    }
+}
+  
 
     /**
      * Envoyer l'email de notification
@@ -86,7 +93,7 @@ class ReservationController extends Controller
 
         } catch (\Exception $e) {
             // Log l'erreur mais ne pas échouer la réservation
-            \Log::error('Erreur envoi email réservation: ' . $e->getMessage());
+            Log::error('Erreur envoi email réservation: ' . $e->getMessage());
         }
     }
 

@@ -42,7 +42,7 @@ class Reservation extends Model
     // Mutateur pour formater la date
     public function setDateServiceAttribute($value)
     {
-        $this->attributes['date_service'] = \Carbon\Carbon::createFromFormat('m/d/Y', $value)->format('Y-m-d');
+        $this->attributes['date_service'] = \Carbon\Carbon::parse($value)->format('Y-m-d');
     }
 
     // Accesseur pour la date formatée

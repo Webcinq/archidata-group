@@ -300,96 +300,56 @@
                         <h6 class="text-secondary text-uppercase">Nos Services</h6>
                         <h1 class="mb-5">Découvrez Nos Prestations</h1>
                     </div>
-                    <div class="owl-carousel service-carousel position-relative wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="bg-light p-4">
-                            <div class="d-flex align-items-center justify-content-center border border-5 border-white mb-4"
-                                style="width: 75px; height: 75px;">
-                                <i class="fa fa-water fa-2x text-primary"></i>
-                            </div>
-                            <h4 class="mb-3">Maintenance des Données</h4>
-                            <p>Garantir la collaboration entre toutes les parties prenantes grâce à un environnement de
-                                données commun et accessible.</p>
-                            <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Service de
-                                Qualité</p>
-                            <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Satisfaction
-                                Client</p>
-                            <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Assistance 24/7
-                            </p>
-                            <a href="{{route('blog-detail')}}" class="btn bg-white text-primary w-100 mt-2">En savoir plus<i
-                                    class="fa fa-arrow-right text-secondary ms-2"></i></a>
-                        </div>
-                        <div class="bg-light p-4">
-                            <div class="d-flex align-items-center justify-content-center border border-5 border-white mb-4"
-                                style="width: 75px; height: 75px;">
-                                <i class="fa fa-toilet fa-2x text-primary"></i>
-                            </div>
-                            <h4 class="mb-3">Gestion Budgétaire</h4>
-                            <p>Un suivi précis des coûts et une anticipation efficace des dépassements budgétaires
-                                garantissent des projets plus rentables.</p>
-                            <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Service de
-                                Qualité</p>
-                            <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Satisfaction
-                                Client</p>
-                            <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Assistance 24/7
-                            </p>
-                            <a href="{{route('blog-detail')}}" class="btn bg-white text-primary w-100 mt-2">En savoir plus<i
-                                    class="fa fa-arrow-right text-secondary ms-2"></i></a>
-                        </div>
-                        <div class="bg-light p-4">
-                            <div class="d-flex align-items-center justify-content-center border border-5 border-white mb-4"
-                                style="width: 75px; height: 75px;">
-                                <i class="fa fa-shower fa-2x text-primary"></i>
-                            </div>
-                            <h4 class="mb-3">Simulations & Délais</h4>
-                            <p>
-                                Une planification avancée et une détection proactive des conflits assurent le respect des
-                                échéances et l'anticipation des problèmes. </p>
-                            <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Service de
-                                Qualité</p>
-                            <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Satisfaction
-                                Client</p>
-                            <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Assistance 24/7
-                            </p>
-                            <a href="{{route('blog-detail')}}" class="btn bg-white text-primary w-100 mt-2">En savoir plus<i
-                                    class="fa fa-arrow-right text-secondary ms-2"></i></a>
-                        </div>
-                        <div class="bg-light p-4">
-                            <div class="d-flex align-items-center justify-content-center border border-5 border-white mb-4"
-                                style="width: 75px; height: 75px;">
-                                <i class="fa fa-tint fa-2x text-primary"></i>
-                            </div>
-                            <h4 class="mb-3">Solutions Durables</h4>
-                            <p>Intégration de matériaux à faible empreinte carbone et approche écoresponsable pour réduire
-                                l'impact environnemental.</p>
-                            <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Service de
-                                Qualité</p>
-                            <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Satisfaction
-                                Client</p>
-                            <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Assistance 24/7
-                            </p>
-                            <a href="{{route('blog-detail')}}" class="btn bg-white text-primary w-100 mt-2">En savoir plus<i
-                                    class="fa fa-arrow-right text-secondary ms-2"></i></a>
-                        </div>
-                        <!-- New Facility Management Service Card -->
-                        <div class="bg-light p-4">
-                            <div class="d-flex align-items-center justify-content-center border border-5 border-white mb-4"
-                                style="width: 75px; height: 75px;">
-                                <i class="fa fa-building fa-2x text-primary"></i>
-                            </div>
-                            <h4 class="mb-3">Facility Management</h4>
-                            <p>Optimisez les opérations de vos bâtiments grâce aux modèles BIM et à la gestion digitale des
-                                installations.</p>
-                            <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Service de
-                                Qualité</p>
-                            <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Satisfaction
-                                Client</p>
-                            <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Assistance 24/7
-                            </p>
-                            <a href="{{route('blog-detail')}}" class="btn bg-white text-primary w-100 mt-2">En savoir plus<i
-                                    class="fa fa-arrow-right text-secondary ms-2"></i></a>
-                        </div>
-                        <!-- End New Service Card -->
-                    </div>
+                  <div class="owl-carousel service-carousel position-relative wow fadeInUp" data-wow-delay="0.1s">
+    <div class="bg-light p-4">
+        <div class="d-flex align-items-center justify-content-center border border-5 border-white mb-4" style="width: 75px; height: 75px;">
+            <i class="fa fa-database fa-2x text-primary"></i> <!-- Maintenance des Données -->
+        </div>
+        <h4 class="mb-3">Maintenance des Données</h4>
+        <p>Garantir la collaboration entre toutes les parties prenantes grâce à un environnement de données commun et accessible.</p>
+        <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Service de Qualité</p>
+        <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Satisfaction Client</p>
+        <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Assistance 24/7</p>
+        <a href="{{route('blog-detail')}}" class="btn bg-white text-primary w-100 mt-2">En savoir plus<i class="fa fa-arrow-right text-secondary ms-2"></i></a>
+    </div>
+
+    <div class="bg-light p-4">
+        <div class="d-flex align-items-center justify-content-center border border-5 border-white mb-4" style="width: 75px; height: 75px;">
+            <i class="fa fa-chart-line fa-2x text-primary"></i> <!-- Gestion Budgétaire -->
+        </div>
+        <h4 class="mb-3">Gestion Budgétaire</h4>
+        <p>Un suivi précis des coûts et une anticipation efficace des dépassements budgétaires garantissent des projets plus rentables.</p>
+        <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Service de Qualité</p>
+        <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Satisfaction Client</p>
+        <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Assistance 24/7</p>
+        <a href="{{route('blog-detail')}}" class="btn bg-white text-primary w-100 mt-2">En savoir plus<i class="fa fa-arrow-right text-secondary ms-2"></i></a>
+    </div>
+
+    <div class="bg-light p-4">
+        <div class="d-flex align-items-center justify-content-center border border-5 border-white mb-4" style="width: 75px; height: 75px;">
+            <i class="fa fa-clock fa-2x text-primary"></i> <!-- Simulations & Délais -->
+        </div>
+        <h4 class="mb-3">Simulations & Délais</h4>
+        <p>Une planification avancée et une détection proactive des conflits assurent le respect des échéances et l’anticipation des problèmes.</p>
+        <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Service de Qualité</p>
+        <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Satisfaction Client</p>
+        <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Assistance 24/7</p>
+        <a href="{{route('blog-detail')}}" class="btn bg-white text-primary w-100 mt-2">En savoir plus<i class="fa fa-arrow-right text-secondary ms-2"></i></a>
+    </div>
+
+    <div class="bg-light p-4">
+        <div class="d-flex align-items-center justify-content-center border border-5 border-white mb-4" style="width: 75px; height: 75px;">
+            <i class="fa fa-leaf fa-2x text-primary"></i> <!-- Solutions Durables -->
+        </div>
+        <h4 class="mb-3">Solutions Durables</h4>
+        <p>Intégration de matériaux à faible empreinte carbone et approche écoresponsable pour réduire l'impact environnemental.</p>
+        <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Service de Qualité</p>
+        <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Satisfaction Client</p>
+        <p class="text-primary fw-medium"><i class="fa fa-check text-success me-2"></i>Assistance 24/7</p>
+        <a href="{{route('blog-detail')}}" class="btn bg-white text-primary w-100 mt-2">En savoir plus<i class="fa fa-arrow-right text-secondary ms-2"></i></a>
+    </div>
+</div>
+
                 </div>
             </div>
         </div>
@@ -452,8 +412,9 @@
                     </div>
                 @endif
 
-                <form action="{{ route('reservation.store') }}" method="POST">
-                        @csrf
+             <form action="{{ route('reserver') }}" method="POST">
+                    @csrf <!-- Token CSRF obligatoire -->
+                    @method('POST') <!-- Méthode POST pour la soumission du formulaire -->
                     <div class="row g-3">
                         <div class="col-12 col-sm-6">
                             <input type="text" 
@@ -560,8 +521,9 @@
                         <p class="mb-0">"Grâce à ArchiData, nous avons économisé du temps et évité les retards. Leur
                             approche BIM est un atout majeur pour tout chantier."</p>
                     </div>
-                    <img class="bg-light rounded-circle p-2 mx-auto mb-2" src="img/testimonial-1.jpg"
-                        style="width: 80px; height: 80px;">
+                   <img class="bg-light rounded-circle p-2 mx-auto mb-2"
+     src="https://ui-avatars.com/api/?name=Lina+Khattabi&length=2&background=eeeeee&color=555555"
+     style="width: 80px; height: 80px;">
                     <div class="mb-2">
                         <small class="fa fa-star text-secondary"></small>
                         <small class="fa fa-star text-secondary"></small>
@@ -577,8 +539,8 @@
                         <p class="mb-0">"Le suivi budgétaire précis et la transparence de leurs données nous ont permis de
                             respecter nos objectifs financiers."</p>
                     </div>
-                    <img class="bg-light rounded-circle p-2 mx-auto mb-2" src="img/testimonial-2.jpg"
-                        style="width: 80px; height: 80px;">
+         <img src="https://ui-avatars.com/api/?name=Yassir+ElFadili&length=2&background=FFB6C1&color=FFFFFF"
+     style="width: 80px; height: 80px;" class="rounded-circle mx-auto mb-2">
                     <div class="mb-2">
                         <small class="fa fa-star text-secondary"></small>
                         <small class="fa fa-star text-secondary"></small>
@@ -594,8 +556,9 @@
                         <p class="mb-0">"Excellente assistance 24/7. ArchiData a toujours été disponible pour résoudre nos
                             questions urgentes."</p>
                     </div>
-                    <img class="bg-light rounded-circle p-2 mx-auto mb-2" src="img/testimonial-3.jpg"
-                        style="width: 80px; height: 80px;">
+   
+<img src="https://ui-avatars.com/api/?name=Adam+Bennani&length=2&background=87CEFA&color=FFFFFF"
+     style="width: 80px; height: 80px;" class="rounded-circle mx-auto mb-2">
                     <div class="mb-2">
                         <small class="fa fa-star text-secondary"></small>
                         <small class="fa fa-star text-secondary"></small>
@@ -611,8 +574,9 @@
                         <p class="mb-0">"Une équipe fiable et professionnelle qui nous a accompagnés de la phase de
                             conception jusqu'à la livraison du projet."</p>
                     </div>
-                    <img class="bg-light rounded-circle p-2 mx-auto mb-2" src="img/testimonial-4.jpg"
-                        style="width: 80px; height: 80px;">
+               
+<img src="https://ui-avatars.com/api/?name=Sara+Malki&length=2&background=90EE90&color=333333"
+     style="width: 80px; height: 80px;" class="rounded-circle mx-auto mb-2">
                     <div class="mb-2">
                         <small class="fa fa-star text-secondary"></small>
                         <small class="fa fa-star text-secondary"></small>

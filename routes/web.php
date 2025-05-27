@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\ReservationController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {return view('index');})->name('index');
@@ -19,8 +18,11 @@ Route::post('/contact', [App\Http\Controllers\ContactController::class, 'sendMai
 Route::get('/reload-captcha', [App\Http\Controllers\ContactController::class, 'reloadCaptcha']);
 
 
-Route::post('/reservation', [ReservationController::class, 'store'])->name('reservation.store');
 
-Route::get('/reservation', function () {
-    return redirect()->route('index');
-});
+
+
+
+Route::post('/reserver', [App\Http\Controllers\ReservationController::class, 'store'])->name('reserver');
+
+
+
