@@ -116,43 +116,124 @@
             <h1 class="text-white mb-4">Services BIM d'Urgence</h1>
             <h3 class="text-white mb-0">Disponibles 24h / 24, 7j / 7</h3>
         </div>
-        <div class="container position-relative wow fadeInUp" data-wow-delay="0.1s" style="margin-top: -6rem;">
+        <div id="inscription" class="container position-relative wow fadeInUp" data-wow-delay="0.1s" style="margin-top: -6rem;">
             <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="bg-light text-center p-5">
+             <div class="col-lg-8">
+            <div class="bg-light text-center p-5">
                         <h1 class="mb-4">Réserver une Prestation</h1>
-                        <form>
-                            <div class="row g-3">
-                                <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control border-0" placeholder="Votre Nom" style="height: 55px;">
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <input type="email" class="form-control border-0" placeholder="Votre Email" style="height: 55px;">
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <select class="form-select border-0" style="height: 55px;">
-                                        <option selected>Choisissez un Service</option>
-                                        <option value="1">Gestion BIM</option>
-                                        <option value="2">Conseil & Formation</option>
-                                        <option value="3">BIM GEM & Modélisation</option>
-                                    </select>
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <div class="date" id="date1" data-target-input="nearest">
-                                        <input type="text" class="form-control border-0 datetimepicker-input"
-                                               placeholder="Date de Service" data-target="#date1" data-toggle="datetimepicker" style="height: 55px;">
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <textarea class="form-control border-0" placeholder="Demande Spéciale"></textarea>
-                                </div>
-                                <div class="col-12">
-                                    <button style="background-color: #124698" class="btn text-white w-100 py-3" type="submit">Réserver Maintenant</button>
-                                </div>
-                            </div>
-                        </form>
+                
+                <!-- Messages de succès et d'erreur -->
+                @if(session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
                     </div>
-                </div>
+                @endif
+
+                @if(session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
+
+                @if($errors->any())
+                    <div class="alert alert-danger">
+                        <ul class="mb-0">
+                            @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+             <form action="{{ route('reserver') }}" method="POST">
+                    @csrf <!-- Token CSRF obligatoire -->
+                    @method('POST') <!-- Méthode POST pour la soumission du formulaire -->
+                    <div class="row g-3">
+                        <div class="col-12 col-sm-6">
+                            <input type="text" 
+                                   name="nom" 
+                                   class="form-control border-0 @error('nom') is-invalid @enderror" 
+                                   placeholder="Votre Nom"
+                                   value="{{ old('nom') }}"
+                                   style="height: 55px;" 
+                                   required>
+                            @error('nom')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        
+                        <div class="col-12 col-sm-6">
+                            <input type="email" 
+                                   name="email" 
+                                   class="form-control border-0 @error('email') is-invalid @enderror" 
+                                   placeholder="Votre Email"
+                                   value="{{ old('email') }}"
+                                   style="height: 55px;" 
+                                   required>
+                            @error('email')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        
+                        <div class="col-12 col-sm-6">
+                            <select name="service" 
+                                    class="form-select border-0 @error('service') is-invalid @enderror" 
+                                    style="height: 55px;" 
+                                    required>
+                                <option value="">Choisissez un Service</option>
+                                <option value="BIM GEM et Modélisation" {{ old('service') == 'BIM GEM et Modélisation' ? 'selected' : '' }}>
+                                    BIM GEM et Modélisation
+                                </option>
+                                <option value="Conseil et Formation" {{ old('service') == 'Conseil et Formation' ? 'selected' : '' }}>
+                                    Conseil et Formation
+                                </option>
+                                <option value="BIM Management et Synthèse" {{ old('service') == 'BIM Management et Synthèse' ? 'selected' : '' }}>
+                                    BIM Management et Synthèse
+                                </option>
+                                <option value="Facility Management" {{ old('service') == 'Facility Management' ? 'selected' : '' }}>
+                                    Facility Management
+                                </option>
+                            </select>
+                            @error('service')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        
+                        <div class="col-12 col-sm-6">
+                            <input type="date" 
+                                   name="date_service" 
+                                   class="form-control border-0 @error('date_service') is-invalid @enderror"
+                                   placeholder="Date de Service"
+                                   value="{{ old('date_service') }}"
+                                   min="{{ date('Y-m-d', strtotime('+1 day')) }}"
+                                   style="height: 55px;" 
+                                   required>
+                            @error('date_service')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        
+                        <div class="col-12">
+                            <textarea name="demande_speciale" 
+                                      class="form-control border-0 @error('demande_speciale') is-invalid @enderror" 
+                                      placeholder="Demande Spéciale"
+                                      rows="4">{{ old('demande_speciale') }}</textarea>
+                            @error('demande_speciale')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        
+                        <div class="col-12">
+                            <button style="background-color: #124698" 
+                                    class="btn w-100 py-3" 
+                                    type="submit">
+                                <span style="color: white">Réserver Maintenant</span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
             </div>
         </div>
     </div>
@@ -164,17 +245,17 @@
         <div class="container">
             <div class="text-center">
                 <h6 class="text-secondary text-uppercase">Témoignages</h6>
-                <h1 class="mb-5">Ils Parlent de Nous !</h1>
+                <h1 class="mb-5">Ce Que Disent Nos Clients !</h1>
             </div>
             <div class="owl-carousel testimonial-carousel position-relative wow fadeInUp" data-wow-delay="0.1s">
                 <div class="testimonial-item text-center">
                     <div class="testimonial-text bg-light text-center p-4 mb-4">
-                        <p class="mb-0">
-                            “Grâce à ArchiData, nous avons optimisé nos délais et réduit les coûts. Leur approche BIM est un atout majeur pour tout projet moderne.”
-                        </p>
+                        <p class="mb-0">"Grâce à ArchiData, nous avons économisé du temps et évité les retards. Leur
+                            approche BIM est un atout majeur pour tout chantier."</p>
                     </div>
-                    <img class="bg-light rounded-circle p-2 mx-auto mb-2"
-                         src="img/testimonial-1.jpg" style="width: 80px; height: 80px;">
+                   <img class="bg-light rounded-circle p-2 mx-auto mb-2"
+     src="https://ui-avatars.com/api/?name=Lina+Khattabi&length=2&background=eeeeee&color=555555"
+     style="width: 80px; height: 80px;">
                     <div class="mb-2">
                         <small class="fa fa-star text-secondary"></small>
                         <small class="fa fa-star text-secondary"></small>
@@ -182,17 +263,16 @@
                         <small class="fa fa-star text-secondary"></small>
                         <small class="fa fa-star text-secondary"></small>
                     </div>
-                    <h5 class="mb-1">Nom Client</h5>
+                    <h5 class="mb-1">Lina Khattabi</h5>
                     <p class="m-0">Profession</p>
                 </div>
                 <div class="testimonial-item text-center">
                     <div class="testimonial-text bg-light text-center p-4 mb-4">
-                        <p class="mb-0">
-                            “Leur service de gestion BIM nous a fait gagner un temps précieux. Excellente communication et professionnalisme.”
-                        </p>
+                        <p class="mb-0">"Le suivi budgétaire précis et la transparence de leurs données nous ont permis de
+                            respecter nos objectifs financiers."</p>
                     </div>
-                    <img class="bg-light rounded-circle p-2 mx-auto mb-2"
-                         src="img/testimonial-2.jpg" style="width: 80px; height: 80px;">
+         <img src="https://ui-avatars.com/api/?name=Yassir+ElFadili&length=2&background=FFB6C1&color=FFFFFF"
+     style="width: 80px; height: 80px;" class="rounded-circle mx-auto mb-2">
                     <div class="mb-2">
                         <small class="fa fa-star text-secondary"></small>
                         <small class="fa fa-star text-secondary"></small>
@@ -200,17 +280,17 @@
                         <small class="fa fa-star text-secondary"></small>
                         <small class="fa fa-star text-secondary"></small>
                     </div>
-                    <h5 class="mb-1">Nom Client</h5>
+                    <h5 class="mb-1">Yassir El Fadili</h5>
                     <p class="m-0">Profession</p>
                 </div>
                 <div class="testimonial-item text-center">
                     <div class="testimonial-text bg-light text-center p-4 mb-4">
-                        <p class="mb-0">
-                            “La partie formation est un plus réel. ArchiData nous a aidés à déployer la culture BIM dans toute l’équipe.”
-                        </p>
+                        <p class="mb-0">"Excellente assistance 24/7. ArchiData a toujours été disponible pour résoudre nos
+                            questions urgentes."</p>
                     </div>
-                    <img class="bg-light rounded-circle p-2 mx-auto mb-2"
-                         src="img/testimonial-3.jpg" style="width: 80px; height: 80px;">
+   
+<img src="https://ui-avatars.com/api/?name=Adam+Bennani&length=2&background=87CEFA&color=FFFFFF"
+     style="width: 80px; height: 80px;" class="rounded-circle mx-auto mb-2">
                     <div class="mb-2">
                         <small class="fa fa-star text-secondary"></small>
                         <small class="fa fa-star text-secondary"></small>
@@ -218,17 +298,17 @@
                         <small class="fa fa-star text-secondary"></small>
                         <small class="fa fa-star text-secondary"></small>
                     </div>
-                    <h5 class="mb-1">Nom Client</h5>
+                    <h5 class="mb-1">Adam Bennani</h5>
                     <p class="m-0">Profession</p>
                 </div>
                 <div class="testimonial-item text-center">
                     <div class="testimonial-text bg-light text-center p-4 mb-4">
-                        <p class="mb-0">
-                            “Leurs plugins personnalisés ont simplifié nos process. Une vraie valeur ajoutée pour optimiser nos projets.”
-                        </p>
+                        <p class="mb-0">"Une équipe fiable et professionnelle qui nous a accompagnés de la phase de
+                            conception jusqu'à la livraison du projet."</p>
                     </div>
-                    <img class="bg-light rounded-circle p-2 mx-auto mb-2"
-                         src="img/testimonial-4.jpg" style="width: 80px; height: 80px;">
+               
+<img src="https://ui-avatars.com/api/?name=Sara+Malki&length=2&background=90EE90&color=333333"
+     style="width: 80px; height: 80px;" class="rounded-circle mx-auto mb-2">
                     <div class="mb-2">
                         <small class="fa fa-star text-secondary"></small>
                         <small class="fa fa-star text-secondary"></small>
@@ -236,7 +316,7 @@
                         <small class="fa fa-star text-secondary"></small>
                         <small class="fa fa-star text-secondary"></small>
                     </div>
-                    <h5 class="mb-1">Nom Client</h5>
+                    <h5 class="mb-1">Sara Malki</h5>
                     <p class="m-0">Profession</p>
                 </div>
             </div>

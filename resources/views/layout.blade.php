@@ -200,9 +200,7 @@
                 <h4 class="text-light mb-4">Newsletter</h4>
     <p>Inscrivez-vous à notre newsletter pour recevoir les dernières actualités et offres exclusives.</p>
                 <div class="position-relative mx-auto" style="max-width: 400px;">
-                    <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Votre email">
-                    <button type="button"  style="background-color: #90abd7" class="btn text-white py-2 position-absolute top-0 end-0 mt-2 me-2">S'inscrire</button>
-                </div>
+<a href="/services#inscription" class="btn text-white py-2 position-absolute top-0 end-0 mt-2 me-2" style="background-color: #90abd7">S'inscrire</a>
             </div>
         </div>
     </div>
