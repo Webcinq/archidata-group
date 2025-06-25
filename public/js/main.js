@@ -1,19 +1,34 @@
 (function ($) {
     "use strict";
 
-    // Spinner
-    var spinner = function () {
-        setTimeout(function () {
-            if ($('#spinner').length > 0) {
-                $('#spinner').removeClass('show');
-            }
-        }, 1);
+    // SPINNER COMPLÈTEMENT SUPPRIMÉ
+    // Suppression radicale de tous les spinners
+    var removeSpinners = function () {
+        $('#spinner, .spinner, .spinner-border, .spinner-grow, .show').remove();
+        $('body, html').css({'opacity': '1', 'visibility': 'visible'});
     };
-    spinner();
+    
+    // Exécuter immédiatement
+    removeSpinners();
+    
+    // Exécuter quand le DOM est prêt
+    $(document).ready(function() {
+        removeSpinners();
+    });
+    
+    // Exécuter quand la page est complètement chargée
+    $(window).on('load', function() {
+        removeSpinners();
+    });
+    
+    // Surveillance continue pour supprimer tout spinner qui apparaît
+    setInterval(removeSpinners, 100);
     
     
-    // Initiate the wowjs
-    new WOW().init();
+    // Initiate the wowjs - avec vérification
+    if (typeof WOW !== 'undefined') {
+        new WOW().init();
+    }
 
 
     // Sticky Navbar
@@ -68,20 +83,27 @@
     });
 
 
-    // Facts counter
-    $('[data-toggle="counter-up"]').counterUp({
-        delay: 10,
-        time: 2000
-    });
+    // Facts counter - avec vérification
+    if (typeof $.fn.counterUp !== 'undefined') {
+        $('[data-toggle="counter-up"]').counterUp({
+            delay: 10,
+            time: 2000
+        });
+    }
 
 
-    // Date and time picker
-    $('.date').datetimepicker({
-        format: 'L'
-    });
-    $('.time').datetimepicker({
-        format: 'LT'
-    });
+    // Date and time picker - AVEC VÉRIFICATION POUR ÉVITER L'ERREUR
+    if (typeof $.fn.datetimepicker !== 'undefined') {
+        $('.date').datetimepicker({
+            format: 'L'
+        });
+        $('.time').datetimepicker({
+            format: 'LT'
+        });
+    } else {
+        // Alternative si datetimepicker n'est pas disponible
+        $('.date, .time').attr('type', 'datetime-local');
+    }
 
 
     // Modal Video
@@ -90,86 +112,94 @@
         $('.btn-play').click(function () {
             $videoSrc = $(this).data("src");
         });
-        console.log($videoSrc);
 
         $('#videoModal').on('shown.bs.modal', function (e) {
-            $("#video").attr('src', $videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0");
-        })
+            if ($videoSrc) {
+                $("#video").attr('src', $videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0");
+            }
+        });
 
         $('#videoModal').on('hide.bs.modal', function (e) {
-            $("#video").attr('src', $videoSrc);
-        })
-    });
-
-
-    // Header carousel
-    $(".header-carousel").owlCarousel({
-        autoplay: true,
-        smartSpeed: 1500,
-        items: 1,
-        dots: false,
-        loop: true,
-        nav : true,
-        navText : [
-            '<i class="bi bi-chevron-left"></i>',
-            '<i class="bi bi-chevron-right"></i>'
-        ]
-    });
-
-
-    // Service carousel
-    $(".service-carousel").owlCarousel({
-        autoplay: true,
-        smartSpeed: 1000,
-        center: true,
-        margin: 25,
-        dots: true,
-        loop: true,
-        nav : false,
-        responsive: {
-            0:{
-                items:1
-            },
-            576:{
-                items:2
-            },
-            768:{
-                items:3
-            },
-            992:{
-                items:2
-            },
-            1200:{
-                items:3
+            if ($videoSrc) {
+                $("#video").attr('src', $videoSrc);
             }
-        }
+        });
     });
 
 
-    // Testimonials carousel
-    $(".testimonial-carousel").owlCarousel({
-        autoplay: true,
-        smartSpeed: 1000,
-        center: true,
-        dots: false,
-        loop: true,
-        nav : true,
-        navText : [
-            '<i class="bi bi-arrow-left"></i>',
-            '<i class="bi bi-arrow-right"></i>'
-        ],
-        responsive: {
-            0:{
-                items:1
-            },
-            768:{
-                items:2
-            },
-            992:{
-                items:3
+    // Header carousel - avec vérification
+    if (typeof $.fn.owlCarousel !== 'undefined') {
+        $(".header-carousel").owlCarousel({
+            autoplay: true,
+            smartSpeed: 1500,
+            items: 1,
+            dots: false,
+            loop: true,
+            nav : true,
+            navText : [
+                '<i class="bi bi-chevron-left"></i>',
+                '<i class="bi bi-chevron-right"></i>'
+            ]
+        });
+    }
+
+
+    // Service carousel - avec vérification
+    if (typeof $.fn.owlCarousel !== 'undefined') {
+        $(".service-carousel").owlCarousel({
+            autoplay: true,
+            smartSpeed: 1000,
+            center: true,
+            margin: 25,
+            dots: true,
+            loop: true,
+            nav : false,
+            responsive: {
+                0:{
+                    items:1
+                },
+                576:{
+                    items:2
+                },
+                768:{
+                    items:3
+                },
+                992:{
+                    items:2
+                },
+                1200:{
+                    items:3
+                }
             }
-        }
-    });
+        });
+    }
+
+
+    // Testimonials carousel - avec vérification
+    if (typeof $.fn.owlCarousel !== 'undefined') {
+        $(".testimonial-carousel").owlCarousel({
+            autoplay: true,
+            smartSpeed: 1000,
+            center: true,
+            dots: false,
+            loop: true,
+            nav : true,
+            navText : [
+                '<i class="bi bi-arrow-left"></i>',
+                '<i class="bi bi-arrow-right"></i>'
+            ],
+            responsive: {
+                0:{
+                    items:1
+                },
+                768:{
+                    items:2
+                },
+                992:{
+                    items:3
+                }
+            }
+        });
+    }
     
 })(jQuery);
-
