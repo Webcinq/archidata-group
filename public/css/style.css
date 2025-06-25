@@ -39,7 +39,6 @@ html, body {
 .top-navbar {
     background: transparent;
     backdrop-filter: none;
-    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -158,18 +157,15 @@ html, body {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
+    display: grid
+;
+    /* grid-template-columns: 1fr 1fr; */
+    gap: 60px;
+    align-items: center;
     position: relative;
     z-index: 10;
-    width: 100%;
-    height: 100%;
-}
-
-.hero-text {
-    max-width: 700px;
+    justify-content: start;
+    align-content: space-around;
 }
 
 .hero-title {
@@ -319,7 +315,7 @@ html, body {
     gap: 8px;
     margin-right: 80px;
     font-weight: 600;
-    font-size: 16px;
+            font-size: 20px;
     flex-shrink: 0;
 }
 
@@ -561,7 +557,7 @@ body {
 }
 
 .logo-section img {
-    height: 45px;
+    height: 107px;
     width: auto;
     filter: brightness(1.1);
 }
@@ -700,9 +696,6 @@ body {
     width: 100%;
 }
 
-.hero-text {
-    max-width: 600px;
-}
 
 .hero-title {
     font-size: 3.5rem;

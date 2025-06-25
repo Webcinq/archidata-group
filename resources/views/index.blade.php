@@ -14,7 +14,7 @@
         <div class="hero-content">
             <div class="hero-text">
                 <h1 class="hero-title fade-in-up">
-                    Transformez vos projets avec le BIM
+                    CONSTRUISEZ L'AVENIR AVEC PRÉCISION
                 </h1>
                 <p class="hero-subtitle fade-in-up fade-in-up-delay-1">
                     Solutions intelligentes pour la construction moderne
@@ -26,11 +26,12 @@
                 <div class="hero-buttons fade-in-up fade-in-up-delay-3">
                     <a href="#" class="btn-primary-hero">
                         <i class="fas fa-rocket"></i>
-                        Découvrir nos solutions
+                        EN SAVOIR PLUS
                     </a>
                     <a href="#" class="btn-secondary-hero">
-                        <i class="fas fa-play"></i>
-                        Voir la démo
+                      
+                        OBTENIR UN DEVIS
+                          <i class="fas fa-play"></i>  <i class="fas fa-play"></i>
                     </a>
                 </div>
             </div>
@@ -69,14 +70,16 @@
                 </div>
             </div>
         </div>
+       
     </section>
+   
 
 <!-- Nos Solutions Section -->
 <section class="py-5" style="background: white;">
     <div class="container">
         <div class="text-center mb-5">
-            <h2 class="display-5 mb-3" style="color: #2c5aa0;">Nos Solutions</h2>
-            <p class="lead" style="color: #666;">8 expertises dédiées pour vos projets BIM</p>
+            <h2 class="display-5 mb-3" style="color: #FFF8F2;">Nos Solutions</h2>
+            <p class="lead" style="color: #FFF8F2;">8 expertises dédiées pour vos projets BIM</p>
         </div>
         
         <div class="row g-4">

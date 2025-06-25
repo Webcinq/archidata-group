@@ -38,8 +38,8 @@
         :root {
             --primary-blue: #1e40af;
             --dark-bg: #0a1628;
-            --accent-green: #4dd0a7;
-            --text-light: #94a3b8;
+            --accent-green: #5AC990;
+            --text-light: #FFF8F2;
             --glass-bg: rgba(255, 255, 255, 0.1);
         }
 
@@ -87,7 +87,6 @@
 
         /* NAVBAR */
         .top-navbar {
-            position: fixed;
             top: 0;
             left: 0;
             right: 0;
@@ -96,6 +95,7 @@
             transition: all 0.3s ease;
             z-index: 1000;
             padding: 0;
+            border: none
         }
 
         .navbar-container {
@@ -108,7 +108,7 @@
         }
 
         .logo-section img {
-            height: 40px;
+    height: 107px;
             width: auto;
         }
 
@@ -181,6 +181,10 @@
     background-position: center;
     background-repeat: no-repeat;
 }
+.hero-text {
+    border-left: 4px solid #5AC990;
+    padding-left: 20px; /* espace entre la ligne et le texte */
+}
 
         .hero-section::before {
             content: '';
@@ -216,27 +220,28 @@
         }
 
         .hero-content {
-            max-width: 1400px;
+           max-width: 1400px;
             margin: 0 auto;
             padding: 0 40px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: grid
+        ;
+            /* grid-template-columns: 1fr 1fr; */
             gap: 60px;
             align-items: center;
             position: relative;
             z-index: 10;
+            justify-content: start;
+            align-content: space-around;
         }
 
-        .hero-text {
-            max-width: 600px;
-        }
+   
 
         .hero-title {
             font-size: 3.5rem;
             font-weight: 800;
             line-height: 1.1;
             margin-bottom: 20px;
-            color: white;
+            color: #FFF8F2;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
@@ -261,40 +266,40 @@
             gap: 20px;
             margin-bottom: 40px;
         }
+.btn-primary-hero {
+    background: linear-gradient(135deg, #5AC990, #2FA380);
+    color: black;
+    padding: 15px 30px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 
-        .btn-primary-hero {
-            background: var(--accent-green);
-            color: white;
-            padding: 15px 30px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            border: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
 
         .btn-primary-hero:hover {
             background: #3ab895;
             transform: translateY(-2px);
             box-shadow: 0 10px 25px rgba(77, 208, 167, 0.3);
-            color: white;
+            color: black;
         }
 
         .btn-secondary-hero {
-            background: transparent;
+            background-color: #092138;
             color: white;
-            padding: 15px 30px;
+            padding: 0px 30px;
             border-radius: 25px;
-            border: 2px solid white;
+            border: 2px solid #5AC990;
             text-decoration: none;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 19px;
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: all 0.3s ease;
@@ -420,11 +425,11 @@
             bottom: 120px;
             left: 0;
             right: 0;
-            background: rgba(10, 22, 40, 0.9);
+            background: black;
             backdrop-filter: blur(10px);
             border-top: 1px solid rgba(77, 208, 167, 0.3);
             border-bottom: 1px solid rgba(77, 208, 167, 0.3);
-            padding: 15px 0;
+            padding: 6px 0;
             overflow: hidden;
             z-index: 20;
         }
@@ -441,7 +446,7 @@
             gap: 10px;
             margin-right: 60px;
             font-weight: 600;
-            font-size: 16px;
+            font-size: 20px;
         }
 
         .stat-number {
