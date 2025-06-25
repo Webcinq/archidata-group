@@ -2,7 +2,7 @@
 @section('content')
 
 <!-- Hero Section exact comme l'image - FULL SCREEN -->
-   <section class="hero-section">
+    <section class="hero-section" id="accueil">
         <!-- Particles -->
         <div class="particles">
             <div class="particle"></div>
@@ -24,21 +24,18 @@
                 </p>
                 
                 <div class="hero-buttons fade-in-up fade-in-up-delay-3">
-                    <a href="#" class="btn-primary-hero">
+                    <a href="#solutions" class="btn-primary-hero">
                         <i class="fas fa-rocket"></i>
                         EN SAVOIR PLUS
                     </a>
-                    <a href="#" class="btn-secondary-hero">
-                      
+                    <a href="#contact" class="btn-secondary-hero">
                         OBTENIR UN DEVIS
-                          <i class="fas fa-play"></i>  <i class="fas fa-play"></i>
+                        <i class="fas fa-play"></i>
+                                                <i class="fas fa-play"></i>
+
                     </a>
                 </div>
             </div>
-
-
-   
-            
         </div>
 
         <!-- Stats Bar -->
@@ -48,139 +45,138 @@
                     <span class="stat-number">500+</span>
                     <span class="stat-text">Projets réalisés</span>
                 </div>
-                <span class="stat-separator">•</span>
                 <div class="stat-item">
                     <span class="stat-number">15</span>
                     <span class="stat-text">Années d'expérience</span>
                 </div>
-                <span class="stat-separator">•</span>
                 <div class="stat-item">
                     <span class="stat-number">200+</span>
                     <span class="stat-text">Clients satisfaits</span>
                 </div>
-                <span class="stat-separator">•</span>
                 <div class="stat-item">
                     <span class="stat-number">50+</span>
                     <span class="stat-text">Formations dispensées</span>
                 </div>
-                <span class="stat-separator">•</span>
                 <div class="stat-item">
                     <span class="stat-number">95%</span>
                     <span class="stat-text">Taux de satisfaction</span>
                 </div>
             </div>
         </div>
-       
+
+ 
+          
     </section>
+
    
 
 <!-- Nos Solutions Section -->
-<section class="py-5" style="background: white;">
-    <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="display-5 mb-3" style="color: #FFF8F2;">Nos Solutions</h2>
-            <p class="lead" style="color: #FFF8F2;">8 expertises dédiées pour vos projets BIM</p>
+ <section id="solutions" class="solutions-section py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h1 class="">Nos Solutions</h2>
+                <p class="section-subtitle">8 expertises dédiées pour vos projets BIM</p>
+            </div>
+            
+            <div class="row g-4">
+                <!-- Service 1 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-card h-100">
+                        <div class="service-icon">
+                            <i class="fas fa-cogs fa-2x"></i>
+                        </div>
+                        <h5 class="service-title">BIM & DATA Management</h5>
+                        <p class="service-description">Pilotage global de la maquette numérique, coordination des équipes, gestion des livrables.</p>
+                        <a href="#" class="service-link">En savoir plus</a>
+                    </div>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-card h-100">
+                        <div class="service-icon">
+                            <i class="fas fa-file-alt fa-2x"></i>
+                        </div>
+                        <h5 class="service-title">Le DOE BIM</h5>
+                        <p class="service-description">Dossier d'Ouvrage Exécuté numérique pour une documentation complète et exploitable.</p>
+                        <a href="#" class="service-link">En savoir plus</a>
+                    </div>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-card h-100">
+                        <div class="service-icon">
+                            <i class="fas fa-cube fa-2x"></i>
+                        </div>
+                        <h5 class="service-title">SCAN & Modélisation BIM</h5>
+                        <p class="service-description">Numérisation 3D précise et création de maquettes fidèles à la réalité existante.</p>
+                        <a href="#" class="service-link">En savoir plus</a>
+                    </div>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-card h-100">
+                        <div class="service-icon">
+                            <i class="fas fa-city fa-2x"></i>
+                        </div>
+                        <h5 class="service-title">Jumeaux Numériques</h5>
+                        <p class="service-description">Solutions intelligentes pour l'exploitation et la maintenance prédictive des bâtiments.</p>
+                        <a href="#" class="service-link">En savoir plus</a>
+                    </div>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-card h-100">
+                        <div class="service-icon">
+                            <i class="fas fa-project-diagram fa-2x"></i>
+                        </div>
+                        <h5 class="service-title">Synthèse BIM</h5>
+                        <p class="service-description">Coordination technique 3D, détection de clashs, anticipation des conflits.</p>
+                        <a href="#" class="service-link">En savoir plus</a>
+                    </div>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-card h-100">
+                        <div class="service-icon">
+                            <i class="fas fa-map fa-2x"></i>
+                        </div>
+                        <h5 class="service-title">CIM Management</h5>
+                        <p class="service-description">Le BIM à l'échelle du territoire pour une ville plus intelligente et durable.</p>
+                        <a href="#" class="service-link">En savoir plus</a>
+                    </div>
+                </div>
+                
+                <!-- Service 7 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-card h-100">
+                        <div class="service-icon">
+                            <i class="fas fa-database fa-2x"></i>
+                        </div>
+                        <h5 class="service-title">DATA Management</h5>
+                        <p class="service-description">Votre patrimoine numérique valorisé, gouverné et pérenne.</p>
+                        <a href="#" class="service-link">En savoir plus</a>
+                    </div>
+                </div>
+                
+                <!-- Service 8 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-card h-100">
+                        <div class="service-icon">
+                            <i class="fas fa-graduation-cap fa-2x"></i>
+                        </div>
+                        <h5 class="service-title">Conseil & Accompagnement</h5>
+                        <p class="service-description">Encadrer, former, auditer : un BIM durable passe par l'humain et les méthodes.</p>
+                        <a href="#" class="service-link">En savoir plus</a>
+                    </div>
+                </div>
+            </div>
         </div>
-        
-        <div class="row g-4">
-            <!-- Service 1 -->
-            <div class="col-lg-3 col-md-6">
-                <div class="service-card h-100 p-4 bg-white shadow-sm rounded-3" style="border: 1px solid #eee; transition: all 0.3s ease;">
-                    <div class="service-icon mb-3" style="width: 80px; height: 80px; background: linear-gradient(135deg, #4dd0a7, #2c5aa0); border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-cogs fa-2x" style="color: white;"></i>
-                    </div>
-                    <h5 class="mb-3" style="color: #2c5aa0;">BIM & DATA Management</h5>
-                    <p class="text-muted small">Pilotage global de la maquette numérique, coordination des équipes, gestion des livrables.</p>
-                    <a href="{{route('blog-detail')}}" class="btn btn-outline-primary btn-sm">En savoir plus</a>
-                </div>
-            </div>
-            
-            <!-- Service 2 -->
-            <div class="col-lg-3 col-md-6">
-                <div class="service-card h-100 p-4 bg-white shadow-sm rounded-3" style="border: 1px solid #eee; transition: all 0.3s ease;">
-                    <div class="service-icon mb-3" style="width: 80px; height: 80px; background: linear-gradient(135deg, #4dd0a7, #2c5aa0); border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-file-alt fa-2x" style="color: white;"></i>
-                    </div>
-                    <h5 class="mb-3" style="color: #2c5aa0;">Le DOE BIM</h5>
-                    <p class="text-muted small">Dossier d'Ouvrage Exécuté numérique pour une documentation complète et exploitable.</p>
-                    <a href="{{route('blog-detail')}}" class="btn btn-outline-primary btn-sm">En savoir plus</a>
-                </div>
-            </div>
-            
-            <!-- Service 3 -->
-            <div class="col-lg-3 col-md-6">
-                <div class="service-card h-100 p-4 bg-white shadow-sm rounded-3" style="border: 1px solid #eee; transition: all 0.3s ease;">
-                    <div class="service-icon mb-3" style="width: 80px; height: 80px; background: linear-gradient(135deg, #4dd0a7, #2c5aa0); border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-cube fa-2x" style="color: white;"></i>
-                    </div>
-                    <h5 class="mb-3" style="color: #2c5aa0;">SCAN & Modélisation BIM</h5>
-                    <p class="text-muted small">Numérisation 3D précise et création de maquettes fidèles à la réalité existante.</p>
-                    <a href="{{route('blog-detail')}}" class="btn btn-outline-primary btn-sm">En savoir plus</a>
-                </div>
-            </div>
-            
-            <!-- Service 4 -->
-            <div class="col-lg-3 col-md-6">
-                <div class="service-card h-100 p-4 bg-white shadow-sm rounded-3" style="border: 1px solid #eee; transition: all 0.3s ease;">
-                    <div class="service-icon mb-3" style="width: 80px; height: 80px; background: linear-gradient(135deg, #4dd0a7, #2c5aa0); border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-city fa-2x" style="color: white;"></i>
-                    </div>
-                    <h5 class="mb-3" style="color: #2c5aa0;">Jumeaux Numériques</h5>
-                    <p class="text-muted small">Solutions intelligentes pour l'exploitation et la maintenance prédictive des bâtiments.</p>
-                    <a href="{{route('blog-detail')}}" class="btn btn-outline-primary btn-sm">En savoir plus</a>
-                </div>
-            </div>
-            
-            <!-- Service 5 -->
-            <div class="col-lg-3 col-md-6">
-                <div class="service-card h-100 p-4 bg-white shadow-sm rounded-3" style="border: 1px solid #eee; transition: all 0.3s ease;">
-                    <div class="service-icon mb-3" style="width: 80px; height: 80px; background: linear-gradient(135deg, #4dd0a7, #2c5aa0); border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-project-diagram fa-2x" style="color: white;"></i>
-                    </div>
-                    <h5 class="mb-3" style="color: #2c5aa0;">Synthèse BIM</h5>
-                    <p class="text-muted small">Coordination technique 3D, détection de clashs, anticipation des conflits.</p>
-                    <a href="{{route('blog-detail')}}" class="btn btn-outline-primary btn-sm">En savoir plus</a>
-                </div>
-            </div>
-            
-            <!-- Service 6 -->
-            <div class="col-lg-3 col-md-6">
-                <div class="service-card h-100 p-4 bg-white shadow-sm rounded-3" style="border: 1px solid #eee; transition: all 0.3s ease;">
-                    <div class="service-icon mb-3" style="width: 80px; height: 80px; background: linear-gradient(135deg, #4dd0a7, #2c5aa0); border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-map fa-2x" style="color: white;"></i>
-                    </div>
-                    <h5 class="mb-3" style="color: #2c5aa0;">CIM Management</h5>
-                    <p class="text-muted small">Le BIM à l'échelle du territoire pour une ville plus intelligente et durable.</p>
-                    <a href="{{route('blog-detail')}}" class="btn btn-outline-primary btn-sm">En savoir plus</a>
-                </div>
-            </div>
-            
-            <!-- Service 7 -->
-            <div class="col-lg-3 col-md-6">
-                <div class="service-card h-100 p-4 bg-white shadow-sm rounded-3" style="border: 1px solid #eee; transition: all 0.3s ease;">
-                    <div class="service-icon mb-3" style="width: 80px; height: 80px; background: linear-gradient(135deg, #4dd0a7, #2c5aa0); border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-database fa-2x" style="color: white;"></i>
-                    </div>
-                    <h5 class="mb-3" style="color: #2c5aa0;">DATA Management</h5>
-                    <p class="text-muted small">Votre patrimoine numérique valorisé, gouverné et pérenne.</p>
-                    <a href="{{route('blog-detail')}}" class="btn btn-outline-primary btn-sm">En savoir plus</a>
-                </div>
-            </div>
-            
-            <!-- Service 8 -->
-            <div class="col-lg-3 col-md-6">
-                <div class="service-card h-100 p-4 bg-white shadow-sm rounded-3" style="border: 1px solid #eee; transition: all 0.3s ease;">
-                    <div class="service-icon mb-3" style="width: 80px; height: 80px; background: linear-gradient(135deg, #4dd0a7, #2c5aa0); border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-graduation-cap fa-2x" style="color: white;"></i>
-                    </div>
-                    <h5 class="mb-3" style="color: #2c5aa0;">Conseil & Accompagnement</h5>
-                    <p class="text-muted small">Encadrer, former, auditer : un BIM durable passe par l'humain et les méthodes.</p>
-                    <a href="{{route('blog-detail')}}" class="btn btn-outline-primary btn-sm">En savoir plus</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
 <!-- Triangle Section (conservée de votre design original) -->
 <div class="container-xxl py-5">
@@ -250,8 +246,8 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8">
-                <div class="bg-light text-center p-5 rounded-3">
-                    <h1 class="mb-4" style="color: #2c5aa0;">Demandez un Service</h1>
+                <div class=" text-center p-5 rounded-3">
+                    <h1 class="mb-4" style="color: #FFF8F2;">Demandez un Service</h1>
                     
                     @if(session('success'))
                         <div class="alert alert-success">
