@@ -55,7 +55,7 @@
                             NOS SOLUTIONS
                         </a>
                         <ul class="dropdown-menu solutions-dropdown">
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-cogs"></i> BIM & DATA Management</a></li>
+                            <li><a class="dropdown-item" href="{{route('solutions.bim-data-management')}}"><i class="fas fa-cogs"></i> BIM & DATA Management</a></li>
                             <li><a class="dropdown-item" href="#"><i class="fas fa-file-alt"></i> Le DOE BIM</a></li>
                             <li><a class="dropdown-item" href="#"><i class="fas fa-cube"></i> SCAN & Modélisation BIM</a></li>
                             <li><a class="dropdown-item" href="#"><i class="fas fa-city"></i> Jumeaux Numériques</a></li>
