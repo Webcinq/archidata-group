@@ -23,8 +23,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
-        <link href="css/triangle.css" rel="stylesheet">
+  <link href="{{asset('css/style.css')}}" rel="stylesheet">
+<link href="{{asset('css/triangle.css')}}" rel="stylesheet">
 
 </head>
 
@@ -34,7 +34,7 @@
         <div class="container-fluid navbar-container">
             <!-- Logo -->
             <a class="navbar-brand logo-section" href="#">
-                <img src="img/1.png" alt="ArchiData Africa">
+                <img src="{{asset('img/1.png')}}" alt="ArchiData Africa">
             </a>
             
             <!-- Mobile Toggle Button -->
@@ -56,7 +56,7 @@
                         </a>
                         <ul class="dropdown-menu solutions-dropdown">
                             <li><a class="dropdown-item" href="{{route('solutions.bim-data-management')}}"><i class="fas fa-cogs"></i> BIM & DATA Management</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-file-alt"></i> Le DOE BIM</a></li>
+                            <li><a class="dropdown-item" href="{{route('solutions.doe-bim')}}"><i class="fas fa-file-alt"></i> Le DOE BIM</a></li>
                             <li><a class="dropdown-item" href="#"><i class="fas fa-cube"></i> SCAN & Modélisation BIM</a></li>
                             <li><a class="dropdown-item" href="#"><i class="fas fa-city"></i> Jumeaux Numériques</a></li>
                             <li><a class="dropdown-item" href="#"><i class="fas fa-project-diagram"></i> Synthèse BIM</a></li>

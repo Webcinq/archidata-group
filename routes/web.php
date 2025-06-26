@@ -24,48 +24,40 @@ Route::get('/etudes-de-cas', function () {
 })->name('etudes-cas');
 
 Route::post('/reserver', [App\Http\Controllers\ReservationController::class, 'store'])->name('reserver');
-Route::prefix('solutions')->group(function () {
-    
-    // 1. BIM & DATA Management
-    Route::get('/bim-data-management', function () {
-        return view('solutions.bim-data-management');
-    })->name('solutions.bim-data-management');
-    
-    // 2. Le DOE BIM
-    Route::get('/doe-bim', function () {
-        return view('solutions.doe-bim');
-    })->name('solutions.doe-bim');
-    
-    // 3. SCAN & Modélisation BIM
-    Route::get('/scan-modelisation-bim', function () {
-        return view('solutions.scan-modelisation-bim');
-    })->name('solutions.scan-modelisation-bim');
-    
-    // 4. Jumeaux Numériques
-    Route::get('/jumeaux-numeriques', function () {
-        return view('solutions.jumeaux-numeriques');
-    })->name('solutions.jumeaux-numeriques');
-    
-    // 5. Synthèse BIM
-    Route::get('/synthese-bim', function () {
-        return view('solutions.synthese-bim');
-    })->name('solutions.synthese-bim');
-    
-    // 6. CIM Management
-    Route::get('/cim-management', function () {
-        return view('solutions.cim-management');
-    })->name('solutions.cim-management');
-    
-    // 7. DATA Management
-    Route::get('/data-management', function () {
-        return view('solutions.data-management');
-    })->name('solutions.data-management');
-    
-    // 8. Conseil & Accompagnement
-    Route::get('/conseil-accompagnement', function () {
-        return view('solutions.conseil-accompagnement');
-    })->name('solutions.conseil-accompagnement');
-});
+// Ajoutez ces routes dans routes/web.php
+
+// Routes pour les solutions BIM
+Route::get('/solutions/bim-data-management', function () {
+    return view('solutions.bim-data-management');
+})->name('solutions.bim-data-management');
+
+Route::get('/solutions/doe-bim', function () {
+    return view('solutions.doe-bim');
+})->name('solutions.doe-bim');
+
+Route::get('/solutions/scan-modelisation', function () {
+    return view('solutions.scan-modelisation');
+})->name('solutions.scan-modelisation');
+
+Route::get('/solutions/jumeaux-numeriques', function () {
+    return view('solutions.jumeaux-numeriques');
+})->name('solutions.jumeaux-numeriques');
+
+Route::get('/solutions/synthese-bim', function () {
+    return view('solutions.synthese-bim');
+})->name('solutions.synthese-bim');
+
+Route::get('/solutions/cim-management', function () {
+    return view('solutions.cim-management');
+})->name('solutions.cim-management');
+
+Route::get('/solutions/data-management', function () {
+    return view('solutions.data-management');
+})->name('solutions.data-management');
+
+Route::get('/solutions/conseil-accompagnement', function () {
+    return view('solutions.conseil-accompagnement');
+})->name('solutions.conseil-accompagnement');
 
 
 
