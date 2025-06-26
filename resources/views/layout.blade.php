@@ -48,21 +48,21 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav nav-menu mx-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#accueil">ACCUEIL</a>
+        <a href="{{ route('index') }}" class="nav-item nav-link {{ request()->routeIs('index') ? 'active' : '' }}">Accueil</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="solutionsDropdown" role="button" data-bs-toggle="dropdown">
+                        <a class="nav-link dropdown-toggle {{ request()->is('solutions/*') ? 'active' : '' }}" href="#" id="solutionsDropdown" role="button" data-bs-toggle="dropdown">
                             NOS SOLUTIONS
                         </a>
                         <ul class="dropdown-menu solutions-dropdown">
                             <li><a class="dropdown-item" href="{{route('solutions.bim-data-management')}}"><i class="fas fa-cogs"></i> BIM & DATA Management</a></li>
                             <li><a class="dropdown-item" href="{{route('solutions.doe-bim')}}"><i class="fas fa-file-alt"></i> Le DOE BIM</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-cube"></i> SCAN & Modélisation BIM</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-city"></i> Jumeaux Numériques</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-project-diagram"></i> Synthèse BIM</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-map"></i> CIM Management</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-database"></i> DATA Management</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-graduation-cap"></i> Conseil & Accompagnement</a></li>
+                            <li><a class="dropdown-item"  href="{{ route('solutions.scan-modelisation') }}"><i class="fas fa-cube"></i> SCAN & Modélisation BIM</a></li>
+                            <li><a class="dropdown-item" href="{{ route('solutions.jumeaux-numeriques') }}"><i class="fas fa-city"></i> Jumeaux Numériques</a></li>
+                            <li><a class="dropdown-item" href="{{ route('solutions.synthese-bim') }}"><i class="fas fa-project-diagram"></i> Synthèse BIM</a></li>
+                            <li><a class="dropdown-item" href="{{ route('solutions.cim-management') }}"><i class="fas fa-map"></i> CIM Management</a></li>
+                            <li><a class="dropdown-item" href="{{ route('solutions.data-management') }}"><i class="fas fa-database"></i> DATA Management</a></li>
+                            <li><a class="dropdown-item" href="{{ route('solutions.conseil-accompagnement') }}"><i class="fas fa-graduation-cap"></i> Conseil & Accompagnement</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">

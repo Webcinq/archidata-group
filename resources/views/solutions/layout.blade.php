@@ -597,7 +597,7 @@
                     <li class="breadcrumb-item active text-light">@yield('solution_name')</li>
                 </ol>
             </nav>
-            <h1 class="display-4 font-weight-bold mb-4">@yield('solution_title')</h1>
+            <h1 class="hero-title fade-in-up">@yield('solution_title')</h1>
             <p class="lead mb-4">@yield('solution_subtitle')</p>
         </div>
     </div>
