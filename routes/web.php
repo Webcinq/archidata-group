@@ -59,6 +59,45 @@ Route::get('/solutions/conseil-accompagnement', function () {
     return view('solutions.conseil-accompagnement');
 })->name('solutions.conseil-accompagnement');
 
+Route::get('/secteurs', function () {
+    return view('secteurs');
+})->name('secteurs');
+
+Route::get('/etudes-de-cas', function () {
+    return view('etudes-cas');
+})->name('etudes-cas');
+
+Route::get('/a-propos', function () {
+    return view('a-propos');
+})->name('a-propos');
+
+Route::get('/blog-ressources', function () {
+    return view('blog-ressources');
+})->name('blog-ressources');
+
+// Sous-pages À Propos
+Route::get('/a-propos/vision-mission', function () {
+    return view('a-propos.vision-mission');
+})->name('a-propos.vision-mission');
+
+Route::get('/a-propos/notre-equipe', function () {
+    return view('a-propos.notre-equipe');
+})->name('a-propos.notre-equipe');
+
+Route::get('/a-propos/nos-engagements', function () {
+    return view('a-propos.nos-engagements');
+})->name('a-propos.nos-engagements');
+
+// Articles de blog individuels
+Route::get('/blog/article-1', function () {
+    return view('blog.article-1');
+})->name('blog.article-1');
+
+Route::get('/blog/article-2', function () {
+    return view('blog.article-2');
+})->name('blog.article-2');
+
+
 
 
 

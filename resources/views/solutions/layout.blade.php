@@ -608,16 +608,16 @@
     <div class="container">
         @yield('solution_content')
         
-        <!-- Call to Action -->
-        <div class="cta-section rounded">
+           <div class="cta-section rounded">
             <div class="container">
                 <h3 class="mb-4">Prêt à démarrer votre projet avec cette solution ?</h3>
                 <p class="lead mb-4">Contactez nos experts pour une consultation personnalisée</p>
-                <a href="{{ route('contact') }}" class="btn btn-cta btn-lg">
+<a href="{{ url('/#contact') }}" class="btn btn-cta btn-lg">
                     Demander un Devis Gratuit
                 </a>
             </div>
         </div>
+   
     </div>
 </div>
 @endsection

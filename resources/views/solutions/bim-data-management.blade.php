@@ -93,10 +93,14 @@
         <div class="content-section bg-light">
             <h4 class="">Besoin d'accompagnement ?</h4>
             <p>Nos experts BIM sont à votre disposition pour vous accompagner dans la mise en place de cette solution.</p>
-            <a href="{{ route('contact') }}" class="btn btn-primary btn-block">
+            <a href="{{ route('contact') }}" class="btn  btn-block" style="background-color: #5AC990; color: white;">
                 <i class="fa fa-phone me-2"></i>Nous contacter
             </a>
         </div>
+        
+        
     </div>
+         <!-- Call to Action -->
+     
 </div>
 @endsection

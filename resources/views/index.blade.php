@@ -291,26 +291,48 @@
                             </div>
                             
                             <div class="col-12 col-sm-6">
-                                <select name="service" class="form-select border-0 @error('service') is-invalid @enderror" 
-                                        style="height: 55px;" required>
-                                    <option value="">Choisissez un Service</option>
-                                    <option value="BIM GEM et Modélisation" {{ old('service') == 'BIM GEM et Modélisation' ? 'selected' : '' }}>
-                                        BIM GEM et Modélisation
-                                    </option>
-                                    <option value="Conseil et Formation" {{ old('service') == 'Conseil et Formation' ? 'selected' : '' }}>
-                                        Conseil et Formation
-                                    </option>
-                                    <option value="BIM Management et Synthèse" {{ old('service') == 'BIM Management et Synthèse' ? 'selected' : '' }}>
-                                        BIM Management et Synthèse
-                                    </option>
-                                    <option value="Facility Management" {{ old('service') == 'Facility Management' ? 'selected' : '' }}>
-                                        Facility Management
-                                    </option>
-                                </select>
-                                @error('service')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
+    <select name="service" class="form-select border-0 @error('service') is-invalid @enderror" 
+            style="height: 55px;" required>
+        <option value="">Choisissez un Service</option>
+
+        <option value="BIM & DATA Management" {{ old('service') == 'BIM & DATA Management' ? 'selected' : '' }}>
+            BIM & DATA Management
+        </option>
+        
+        <option value="Le DOE BIM" {{ old('service') == 'Le DOE BIM' ? 'selected' : '' }}>
+            Le DOE BIM
+        </option>
+        
+        <option value="SCAN & Modélisation BIM" {{ old('service') == 'SCAN & Modélisation BIM' ? 'selected' : '' }}>
+            SCAN & Modélisation BIM
+        </option>
+        
+        <option value="Jumeaux Numériques" {{ old('service') == 'Jumeaux Numériques' ? 'selected' : '' }}>
+            Jumeaux Numériques
+        </option>
+        
+        <option value="Synthèse BIM" {{ old('service') == 'Synthèse BIM' ? 'selected' : '' }}>
+            Synthèse BIM
+        </option>
+        
+        <option value="CIM Management" {{ old('service') == 'CIM Management' ? 'selected' : '' }}>
+            CIM Management
+        </option>
+        
+        <option value="DATA Management" {{ old('service') == 'DATA Management' ? 'selected' : '' }}>
+            DATA Management
+        </option>
+        
+        <option value="Conseil & Accompagnement" {{ old('service') == 'Conseil & Accompagnement' ? 'selected' : '' }}>
+            Conseil & Accompagnement
+        </option>
+    </select>
+
+    @error('service')
+        <div class="invalid-feedback">{{ $message }}</div>
+    @enderror
                             </div>
+
                             
                             <div class="col-12 col-sm-6">
                                 <input type="date" name="date_service" class="form-control border-0 @error('date_service') is-invalid @enderror"

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use App\Mail\ReservationNotification;
+use Illuminate\Validation\Rule;
 use Log;
 
 class ReservationController extends Controller
@@ -31,7 +32,16 @@ class ReservationController extends Controller
     $validator = Validator::make($request->all(), [
         'nom' => 'required|string|max:255',
         'email' => 'required|email|max:255',
-        'service' => 'required|in:BIM GEM et Modélisation,Conseil et Formation,BIM Management et Synthèse,Facility Management',
+        'service' => 'required',    Rule::in([
+        'BIM & DATA Management',
+        'Le DOE BIM',
+        'SCAN & Modélisation BIM',
+        'Jumeaux Numériques',
+        'Synthèse BIM',
+        'CIM Management',
+        'DATA Management',
+        'Conseil & Accompagnement',
+    ]),
         'date_service' => 'required|date|after:today',
         'demande_speciale' => 'nullable|string|max:1000'
     ], [

@@ -66,19 +66,19 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#secteurs">SECTEURS D'ACTIVITÉS</a>
+                        <a class="nav-link" href="{{route('secteurs')}}">SECTEURS D'ACTIVITÉS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#etudes">ÉTUDES DE CAS</a>
+                        <a class="nav-link" href="{{route('etudes-cas')}}">ÉTUDES DE CAS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#apropos">À PROPOS</a>
+                        <a class="nav-link" href="{{route('a-propos')}}">À PROPOS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#blog">BLOG/RESSOURCES</a>
+                        <a class="nav-link" href="{{route('blog-ressources')}}">BLOG/RESSOURCES</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#contact">CONTACT</a>
+                        <a class="nav-link" href="{{route('contact')}}">CONTACT</a>
                     </li>
                 </ul>
                 
@@ -121,16 +121,22 @@
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h4>Services</h4>
-                    <a class="btn-link" href="#">BIM Management et Synthèse</a>
-                    <a class="btn-link" href="#">Conseil et Formation</a>
-                    <a class="btn-link" href="#">BIM GEM et Modélisation</a>
-                    <a class="btn-link" href="#">Applications et Plugins BIM</a>
+                    <a class="btn-link" href="{{route('solutions.bim-data-management')}}">BIM Management et Synthèse</a>
+                    <a class="btn-link" href="{{route('solutions.doe-bim')}}">Le DOE BIM</a>
+                    <a class="btn-link" href="{{route('solutions.scan-modelisation')}}">SCAN & Modélisation BIM</a>
+                    <a class="btn-link" href="{{route('solutions.jumeaux-numeriques')}}">Jumeaux Numériques</a>
+                    {{-- <a class="btn-link" href="{{route('solutions.synthese-bim')}}">Synthèse BIM</a>
+                    <a class="btn-link" href="{{route('solutions.cim-management')}}">CIM Management</a>
+                    <a class="btn-link" href="{{route('solutions.data-management')}}">Data Management</a>
+                    <a class="btn-link" href="{{route('solutions.conseil-accompagnement')}}">Conseil & Accompagnement</a> --}}
+                    
+
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h4>Newsletter</h4>
                     <p>Inscrivez-vous à notre newsletter pour recevoir les dernières actualités et offres exclusives.</p>
                     <div class="mt-3">
-                        <a href="#" class="btn btn-primary">S'inscrire</a>
+                        <a href="{{route('contact')}}" class="btn btn-primary">S'inscrire</a>
                     </div>
                 </div>
             </div>

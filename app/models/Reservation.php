@@ -26,10 +26,14 @@ class Reservation extends Model
 
     // Constantes pour les services
     const SERVICES = [
-        'BIM GEM et Modélisation' => 'BIM GEM et Modélisation',
-        'Conseil et Formation' => 'Conseil et Formation',
-        'BIM Management et Synthèse' => 'BIM Management et Synthèse',
-        'Facility Management' => 'Facility Management'
+        'BIM & DATA Management' => 'BIM & DATA Management',
+    'Le DOE BIM' => 'Le DOE BIM',
+    'SCAN & Modélisation BIM' => 'SCAN & Modélisation BIM',
+    'Jumeaux Numériques' => 'Jumeaux Numériques',
+    'Synthèse BIM' => 'Synthèse BIM',
+    'CIM Management' => 'CIM Management',
+    'DATA Management' => 'DATA Management',
+    'Conseil & Accompagnement' => 'Conseil & Accompagnement',
     ];
 
     // Constantes pour les statuts
