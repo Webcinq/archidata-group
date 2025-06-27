@@ -202,8 +202,12 @@
 
         /* Ajustement spécifique pour la section du milieu */
         .section-middle .section-content {
-            padding-top: 5%;
+            padding-top: 10%;
         }
+          .section-bottom .section-content {
+            padding-top: 7%;
+        }
+        
 
         .triangle-section:hover .section-content {
             transform: translateY(0) scale(1.05);
@@ -244,7 +248,7 @@
         }
 
         .section-title {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 600;
             margin-bottom: 0.3rem;
             color: white;
@@ -414,7 +418,7 @@
             }
             .section-top .section-content {
                 line-height: 1;
-                padding-top: 12%;
+                padding-top:20%;
             }
         }
 
@@ -452,7 +456,7 @@
 
             .section-top .section-content {
                 line-height: 1;
-                padding-top: 12%;
+                padding-top: 18%;
             }
             /* Animations simplifiées pour mobile, mais toujours présentes */
             .section-top:hover,
@@ -497,5 +501,9 @@
             .description {
                 padding: 1.2rem;
                 font-size: 0.9rem;
+            }
+               .section-top .section-content {
+                line-height: 1;
+                padding-top: 26%;
             }
         }
