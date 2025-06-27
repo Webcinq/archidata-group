@@ -1,545 +1,431 @@
 (function ($) {
     "use strict";
 
-    // ===============================
-    // SUPPRESSION COMPLÈTE DU SPINNER
-    // ===============================
-    var removeAllSpinners = function () {
-        // Supprimer tous les éléments spinner possibles
-        $('#spinner, .spinner, .spinner-border, .spinner-grow, .show, .loading').remove();
-        
-        // S'assurer que le body est visible
-        $('body, html').css({
-            'opacity': '1', 
-            'visibility': 'visible',
-            'overflow-x': 'hidden'
-        });
-        
-        // Supprimer les classes de chargement
-        $('body').removeClass('loading');
+    // Spinner
+    var spinner = function () {
+        setTimeout(function () {
+            if ($('#spinner').length > 0) {
+                $('#spinner').removeClass('show');
+            }
+        }, 1);
     };
+    spinner();
     
-    // Exécution immédiate et continue
-    removeAllSpinners();
-    setInterval(removeAllSpinners, 50); // Surveillance continue
     
-    // ===============================
-    // NAVBAR RESPONSIVE ET SCROLL EFFECT
-    // ===============================
-    $(document).ready(function() {
-        removeAllSpinners();
-        
-        const navbar = $('.top-navbar');
-        const navbarToggler = $('.navbar-toggler');
-        const navbarCollapse = $('.navbar-collapse');
-        
-        // Effet de scroll sur la navbar
-        $(window).scroll(function () {
-            if ($(this).scrollTop() > 100) {
-                navbar.addClass('scrolled');
-            } else {
-                navbar.removeClass('scrolled');
-            }
-        });
-        
-        // Gestion du menu mobile
-        navbarToggler.on('click', function() {
-            const isExpanded = $(this).attr('aria-expanded') === 'true';
-            $(this).attr('aria-expanded', !isExpanded);
-        });
-        
-        // Fermer le menu mobile lors du clic sur un lien
-        $('.nav-link').on('click', function() {
-            if ($(window).width() < 992) {
-                navbarCollapse.collapse('hide');
-                navbarToggler.attr('aria-expanded', 'false');
-            }
-        });
-        
-        // Fermer le menu mobile lors du clic en dehors
-        $(document).on('click', function(event) {
-            if (!$(event.target).closest('.navbar').length && navbarCollapse.hasClass('show')) {
-                navbarCollapse.collapse('hide');
-                navbarToggler.attr('aria-expanded', 'false');
-            }
-        });
-    });
+    // Initiate the wowjs
+    new WOW().init();
 
-    // ===============================
-    // DROPDOWN HOVER EFFECT (Desktop)
-    // ===============================
-    $(window).on("load resize", function() {
-        if (window.matchMedia("(min-width: 992px)").matches) {
-            $(".dropdown").hover(
-                function() {
-                    const $this = $(this);
-                    const $dropdownMenu = $this.find('.dropdown-menu');
-                    
-                    $this.addClass('show');
-                    $this.find('.dropdown-toggle').attr("aria-expanded", "true");
-                    $dropdownMenu.addClass('show');
-                    
-                    // Animation d'entrée
-                    $dropdownMenu.css({
-                        'opacity': '0',
-                        'transform': 'translateY(-10px)'
-                    }).animate({
-                        'opacity': '1'
-                    }, 200).css('transform', 'translateY(0)');
-                },
-                function() {
-                    const $this = $(this);
-                    const $dropdownMenu = $this.find('.dropdown-menu');
-                    
-                    // Animation de sortie
-                    $dropdownMenu.animate({
-                        'opacity': '0'
-                    }, 150, function() {
-                        $this.removeClass('show');
-                        $this.find('.dropdown-toggle').attr("aria-expanded", "false");
-                        $dropdownMenu.removeClass('show');
-                    });
-                }
-            );
-        } else {
-            $(".dropdown").off("mouseenter mouseleave");
-        }
-    });
 
-    // ===============================
-    // SMOOTH SCROLL POUR LES ANCRES
-    // ===============================
-    $('a[href^="#"]').on('click', function(e) {
-        e.preventDefault();
-        
-        const target = $(this.getAttribute('href'));
-        
-        if (target.length) {
-            const headerOffset = 100;
-            const elementPosition = target.offset().top;
-            const offsetPosition = elementPosition - headerOffset;
-            
-            $('html, body').animate({
-                scrollTop: offsetPosition
-            }, 800, 'easeInOutCubic');
-        }
-    });
-
-    // ===============================
-    // BACK TO TOP BUTTON
-    // ===============================
+    // Sticky Navbar
     $(window).scroll(function () {
-        if ($(this).scrollTop() > 300) {
-            $('.back-to-top').addClass('show');
+        if ($(this).scrollTop() > 90) {
+            $('.nav-bar').addClass('sticky-top shadow');
         } else {
-            $('.back-to-top').removeClass('show');
+            $('.nav-bar').removeClass('sticky-top shadow');
         }
     });
     
-    $('.back-to-top').click(function (e) {
-        e.preventDefault();
-        $('html, body').animate({
-            scrollTop: 0
-        }, 1000, 'easeInOutCubic');
-    });
-
-    // ===============================
-    // ANIMATIONS AU SCROLL
-    // ===============================
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
     
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, observerOptions);
+    // Dropdown on mouse hover
+    const $dropdown = $(".dropdown");
+    const $dropdownToggle = $(".dropdown-toggle");
+    const $dropdownMenu = $(".dropdown-menu");
+    const showClass = "show";
     
-    // Observer les cartes de service
-    $(document).ready(function() {
-        const serviceCards = $('.service-card');
-        serviceCards.each(function(index) {
-            const card = this;
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(50px)';
-            card.style.transition = `all 0.8s ease ${index * 0.1}s`;
-            observer.observe(card);
-        });
-    });
-
-    // ===============================
-    // TRIANGLE INTERACTIF
-    // ===============================
-    $(document).ready(function() {
-        const triangleWrapper = $('.triangle-wrapper');
-        const triangleSections = $('.triangle-section');
-        
-        if (triangleWrapper.length) {
-            // Effet de parallax 3D au survol
-            triangleWrapper.on('mousemove', function(e) {
-                const rect = this.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                
-                const rotateX = (y - centerY) / 15;
-                const rotateY = (x - centerX) / 15;
-                
-                $(this).css({
-                    'transform': `perspective(1000px) rotateX(${-rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`,
-                    'transition': 'none'
-                });
-            });
-            
-            triangleWrapper.on('mouseleave', function() {
-                $(this).css({
-                    'transform': 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)',
-                    'transition': 'transform 0.5s ease'
-                });
-            });
-        }
-        
-        // Animation des sections du triangle
-        triangleSections.on('click', function() {
-            const $this = $(this);
-            
-            $this.css('transform', 'scale(0.95)');
-            
-            setTimeout(() => {
-                $this.css('transform', 'scale(1)');
-            }, 150);
-            
-            // Redirection si nécessaire
-            const pageURL = $this.data('page');
-            if (pageURL) {
-                setTimeout(() => {
-                    window.location.href = pageURL;
-                }, 300);
-            }
-        });
-    });
-
-    // ===============================
-    // FORMULAIRE DE CONTACT AMÉLIORÉ
-    // ===============================
-    $(document).ready(function() {
-        const contactForm = $('.contact-form');
-        const formInputs = $('.form-control');
-        
-        // Animation des inputs au focus
-        formInputs.on('focus', function() {
-            $(this).parent().addClass('focused');
-            $(this).siblings('.form-icon').css({
-                'color': 'var(--accent-green)',
-                'transform': 'translateY(-50%) scale(1.1)'
-            });
-        });
-        
-        formInputs.on('blur', function() {
-            if (!$(this).val()) {
-                $(this).parent().removeClass('focused');
-            }
-            $(this).siblings('.form-icon').css({
-                'color': 'var(--accent-green)',
-                'transform': 'translateY(-50%) scale(1)'
-            });
-        });
-        
-        // Validation en temps réel
-        formInputs.on('input', function() {
-            const $this = $(this);
-            const value = $this.val();
-            
-            if (value.length > 0) {
-                $this.addClass('has-value');
-            } else {
-                $this.removeClass('has-value');
-            }
-            
-            // Validation email
-            if ($this.attr('type') === 'email' && value.length > 0) {
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (emailRegex.test(value)) {
-                    $this.removeClass('invalid').addClass('valid');
-                } else {
-                    $this.removeClass('valid').addClass('invalid');
-                }
-            }
-        });
-        
-        // Soumission du formulaire avec animation
-        contactForm.on('submit', function(e) {
-            e.preventDefault();
-            
-            const submitBtn = $('.btn-submit');
-            const originalText = submitBtn.find('span').text();
-            
-            // Animation de chargement
-            submitBtn.prop('disabled', true);
-            submitBtn.find('span').text('Envoi en cours...');
-            submitBtn.find('i').removeClass('fa-paper-plane').addClass('fa-spinner fa-spin');
-            
-            // Simulation d'envoi (remplacer par vraie logique)
-            setTimeout(() => {
-                submitBtn.find('span').text('Message envoyé !');
-                submitBtn.find('i').removeClass('fa-spinner fa-spin').addClass('fa-check');
-                submitBtn.css('background', 'var(--accent-green)');
-                
-                setTimeout(() => {
-                    submitBtn.prop('disabled', false);
-                    submitBtn.find('span').text(originalText);
-                    submitBtn.find('i').removeClass('fa-check').addClass('fa-paper-plane');
-                    submitBtn.css('background', '');
-                    contactForm[0].reset();
-                    formInputs.removeClass('has-value valid invalid');
-                }, 2000);
-            }, 1500);
-        });
-    });
-
-    // ===============================
-    // HERO SECTION ANIMATIONS
-    // ===============================
-    $(document).ready(function() {
-        // Animation séquentielle des éléments hero
-        const heroElements = $('.fade-in-up');
-        
-        heroElements.each(function(index) {
-            const element = this;
-            setTimeout(() => {
-                $(element).css({
-                    'opacity': '1',
-                    'transform': 'translateY(0)'
-                });
-            }, index * 200);
-        });
-        
-        // Animation des boutons hero au hover
-        $('.btn-primary-hero, .btn-secondary-hero, .btn-cta-primary, .btn-cta-secondary').hover(
+    $(window).on("load resize", function() {
+        if (this.matchMedia("(min-width: 992px)").matches) {
+            $dropdown.hover(
             function() {
-                $(this).find('i').css('transform', 'translateX(5px)');
+                const $this = $(this);
+                $this.addClass(showClass);
+                $this.find($dropdownToggle).attr("aria-expanded", "true");
+                $this.find($dropdownMenu).addClass(showClass);
             },
             function() {
-                $(this).find('i').css('transform', 'translateX(0)');
+                const $this = $(this);
+                $this.removeClass(showClass);
+                $this.find($dropdownToggle).attr("aria-expanded", "false");
+                $this.find($dropdownMenu).removeClass(showClass);
             }
-        );
-    });
-
-    // ===============================
-    // PARTICLES ANIMATION AMÉLIORÉE
-    // ===============================
-    $(document).ready(function() {
-        const particles = $('.particle');
-        
-        particles.each(function(index) {
-            const particle = $(this);
-            const randomDelay = Math.random() * 2;
-            const randomDuration = 6 + Math.random() * 4;
-            
-            particle.css({
-                'animation-delay': randomDelay + 's',
-                'animation-duration': randomDuration + 's'
-            });
-        });
-        
-        // Ajouter des particules dynamiques
-        function createDynamicParticle() {
-            const particle = $('<div class="particle dynamic-particle"></div>');
-            const size = Math.random() * 6 + 2;
-            const x = Math.random() * 100;
-            const y = Math.random() * 100;
-            const duration = Math.random() * 10 + 5;
-            
-            particle.css({
-                'width': size + 'px',
-                'height': size + 'px',
-                'left': x + '%',
-                'top': y + '%',
-                'animation-duration': duration + 's'
-            });
-            
-            $('.particles').append(particle);
-            
-            setTimeout(() => {
-                particle.remove();
-            }, duration * 1000);
+            );
+        } else {
+            $dropdown.off("mouseenter mouseleave");
         }
-        
-        // Créer une nouvelle particule toutes les 3 secondes
-        setInterval(createDynamicParticle, 3000);
+    });
+    
+    
+    // Back to top button
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 300) {
+            $('.back-to-top').fadeIn('slow');
+        } else {
+            $('.back-to-top').fadeOut('slow');
+        }
+    });
+    $('.back-to-top').click(function () {
+        $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
+        return false;
     });
 
-    // ===============================
-    // OPTIMISATIONS PERFORMANCE
-    // ===============================
-    
-    // Throttle function pour optimiser les événements scroll
-    function throttle(func, limit) {
-        let inThrottle;
-        return function() {
-            const args = arguments;
-            const context = this;
-            if (!inThrottle) {
-                func.apply(context, args);
-                inThrottle = true;
-                setTimeout(() => inThrottle = false, limit);
+
+    // Facts counter
+    $('[data-toggle="counter-up"]').counterUp({
+        delay: 10,
+        time: 2000
+    });
+
+
+    // Date and time picker
+    $('.date').datetimepicker({
+        format: 'L'
+    });
+    $('.time').datetimepicker({
+        format: 'LT'
+    });
+
+
+    // Modal Video
+    $(document).ready(function () {
+        var $videoSrc;
+        $('.btn-play').click(function () {
+            $videoSrc = $(this).data("src");
+        });
+        console.log($videoSrc);
+
+        $('#videoModal').on('shown.bs.modal', function (e) {
+            $("#video").attr('src', $videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0");
+        })
+
+        $('#videoModal').on('hide.bs.modal', function (e) {
+            $("#video").attr('src', $videoSrc);
+        })
+    });
+
+
+    // Header carousel
+    $(".header-carousel").owlCarousel({
+        autoplay: true,
+        smartSpeed: 1500,
+        items: 1,
+        dots: false,
+        loop: true,
+        nav : true,
+        navText : [
+            '<i class="bi bi-chevron-left"></i>',
+            '<i class="bi bi-chevron-right"></i>'
+        ]
+    });
+
+
+    // Service carousel
+    $(".service-carousel").owlCarousel({
+        autoplay: true,
+        smartSpeed: 1000,
+        center: true,
+        margin: 25,
+        dots: true,
+        loop: true,
+        nav : false,
+        responsive: {
+            0:{
+                items:1
+            },
+            576:{
+                items:2
+            },
+            768:{
+                items:3
+            },
+            992:{
+                items:2
+            },
+            1200:{
+                items:3
             }
+        }
+    });
+
+
+    // Testimonials carousel
+    $(".testimonial-carousel").owlCarousel({
+        autoplay: true,
+        smartSpeed: 1000,
+        center: true,
+        dots: false,
+        loop: true,
+        nav : true,
+        navText : [
+            '<i class="bi bi-arrow-left"></i>',
+            '<i class="bi bi-arrow-right"></i>'
+        ],
+        responsive: {
+            0:{
+                items:1
+            },
+            768:{
+                items:2
+            },
+            992:{
+                items:3
+            }
+        }
+    });
+    
+})(jQuery);
+
+/* ===============================
+   JAVASCRIPT COMPLET POUR SECTION SOLUTIONS
+   À ajouter dans votre fichier main.js ou dans une balise <script>
+   =============================== */
+
+// Fonction d'initialisation des solutions avec scroll
+function initSolutionsScroll() {
+    // Attendre que le DOM soit chargé
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initSolutionsScroll);
+        return;
+    }
+
+    const scrollWrapper = document.getElementById('solutionsScroll');
+    const scrollLeftBtn = document.getElementById('scrollLeft');
+    const scrollRightBtn = document.getElementById('scrollRight');
+    const progressBar = document.getElementById('progressBar');
+    const solutionCards = document.querySelectorAll('.solution-card');
+    
+    // Vérifier si les éléments existent
+    if (!scrollWrapper) {
+        console.log('Solutions scroll wrapper not found');
+        return;
+    }
+    
+    console.log('Initializing solutions scroll...', {
+        scrollWrapper: !!scrollWrapper,
+        scrollLeftBtn: !!scrollLeftBtn,
+        scrollRightBtn: !!scrollRightBtn,
+        progressBar: !!progressBar,
+        cardsCount: solutionCards.length
+    });
+    
+    // Animation d'entrée des cartes avec délai
+    function animateCards() {
+        solutionCards.forEach((card, index) => {
+            setTimeout(() => {
+                card.style.animation = `slideInFromLeft 0.8s ease forwards`;
+                card.classList.add('animate-in');
+            }, index * 150);
+        });
+    }
+    
+    // Observer pour déclencher l'animation
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                console.log('Solutions section visible, animating cards...');
+                animateCards();
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    
+    const solutionsSection = document.querySelector('.solutions-section');
+    if (solutionsSection) {
+        observer.observe(solutionsSection);
+    }
+    
+    // Fonction de scroll fluide
+    function smoothScroll(distance) {
+        scrollWrapper.scrollBy({
+            left: distance,
+            behavior: 'smooth'
+        });
+        console.log('Scrolling by:', distance);
+    }
+    
+    // Gestion des boutons de scroll
+    if (scrollLeftBtn) {
+        scrollLeftBtn.addEventListener('click', () => {
+            console.log('Scroll left clicked');
+            smoothScroll(-350);
+            stopAutoScroll();
+        });
+    }
+    
+    if (scrollRightBtn) {
+        scrollRightBtn.addEventListener('click', () => {
+            console.log('Scroll right clicked');
+            smoothScroll(350);
+            stopAutoScroll();
+        });
+    }
+    
+    // Mise à jour de la barre de progression
+    function updateProgressBar() {
+        if (!progressBar) return;
+        
+        const scrollLeft = scrollWrapper.scrollLeft;
+        const scrollWidth = scrollWrapper.scrollWidth - scrollWrapper.clientWidth;
+        const progress = scrollWidth > 0 ? (scrollLeft / scrollWidth) * 100 : 0;
+        progressBar.style.width = `${Math.max(0, Math.min(100, progress))}%`;
+    }
+    
+    // Écouteur de scroll
+    scrollWrapper.addEventListener('scroll', () => {
+        updateProgressBar();
+        
+        // Effet parallax sur les cartes
+        solutionCards.forEach((card) => {
+            const rect = card.getBoundingClientRect();
+            const containerRect = scrollWrapper.getBoundingClientRect();
+            const cardCenter = rect.left + rect.width / 2;
+            const containerCenter = containerRect.left + containerRect.width / 2;
+            const distance = Math.abs(cardCenter - containerCenter);
+            const maxDistance = containerRect.width / 2;
+            const scale = 1 - (distance / maxDistance) * 0.05; // Effet plus subtil
+            
+            if (scale > 0.95) {
+                card.style.transform = `scale(${Math.max(0.95, Math.min(1, scale))})`;
+            }
+        });
+    });
+    
+    // Gestion du scroll tactile et souris (drag & drop)
+    let isScrolling = false;
+    let startX = 0;
+    let scrollLeft = 0;
+    
+    scrollWrapper.addEventListener('mousedown', (e) => {
+        isScrolling = true;
+        startX = e.pageX - scrollWrapper.offsetLeft;
+        scrollLeft = scrollWrapper.scrollLeft;
+        scrollWrapper.style.cursor = 'grabbing';
+        e.preventDefault();
+        stopAutoScroll();
+    });
+    
+    scrollWrapper.addEventListener('mouseleave', () => {
+        isScrolling = false;
+        scrollWrapper.style.cursor = 'grab';
+    });
+    
+    scrollWrapper.addEventListener('mouseup', () => {
+        isScrolling = false;
+        scrollWrapper.style.cursor = 'grab';
+    });
+    
+    scrollWrapper.addEventListener('mousemove', (e) => {
+        if (!isScrolling) return;
+        e.preventDefault();
+        const x = e.pageX - scrollWrapper.offsetLeft;
+        const walk = (x - startX) * 1.5;
+        scrollWrapper.scrollLeft = scrollLeft - walk;
+    });
+    
+    // Support clavier
+    document.addEventListener('keydown', (e) => {
+        if (scrollWrapper.matches(':hover') || document.activeElement === scrollWrapper) {
+            if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                smoothScroll(-350);
+                stopAutoScroll();
+            } else if (e.key === 'ArrowRight') {
+                e.preventDefault();
+                smoothScroll(350);
+                stopAutoScroll();
+            }
+        }
+    });
+    
+    // Auto-scroll
+    let autoScrollInterval;
+    let autoScrollActive = false;
+    
+    function startAutoScroll() {
+        if (autoScrollActive) return;
+        autoScrollActive = true;
+        
+        autoScrollInterval = setInterval(() => {
+            const maxScroll = scrollWrapper.scrollWidth - scrollWrapper.clientWidth;
+            if (scrollWrapper.scrollLeft >= maxScroll - 10) {
+                scrollWrapper.scrollTo({ left: 0, behavior: 'smooth' });
+            } else {
+                smoothScroll(350);
+            }
+        }, 4000);
+        
+        console.log('Auto-scroll started');
+    }
+    
+    function stopAutoScroll() {
+        if (autoScrollInterval) {
+            clearInterval(autoScrollInterval);
+            autoScrollInterval = null;
+            autoScrollActive = false;
+            console.log('Auto-scroll stopped');
         }
     }
     
-    // Appliquer throttle aux événements scroll
-    $(window).on('scroll', throttle(function() {
-        // Logique de scroll optimisée
-        const scrollTop = $(this).scrollTop();
-        
-        // Navbar effect
-        if (scrollTop > 100) {
-            $('.top-navbar').addClass('scrolled');
-        } else {
-            $('.top-navbar').removeClass('scrolled');
-        }
-        
-        // Back to top button
-        if (scrollTop > 300) {
-            $('.back-to-top').addClass('show');
-        } else {
-            $('.back-to-top').removeClass('show');
-        }
-    }, 16)); // ~60fps
-
-    // ===============================
-    // LAZY LOADING POUR LES IMAGES
-    // ===============================
-    $(document).ready(function() {
-        const images = $('img[data-src]');
-        
-        const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.src = img.dataset.src;
-                    img.classList.remove('lazy');
-                    imageObserver.unobserve(img);
-                }
-            });
-        });
-        
-        images.each(function() {
-            imageObserver.observe(this);
-        });
-    });
-
-    // ===============================
-    // NETTOYAGE FINAL ET OPTIMISATIONS
-    // ===============================
-    $(window).on('load', function() {
-        removeAllSpinners();
-        
-        // Supprimer les éléments de chargement restants
-        $('.loading, .preloader, .loader').fadeOut(300, function() {
-            $(this).remove();
-        });
-        
-        // Optimiser les animations CSS
-        $('body').addClass('loaded');
-        
-        // Initialiser les tooltips si Bootstrap est disponible
-        if (typeof bootstrap !== 'undefined' && bootstrap.Tooltip) {
-            const tooltips = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-            tooltips.forEach(tooltip => {
-                new bootstrap.Tooltip(tooltip);
-            });
-        }
-    });
-
-    // ===============================
-    // GESTION DES ERREURS
-    // ===============================
-    $(document).ready(function() {
-        // Gestion globale des erreurs
-        window.addEventListener('error', function(e) {
-            console.log('Erreur capturée:', e.message);
-            removeAllSpinners();
-        });
-        
-        // Fallback pour les animations qui échouent
-        setTimeout(removeAllSpinners, 100);
-    });
-
-    // ===============================
-    // ACCESSIBILITÉ
-    // ===============================
-    $(document).ready(function() {
-        // Gestion du focus pour l'accessibilité
-        $('.nav-link, .btn-primary-hero, .btn-secondary-hero, .form-control').on('focus', function() {
-            $(this).addClass('keyboard-focused');
-        }).on('blur', function() {
-            $(this).removeClass('keyboard-focused');
-        });
-        
-        // Support des touches clavier pour les éléments interactifs
-        $('.triangle-section, .service-card').on('keydown', function(e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                $(this).click();
-            }
-        });
-    });
-
-    // ===============================
-    // RESPONSIVE BEHAVIOR
-    // ===============================
-    $(window).on('resize', function() {
-        const windowWidth = $(this).width();
-        
-        // Ajustements responsive
-        if (windowWidth < 768) {
-            $('.hero-bottom-cta').css('bottom', '20px');
-            $('.stats-bar').css('bottom', '80px');
-        } else if (windowWidth < 992) {
-            $('.hero-bottom-cta').css('bottom', '40px');
-            $('.stats-bar').css('bottom', '120px');
-        } else {
-            $('.hero-bottom-cta').css('bottom', '60px');
-            $('.stats-bar').css('bottom', '180px');
-        }
-    });
-
-})(jQuery);
-
-// ===============================
-// INITIALISATION VANILLA JS
-// ===============================
-document.addEventListener('DOMContentLoaded', function() {
-    // Suppression immédiate de tous les spinners
-    const spinners = document.querySelectorAll('#spinner, .spinner, .spinner-border, .spinner-grow, .show');
-    spinners.forEach(spinner => {
-        spinner.remove();
-    });
+    // Démarrer l'auto-scroll après un délai
+    setTimeout(startAutoScroll, 3000);
     
-    // S'assurer que le body est visible
-    document.body.style.opacity = '1';
-    document.body.style.visibility = 'visible';
+    // Arrêter l'auto-scroll lors de l'interaction utilisateur
+    scrollWrapper.addEventListener('mouseenter', stopAutoScroll);
+    scrollWrapper.addEventListener('touchstart', stopAutoScroll);
     
-    // Animation des éléments au chargement
-    const animatedElements = document.querySelectorAll('.fade-in-up');
-    animatedElements.forEach((element, index) => {
-        setTimeout(() => {
-            element.style.opacity = '1';
-            element.style.transform = 'translateY(0)';
-        }, index * 150);
-    });
-});
+    // Redémarrer l'auto-scroll après inactivité
+    let inactivityTimer;
+    
+    function resetInactivityTimer() {
+        clearTimeout(inactivityTimer);
+        inactivityTimer = setTimeout(startAutoScroll, 8000);
+    }
+    
+    scrollWrapper.addEventListener('mouseleave', resetInactivityTimer);
+    
+    // Support du touch sur mobile
+    let touchStartX = 0;
+    let touchStartScrollLeft = 0;
+    
+    scrollWrapper.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+        touchStartScrollLeft = scrollWrapper.scrollLeft;
+        stopAutoScroll();
+    }, { passive: true });
+    
+    scrollWrapper.addEventListener('touchmove', (e) => {
+        if (!touchStartX) return;
+        
+        const touchCurrentX = e.touches[0].clientX;
+        const touchDiffX = touchStartX - touchCurrentX;
+        
+        scrollWrapper.scrollLeft = touchStartScrollLeft + touchDiffX;
+    }, { passive: true });
+    
+    scrollWrapper.addEventListener('touchend', () => {
+        touchStartX = 0;
+        resetInactivityTimer();
+    }, { passive: true });
+    
+    // Initialiser la barre de progression
+    updateProgressBar();
+    
+    console.log('Solutions scroll initialized successfully');
+}
 
-// Suppression continue des spinners
-setInterval(() => {
-    const spinners = document.querySelectorAll('#spinner, .spinner, .spinner-border, .spinner-grow');
-    spinners.forEach(spinner => spinner.remove());
-}, 100);
+// Démarrer l'initialisation
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSolutionsScroll);
+} else {
+    initSolutionsScroll();
+}
+
+// Pour jQuery si vous l'utilisez déjà
+if (typeof $ !== 'undefined') {
+    $(document).ready(function() {
+        initSolutionsScroll();
+    });
+}
+
+// Export pour usage en module (optionnel)
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { initSolutionsScroll };
+}

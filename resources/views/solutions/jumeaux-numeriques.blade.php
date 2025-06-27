@@ -162,7 +162,7 @@
         </div>
 
         <!-- Technologies Section -->
-        <div class="content-section bg-light">
+        <div class="content-section ">
             <h4 class="text-primary">Technologies Intégrées</h4>
             <div class="row text-center">
                 <div class="col-6 mb-3">

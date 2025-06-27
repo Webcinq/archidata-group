@@ -33,7 +33,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark top-navbar fixed-top">
         <div class="container-fluid navbar-container">
             <!-- Logo -->
-            <a class="navbar-brand logo-section" href="#">
+            <a class="navbar-brand logo-section" href="{{ route('index') }}">
                 <img src="{{asset('img/1.png')}}" alt="ArchiData Africa">
             </a>
             
@@ -45,49 +45,49 @@
             </button>
             
             <!-- Navigation Menu -->
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav nav-menu mx-auto">
-                    <li class="nav-item">
-        <a href="{{ route('index') }}" class="nav-item nav-link {{ request()->routeIs('index') ? 'active' : '' }}">Accueil</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle {{ request()->is('solutions/*') ? 'active' : '' }}" href="#" id="solutionsDropdown" role="button" data-bs-toggle="dropdown">
-                            NOS SOLUTIONS
-                        </a>
-                        <ul class="dropdown-menu solutions-dropdown">
-                            <li><a class="dropdown-item" href="{{route('solutions.bim-data-management')}}"><i class="fas fa-cogs"></i> BIM & DATA Management</a></li>
-                            <li><a class="dropdown-item" href="{{route('solutions.doe-bim')}}"><i class="fas fa-file-alt"></i> Le DOE BIM</a></li>
-                            <li><a class="dropdown-item"  href="{{ route('solutions.scan-modelisation') }}"><i class="fas fa-cube"></i> SCAN & Modélisation BIM</a></li>
-                            <li><a class="dropdown-item" href="{{ route('solutions.jumeaux-numeriques') }}"><i class="fas fa-city"></i> Jumeaux Numériques</a></li>
-                            <li><a class="dropdown-item" href="{{ route('solutions.synthese-bim') }}"><i class="fas fa-project-diagram"></i> Synthèse BIM</a></li>
-                            <li><a class="dropdown-item" href="{{ route('solutions.cim-management') }}"><i class="fas fa-map"></i> CIM Management</a></li>
-                            <li><a class="dropdown-item" href="{{ route('solutions.data-management') }}"><i class="fas fa-database"></i> DATA Management</a></li>
-                            <li><a class="dropdown-item" href="{{ route('solutions.conseil-accompagnement') }}"><i class="fas fa-graduation-cap"></i> Conseil & Accompagnement</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('secteurs')}}">SECTEURS D'ACTIVITÉS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('etudes-cas')}}">ÉTUDES DE CAS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('a-propos')}}">À PROPOS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('blog-ressources')}}">BLOG/RESSOURCES</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('contact')}}">CONTACT</a>
-                    </li>
-                </ul>
-                
-                <!-- User Space Button -->
-                <a href="#" class="user-space">
-                    <i class="fas fa-user-circle"></i>
-                    VOTRE ESPACE
-                </a>
-            </div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav nav-menu mx-auto">
+        <li class="nav-item">
+            <a href="{{ route('index') }}" class="nav-item nav-link {{ request()->routeIs('index') ? 'active' : '' }}">Accueil</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle {{ request()->is('solutions/*') ? 'active' : '' }}" href="#" id="solutionsDropdown" role="button" data-bs-toggle="dropdown">
+                NOS SOLUTIONS
+            </a>
+            <ul class="dropdown-menu solutions-dropdown">
+                <li><a class="dropdown-item" href="{{route('solutions.bim-data-management')}}"><i class="fas fa-cogs"></i> BIM & DATA Management</a></li>
+                <li><a class="dropdown-item" href="{{route('solutions.doe-bim')}}"><i class="fas fa-file-alt"></i> Le DOE BIM</a></li>
+                <li><a class="dropdown-item"  href="{{ route('solutions.scan-modelisation') }}"><i class="fas fa-cube"></i> SCAN & Modélisation BIM</a></li>
+                <li><a class="dropdown-item" href="{{ route('solutions.jumeaux-numeriques') }}"><i class="fas fa-city"></i> Jumeaux Numériques</a></li>
+                <li><a class="dropdown-item" href="{{ route('solutions.synthese-bim') }}"><i class="fas fa-project-diagram"></i> Synthèse BIM</a></li>
+                <li><a class="dropdown-item" href="{{ route('solutions.cim-management') }}"><i class="fas fa-map"></i> CIM Management</a></li>
+                <li><a class="dropdown-item" href="{{ route('solutions.data-management') }}"><i class="fas fa-database"></i> DATA Management</a></li>
+                <li><a class="dropdown-item" href="{{ route('solutions.conseil-accompagnement') }}"><i class="fas fa-graduation-cap"></i> Conseil & Accompagnement</a></li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {{ request()->routeIs('secteurs') ? 'active' : '' }}" href="{{route('secteurs')}}">SECTEURS D'ACTIVITÉS</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {{ request()->routeIs('etudes-cas') ? 'active' : '' }}" href="{{route('etudes-cas')}}">ÉTUDES DE CAS</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {{ request()->routeIs('a-propos') ? 'active' : '' }}" href="{{route('a-propos')}}">À PROPOS</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {{ request()->routeIs('blog-ressources') ? 'active' : '' }}" href="{{route('blog-ressources')}}">BLOG/RESSOURCES</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}" href="{{route('contact')}}">CONTACT</a>
+        </li>
+    </ul>
+    
+    <!-- User Space Button -->
+    <a href="#" class="user-space">
+        <i class="fas fa-user-circle"></i>
+        VOTRE ESPACE
+    </a>
+    </div>
         </div>
     </nav>
 

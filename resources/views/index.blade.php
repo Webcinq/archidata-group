@@ -24,7 +24,7 @@
                 </p>
                 
                 <div class="hero-buttons fade-in-up fade-in-up-delay-3">
-                    <a href="#solutions" class="btn-primary-hero">
+                    <a href="{{route('a-propos')}}" class="btn-primary-hero">
                         <i class="fas fa-rocket"></i>
                         EN SAVOIR PLUS
                     </a>
@@ -70,113 +70,262 @@
 
    
 
-<!-- Nos Solutions Section -->
- <section id="solutions" class="solutions-section py-5">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h1 class="">Nos Solutions</h2>
-                <p class="section-subtitle">8 expertises dédiées pour vos projets BIM</p>
+<!-- Section Solutions Corrigée - Remplacer votre section solutions existante -->
+<section id="solutions" class="solutions-section">
+    <div class="solutions-container">
+        <!-- En-tête de section -->
+        <div class="section-header">
+            <h1 class="section-title">Nos Solutions</h1>
+            <p class="section-subtitle">8 expertises dédiées pour vos projets BIM</p>
+        </div>
+        
+        <!-- Container de scroll horizontal -->
+        <div class="solutions-scroll-container">
+            <div class="solutions-scroll-wrapper" id="solutionsScroll">
+                <div class="solutions-grid">
+                    <!-- Service 1 -->
+                    <div class="solution-card" data-index="0">
+                        <div class="solution-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <div class="solution-content">
+                            <h5 class="solution-title">BIM & DATA Management</h5>
+                            <p class="solution-description">Pilotage global de la maquette numérique, coordination des équipes, gestion des livrables.</p>
+                            <a href="{{route('solutions.bim-data-management')}}" class="solution-link">
+                                En savoir plus
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Service 2 -->
+                    <div class="solution-card" data-index="1">
+                        <div class="solution-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="solution-content">
+                            <h5 class="solution-title">Le DOE BIM</h5>
+                            <p class="solution-description">Dossier d'Ouvrage Exécuté numérique pour une documentation complète et exploitable.</p>
+                            <a  href="{{route('solutions.doe-bim')}}" class="solution-link">
+                                En savoir plus
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Service 3 -->
+                    <div class="solution-card" data-index="2">
+                        <div class="solution-icon">
+                            <i class="fas fa-cube"></i>
+                        </div>
+                        <div class="solution-content">
+                            <h5 class="solution-title">SCAN & Modélisation BIM</h5>
+                            <p class="solution-description">Numérisation 3D précise et création de maquettes fidèles à la réalité existante.</p>
+                            <a  href="{{route('solutions.scan-modelisation')}}"class="solution-link">
+                                En savoir plus
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Service 4 -->
+                    <div class="solution-card" data-index="3">
+                        <div class="solution-icon">
+                            <i class="fas fa-city"></i>
+                        </div>
+                        <div class="solution-content">
+                            <h5 class="solution-title">Jumeaux Numériques</h5>
+                            <p class="solution-description">Solutions intelligentes pour l'exploitation et la maintenance prédictive des bâtiments.</p>
+                            <a  href="{{route('solutions.jumeaux-numeriques')}}"class="solution-link">
+                                En savoir plus
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Service 5 -->
+                    <div class="solution-card" data-index="4">
+                        <div class="solution-icon">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <div class="solution-content">
+                            <h5 class="solution-title">Synthèse BIM</h5>
+                            <p class="solution-description">Coordination technique 3D, détection de clashs, anticipation des conflits.</p>
+                            <a  href="{{route('solutions.synthese-bim')}}" class="solution-link">
+                                En savoir plus
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Service 6 -->
+                    <div class="solution-card" data-index="5">
+                        <div class="solution-icon">
+                            <i class="fas fa-map"></i>
+                        </div>
+                        <div class="solution-content">
+                            <h5 class="solution-title">CIM Management</h5>
+                            <p class="solution-description">Le BIM à l'échelle du territoire pour une ville plus intelligente et durable.</p>
+                            <a  href="{{route('solutions.cim-management')}}" class="solution-link">
+                                En savoir plus
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Service 7 -->
+                    <div class="solution-card" data-index="6">
+                        <div class="solution-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <div class="solution-content">
+                            <h5 class="solution-title">DATA Management</h5>
+                            <p class="solution-description">Votre patrimoine numérique valorisé, gouverné et pérenne.</p>
+                            <a  href="{{route('solutions.data-management')}}" class="solution-link">
+                                En savoir plus
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Service 8 -->
+                    <div class="solution-card" data-index="7">
+                        <div class="solution-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="solution-content">
+                            <h5 class="solution-title">Conseil & Accompagnement</h5>
+                            <p class="solution-description">Encadrer, former, auditer : un BIM durable passe par l'humain et les méthodes.</p>
+                            <a  href="{{route('solutions.conseil-accompagnement')}}"class="solution-link">
+                                En savoir plus
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
             
-            <div class="row g-4">
-                <!-- Service 1 -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="service-card h-100">
-                        <div class="service-icon">
-                            <i class="fas fa-cogs fa-2x"></i>
-                        </div>
-                        <h5 class="service-title">BIM & DATA Management</h5>
-                        <p class="service-description">Pilotage global de la maquette numérique, coordination des équipes, gestion des livrables.</p>
-                        <a href="#" class="service-link">En savoir plus</a>
-                    </div>
+            <!-- Indicateurs de scroll -->
+            <div class="scroll-indicators">
+                <div class="scroll-btn" id="scrollLeft">
+                    <i class="fas fa-chevron-left"></i>
                 </div>
-                
-                <!-- Service 2 -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="service-card h-100">
-                        <div class="service-icon">
-                            <i class="fas fa-file-alt fa-2x"></i>
-                        </div>
-                        <h5 class="service-title">Le DOE BIM</h5>
-                        <p class="service-description">Dossier d'Ouvrage Exécuté numérique pour une documentation complète et exploitable.</p>
-                        <a href="#" class="service-link">En savoir plus</a>
-                    </div>
-                </div>
-                
-                <!-- Service 3 -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="service-card h-100">
-                        <div class="service-icon">
-                            <i class="fas fa-cube fa-2x"></i>
-                        </div>
-                        <h5 class="service-title">SCAN & Modélisation BIM</h5>
-                        <p class="service-description">Numérisation 3D précise et création de maquettes fidèles à la réalité existante.</p>
-                        <a href="#" class="service-link">En savoir plus</a>
-                    </div>
-                </div>
-                
-                <!-- Service 4 -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="service-card h-100">
-                        <div class="service-icon">
-                            <i class="fas fa-city fa-2x"></i>
-                        </div>
-                        <h5 class="service-title">Jumeaux Numériques</h5>
-                        <p class="service-description">Solutions intelligentes pour l'exploitation et la maintenance prédictive des bâtiments.</p>
-                        <a href="#" class="service-link">En savoir plus</a>
-                    </div>
-                </div>
-                
-                <!-- Service 5 -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="service-card h-100">
-                        <div class="service-icon">
-                            <i class="fas fa-project-diagram fa-2x"></i>
-                        </div>
-                        <h5 class="service-title">Synthèse BIM</h5>
-                        <p class="service-description">Coordination technique 3D, détection de clashs, anticipation des conflits.</p>
-                        <a href="#" class="service-link">En savoir plus</a>
-                    </div>
-                </div>
-                
-                <!-- Service 6 -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="service-card h-100">
-                        <div class="service-icon">
-                            <i class="fas fa-map fa-2x"></i>
-                        </div>
-                        <h5 class="service-title">CIM Management</h5>
-                        <p class="service-description">Le BIM à l'échelle du territoire pour une ville plus intelligente et durable.</p>
-                        <a href="#" class="service-link">En savoir plus</a>
-                    </div>
-                </div>
-                
-                <!-- Service 7 -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="service-card h-100">
-                        <div class="service-icon">
-                            <i class="fas fa-database fa-2x"></i>
-                        </div>
-                        <h5 class="service-title">DATA Management</h5>
-                        <p class="service-description">Votre patrimoine numérique valorisé, gouverné et pérenne.</p>
-                        <a href="#" class="service-link">En savoir plus</a>
-                    </div>
-                </div>
-                
-                <!-- Service 8 -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="service-card h-100">
-                        <div class="service-icon">
-                            <i class="fas fa-graduation-cap fa-2x"></i>
-                        </div>
-                        <h5 class="service-title">Conseil & Accompagnement</h5>
-                        <p class="service-description">Encadrer, former, auditer : un BIM durable passe par l'humain et les méthodes.</p>
-                        <a href="#" class="service-link">En savoir plus</a>
-                    </div>
+                <div class="scroll-btn" id="scrollRight">
+                    <i class="fas fa-chevron-right"></i>
                 </div>
             </div>
+            
+            <!-- Barre de progression -->
+            <div class="scroll-progress">
+                <div class="scroll-progress-bar" id="progressBar"></div>
+            </div>
         </div>
-    </section>
+    </div>
+</section>
+
+<!-- Script d'initialisation directement dans la page (si le JS externe ne fonctionne pas) -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM loaded, initializing solutions...');
+    
+    // Fonction d'initialisation simplifiée
+    function initSolutions() {
+        const scrollWrapper = document.getElementById('solutionsScroll');
+        const scrollLeftBtn = document.getElementById('scrollLeft');
+        const scrollRightBtn = document.getElementById('scrollRight');
+        const progressBar = document.getElementById('progressBar');
+        const solutionCards = document.querySelectorAll('.solution-card');
+        
+        if (!scrollWrapper) {
+            console.error('Solutions scroll wrapper not found!');
+            return;
+        }
+        
+        console.log('Found elements:', {
+            scrollWrapper: !!scrollWrapper,
+            scrollLeftBtn: !!scrollLeftBtn,
+            scrollRightBtn: !!scrollRightBtn,
+            progressBar: !!progressBar,
+            cardsCount: solutionCards.length
+        });
+        
+        // Animation des cartes
+        solutionCards.forEach((card, index) => {
+            setTimeout(() => {
+                card.classList.add('animate-in');
+            }, index * 150);
+        });
+        
+        // Fonction de scroll
+        function smoothScroll(distance) {
+            scrollWrapper.scrollBy({
+                left: distance,
+                behavior: 'smooth'
+            });
+        }
+        
+        // Boutons de scroll
+        if (scrollLeftBtn) {
+            scrollLeftBtn.addEventListener('click', () => smoothScroll(-350));
+        }
+        
+        if (scrollRightBtn) {
+            scrollRightBtn.addEventListener('click', () => smoothScroll(350));
+        }
+        
+        // Barre de progression
+        function updateProgress() {
+            if (!progressBar) return;
+            const scrollLeft = scrollWrapper.scrollLeft;
+            const scrollWidth = scrollWrapper.scrollWidth - scrollWrapper.clientWidth;
+            const progress = scrollWidth > 0 ? (scrollLeft / scrollWidth) * 100 : 0;
+            progressBar.style.width = Math.max(0, Math.min(100, progress)) + '%';
+        }
+        
+        scrollWrapper.addEventListener('scroll', updateProgress);
+        updateProgress();
+        
+        // Drag & drop
+        let isScrolling = false;
+        let startX = 0;
+        let scrollLeft = 0;
+        
+        scrollWrapper.addEventListener('mousedown', (e) => {
+            isScrolling = true;
+            startX = e.pageX - scrollWrapper.offsetLeft;
+            scrollLeft = scrollWrapper.scrollLeft;
+            scrollWrapper.style.cursor = 'grabbing';
+            e.preventDefault();
+        });
+        
+        scrollWrapper.addEventListener('mouseleave', () => {
+            isScrolling = false;
+            scrollWrapper.style.cursor = 'grab';
+        });
+        
+        scrollWrapper.addEventListener('mouseup', () => {
+            isScrolling = false;
+            scrollWrapper.style.cursor = 'grab';
+        });
+        
+        scrollWrapper.addEventListener('mousemove', (e) => {
+            if (!isScrolling) return;
+            e.preventDefault();
+            const x = e.pageX - scrollWrapper.offsetLeft;
+            const walk = (x - startX) * 1.5;
+            scrollWrapper.scrollLeft = scrollLeft - walk;
+        });
+        
+        console.log('Solutions initialized successfully!');
+    }
+    
+    // Initialiser immédiatement
+    initSolutions();
+    
+    // Réessayer après un court délai si nécessaire
+    setTimeout(initSolutions, 500);
+});
+</script>
 
 <!-- Triangle Section (conservée de votre design original) -->
 <div class="container-xxl py-5">
