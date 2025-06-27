@@ -429,3 +429,5 @@ if (typeof $ !== 'undefined') {
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = { initSolutionsScroll };
 }
+
+

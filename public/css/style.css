@@ -67,11 +67,6 @@ body {
     padding: 0 40px;
 }
 
-.logo-section img {
-    height: 90px;
-    width: auto;
-    transition: var(--transition);
-}
 
 .navbar-toggler {
     border: none;
@@ -371,7 +366,7 @@ body {
    =============================== */
 .stats-bar {
     position: absolute;
-    bottom: 150px;
+    bottom: 4%;
     left: 0;
     right: 0;
     background: rgba(8, 20, 32, 0.9);
@@ -1356,9 +1351,7 @@ body {
         font-size: 1.5rem;
     }
     
-    .stats-bar {
-        bottom: 140px;
-    }
+ 
 }
 
 @media (max-width: 768px) {
@@ -1417,10 +1410,7 @@ body {
         margin-right: 60px;
     }
     
-    .stats-bar {
-        bottom: 120px;
-        padding: 15px 0;
-    }
+ 
 }
 
 @media (max-width: 576px) {
@@ -1472,10 +1462,7 @@ body {
         margin-right: 50px;
     }
     
-    .stats-bar {
-        bottom: 100px;
-        padding: 12px 0;
-    }
+
     
     .dropdown-menu {
         min-width: 250px;
@@ -1506,9 +1493,351 @@ body {
 }
 
 
-@media screen and (max-width: 1200px) {
-.logo-section img{
-    display: none;
+
+
+/* ===============================
+   CORRECTION DU LOGO NAVBAR
+   =============================== */
+
+/* Logo responsive avec hauteur adaptative */
+.logo-section img {
+    height: clamp(60px, 8vw, 90px); /* Hauteur responsive entre 60px et 90px */
+    width: auto;
+    transition: var(--transition);
+    max-width: 200px; /* Limite la largeur maximale */
+    object-fit: contain; /* Maintient les proportions */
 }
+
+/* Navbar avec padding adaptatif pour éviter les chevauchements */
+.top-navbar {
+    background: transparent;
+    backdrop-filter: none;
+    transition: var(--transition);
+    padding: clamp(10px, 2vh, 15px) 0; /* Padding adaptatif */
+    z-index: 9999;
+    min-height: 80px; /* Hauteur minimale garantie */
+}
+
+/* Container navbar avec espacement adaptatif */
+.navbar-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 4vw, 40px); /* Padding responsive */
+    display: flex;
+    align-items: center;
+    min-height: inherit;
+}
+
+/* Hero section avec margin-top adaptatif pour compenser la navbar */
+.hero-section {
+    height: 100vh;
+    position: relative;
+    background-image: url('/img/hero_section.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    margin-top: 0; /* Enlever le margin par défaut */
+    padding-top: clamp(80px, 12vh, 120px); /* Padding pour compenser la navbar */
+}
+
+/* Contenu hero avec espacement adaptatif */
+.hero-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 4vw, 40px);
+    position: relative;
+    z-index: 10;
+    width: 100%;
+}
+
+/* ===============================
+   RESPONSIVE BREAKPOINTS DÉTAILLÉS
+   =============================== */
+
+/* Large screens (1400px+) */
+@media (min-width: 1400px) {
+    .logo-section img {
+        height: 90px;
+    }
     
+    .top-navbar {
+        padding: 15px 0;
+    }
+    
+    .hero-section {
+        padding-top: 120px;
+    }
 }
+
+/* Desktop (1200px - 1399px) */
+@media (max-width: 1399px) and (min-width: 1200px) {
+    .logo-section img {
+        height: 80px;
+    }
+    
+    .top-navbar {
+        padding: 12px 0;
+    }
+    
+    .hero-section {
+        padding-top: 110px;
+    }
+}
+
+/* Tablet landscape (992px - 1199px) */
+@media (max-width: 1199px) and (min-width: 992px) {
+    .logo-section img {
+        height: 75px;
+    }
+    
+    .top-navbar {
+        padding: 10px 0;
+    }
+    
+    .hero-section {
+        padding-top: 100px;
+    }
+    
+    .navbar-container {
+        padding: 0 30px;
+    }
+}
+
+/* Tablet portrait (768px - 991px) */
+@media (max-width: 991px) and (min-width: 768px) {
+    .logo-section img {
+        height: 70px;
+    }
+    
+    .top-navbar {
+        padding: 8px 0;
+    }
+    
+    .hero-section {
+        padding-top: 90px;
+    }
+    
+    .navbar-container {
+        padding: 0 25px;
+    }
+}
+
+/* Mobile large (576px - 767px) */
+@media (max-width: 767px) and (min-width: 576px) {
+    .logo-section img {
+        height: 65px;
+    }
+    
+    .top-navbar {
+        padding: 8px 0;
+    }
+    
+    .hero-section {
+        padding-top: 85px;
+    }
+    
+    .navbar-container {
+        padding: 0 20px;
+    }
+}
+
+/* Mobile small (moins de 576px) */
+@media (max-width: 575px) {
+    .logo-section img {
+        height: 60px;
+    }
+    
+    .top-navbar {
+        padding: 6px 0;
+    }
+    
+    .hero-section {
+        padding-top: 80px;
+    }
+    
+    .navbar-container {
+        padding: 0 15px;
+    }
+}
+
+/* ===============================
+   GESTION DU ZOOM (150%, 200%, etc.)
+   =============================== */
+
+/* Zoom 125% */
+@media (resolution: 120dpi) and (max-resolution: 144dpi) {
+    .logo-section img {
+        height: clamp(55px, 7vw, 75px);
+    }
+    
+    .hero-section {
+        padding-top: clamp(85px, 15vh, 110px);
+    }
+}
+
+/* Zoom 150% */
+@media (resolution: 144dpi) and (max-resolution: 192dpi) {
+    .logo-section img {
+        height: clamp(50px, 6vw, 70px);
+    }
+    
+    .hero-section {
+        padding-top: clamp(80px, 18vh, 105px);
+    }
+    
+    .top-navbar {
+        padding: clamp(6px, 1.5vh, 10px) 0;
+    }
+}
+
+/* Zoom 200% et plus */
+@media (resolution: 192dpi) {
+    .logo-section img {
+        height: clamp(45px, 5vw, 65px);
+    }
+    
+    .hero-section {
+        padding-top: clamp(75px, 20vh, 100px);
+    }
+    
+    .top-navbar {
+        padding: clamp(5px, 1vh, 8px) 0;
+    }
+}
+
+/* ===============================
+   CORRECTIONS SPÉCIALES POUR LE HERO
+   =============================== */
+
+/* Titre hero adaptatif pour éviter les débordements */
+.hero-title {
+    font-size: clamp(2rem, 6vw, 4rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 25px;
+    color: var(--text-white);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    letter-spacing: -1px;
+}
+
+/* Sous-titre hero adaptatif */
+.hero-subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    font-weight: 400;
+    color: var(--text-light);
+    margin-bottom: 30px;
+    line-height: 1.4;
+    font-style: italic;
+}
+
+/* Description hero adaptative */
+.hero-description {
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    color: var(--text-light);
+    margin-bottom: 40px;
+    line-height: 1.6;
+    max-width: 600px;
+}
+
+/* ===============================
+   NAVBAR SCROLLÉE AMÉLIORÉE
+   =============================== */
+.top-navbar.scrolled {
+    background: rgba(8, 20, 32, 0.95);
+    backdrop-filter: blur(20px);
+    box-shadow: var(--shadow-medium);
+    border-bottom: 1px solid var(--glass-border);
+    padding: clamp(5px, 1vh, 10px) 0; /* Padding réduit quand scrollé */
+}
+
+.top-navbar.scrolled .logo-section img {
+    height: clamp(50px, 6vw, 70px); /* Logo plus petit quand scrollé */
+}
+
+/* ===============================
+   FIXES ADDITIONNELS
+   =============================== */
+
+/* S'assurer que le logo ne déborde jamais */
+.logo-section {
+    display: flex;
+    align-items: center;
+    max-width: 25%; /* Limite la largeur du logo */
+    overflow: hidden;
+}
+
+/* Menu navigation avec espacement adaptatif */
+.nav-menu {
+    gap: clamp(15px, 3vw, 30px);
+    margin: 0 auto;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Bouton user space adaptatif */
+.user-space {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 25px;
+    padding: clamp(6px, 1vh, 8px) clamp(15px, 2vw, 20px);
+    color: var(--text-white);
+    text-decoration: none;
+    font-size: clamp(10px, 1.5vw, 12px);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    backdrop-filter: blur(10px);
+    white-space: nowrap;
+}
+
+/* ===============================
+   CORRECTION NAVBAR MOBILE
+   =============================== */
+@media (max-width: 991px) {
+    .navbar-collapse {
+        background: rgba(8, 20, 32, 0.95);
+        backdrop-filter: blur(20px);
+        border-radius: var(--border-radius);
+        margin-top: 15px;
+        padding: 20px;
+        border: 1px solid var(--glass-border);
+        position: relative;
+        z-index: 9998;
+    }
+    
+    .nav-menu {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+    
+    .user-space {
+        margin-top: 20px;
+        justify-content: center;
+        align-self: center;
+    }
+}
+
+/* ===============================
+   STYLES POUR DEBUG (À SUPPRIMER EN PRODUCTION)
+   =============================== */
+/*
+.top-navbar {
+    border: 2px solid red; // Pour voir les limites de la navbar
+}
+
+.logo-section {
+    border: 2px solid blue; // Pour voir les limites du logo
+}
+
+.hero-content {
+    border: 2px solid green; // Pour voir les limites du contenu hero
+}
+*/
