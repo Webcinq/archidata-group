@@ -366,7 +366,7 @@ body {
    =============================== */
 .stats-bar {
     position: absolute;
-    bottom: 4%;
+    bottom: 3%;
     left: 0;
     right: 0;
     background: rgba(8, 20, 32, 0.9);
