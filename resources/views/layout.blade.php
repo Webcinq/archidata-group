@@ -26,6 +26,7 @@
   <link href="{{asset('css/style.css')}}" rel="stylesheet">
 <link href="{{asset('css/triangle.css')}}" rel="stylesheet">
 
+
 </head>
 
 <body>
@@ -162,6 +163,9 @@
     <!-- JavaScript -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{{ asset('js/main.js') }}"></script>
+<script src="{{ asset('js/hero.js') }}"></script>
+
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {

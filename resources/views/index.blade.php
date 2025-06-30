@@ -2,71 +2,96 @@
 @section('content')
 
 <!-- Hero Section exact comme l'image - FULL SCREEN -->
-    <section class="hero-section" id="accueil">
-        <!-- Particles -->
-        <div class="particles">
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-        </div>
+  <!-- Hero Section avec slider de contenu - REMPLACE l'ancienne section hero -->
+<section class="hero-section" id="accueil">
+    <!-- Particles -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
 
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1 class="hero-title fade-in-up">
-                    CONSTRUISEZ L'AVENIR AVEC PRÉCISION
-                </h1>
-                <p class="hero-subtitle fade-in-up fade-in-up-delay-1">
-                    Solutions intelligentes pour la construction moderne
-                </p>
-                <p class="hero-description fade-in-up fade-in-up-delay-2">
-                    ArchiData Africa révolutionne l'industrie de la construction grâce à des solutions BIM innovantes et une expertise reconnue en data management.
-                </p>
+    <div class="hero-content">
+        <div class="hero-text">
+            <!-- Container du slider de contenu -->
+            <div class="hero-content-slider">
                 
-                <div class="hero-buttons fade-in-up fade-in-up-delay-3">
-                    <a href="{{route('a-propos')}}" class="btn-primary-hero">
-                        <i class="fas fa-rocket"></i>
-                        EN SAVOIR PLUS
-                    </a>
-                    <a href="#contact" class="btn-secondary-hero">
-                        OBTENIR UN DEVIS
-                        <i class="fas fa-play"></i>
-                                                <i class="fas fa-play"></i>
-
-                    </a>
+                <!-- Contenu 1 - BIM & Construction -->
+                <div class="hero-content-item active">
+                    <h1 class="hero-title">CONSTRUISEZ L'AVENIR AVEC PRÉCISION</h1>
+                    <p class="hero-subtitle">Solutions intelligentes pour la construction moderne</p>
+                    <p class="hero-description">
+                        ArchiData Africa révolutionne l'industrie de la construction grâce à des solutions BIM innovantes et une expertise reconnue en data management.
+                    </p>
                 </div>
+
+                <!-- Contenu 2 - Jumeaux Numériques -->
+                <div class="hero-content-item">
+                    <h1 class="hero-title">CRÉEZ DES JUMEAUX NUMÉRIQUES INTELLIGENTS</h1>
+                    <p class="hero-subtitle">Technologie avancée pour l'optimisation des bâtiments</p>
+                    <p class="hero-description">
+                        Transformez vos infrastructures en écosystèmes connectés. Optimisez la gestion, anticipez la maintenance et maximisez les performances énergétiques.
+                    </p>
+                </div>
+
+                <!-- Contenu 3 - Formation & Expertise -->
+                <div class="hero-content-item">
+                    <h1 class="hero-title">MAÎTRISEZ LE BIM DE DEMAIN</h1>
+                    <p class="hero-subtitle">Formation et accompagnement personnalisés</p>
+                    <p class="hero-description">
+                        Développez les compétences de vos équipes avec nos programmes de formation. De la sensibilisation aux techniques avancées, nous vous accompagnons vers l'excellence.
+                    </p>
+                </div>
+
+            </div>
+            
+            <!-- Boutons fixes (ne changent jamais) -->
+            <div class="hero-buttons fade-in-up fade-in-up-delay-3">
+                <a href="{{route('a-propos')}}" class="btn-primary-hero">
+                    EN SAVOIR PLUS
+                </a>
+                <a href="#contact" class="btn-secondary-hero">
+                    OBTENIR UN DEVIS
+                    <i class="fas fa-play"></i>
+                </a>
             </div>
         </div>
+    </div>
 
-        <!-- Stats Bar -->
-        <div class="stats-bar">
-            <div class="stats-scroll">
-                <div class="stat-item">
-                    <span class="stat-number">500+</span>
-                    <span class="stat-text">Projets réalisés</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">15</span>
-                    <span class="stat-text">Années d'expérience</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">200+</span>
-                    <span class="stat-text">Clients satisfaits</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">50+</span>
-                    <span class="stat-text">Formations dispensées</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">95%</span>
-                    <span class="stat-text">Taux de satisfaction</span>
-                </div>
+    <!-- Indicateurs de contenu -->
+    <div class="content-indicators">
+        <div class="content-dot active" data-content="0"></div>
+        <div class="content-dot" data-content="1"></div>
+        <div class="content-dot" data-content="2"></div>
+    </div>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+        <div class="stats-scroll">
+            <div class="stat-item">
+                <span class="stat-number">500+</span>
+                <span class="stat-text">Projets réalisés</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">15</span>
+                <span class="stat-text">Années d'expérience</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">200+</span>
+                <span class="stat-text">Clients satisfaits</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">50+</span>
+                <span class="stat-text">Formations dispensées</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">95%</span>
+                <span class="stat-text">Taux de satisfaction</span>
             </div>
         </div>
-
- 
-          
-    </section>
+    </div>
+</section>
 
    
 
@@ -223,109 +248,8 @@
     </div>
 </section>
 
-<!-- Script d'initialisation directement dans la page (si le JS externe ne fonctionne pas) -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM loaded, initializing solutions...');
-    
-    // Fonction d'initialisation simplifiée
-    function initSolutions() {
-        const scrollWrapper = document.getElementById('solutionsScroll');
-        const scrollLeftBtn = document.getElementById('scrollLeft');
-        const scrollRightBtn = document.getElementById('scrollRight');
-        const progressBar = document.getElementById('progressBar');
-        const solutionCards = document.querySelectorAll('.solution-card');
-        
-        if (!scrollWrapper) {
-            console.error('Solutions scroll wrapper not found!');
-            return;
-        }
-        
-        console.log('Found elements:', {
-            scrollWrapper: !!scrollWrapper,
-            scrollLeftBtn: !!scrollLeftBtn,
-            scrollRightBtn: !!scrollRightBtn,
-            progressBar: !!progressBar,
-            cardsCount: solutionCards.length
-        });
-        
-        // Animation des cartes
-        solutionCards.forEach((card, index) => {
-            setTimeout(() => {
-                card.classList.add('animate-in');
-            }, index * 150);
-        });
-        
-        // Fonction de scroll
-        function smoothScroll(distance) {
-            scrollWrapper.scrollBy({
-                left: distance,
-                behavior: 'smooth'
-            });
-        }
-        
-        // Boutons de scroll
-        if (scrollLeftBtn) {
-            scrollLeftBtn.addEventListener('click', () => smoothScroll(-350));
-        }
-        
-        if (scrollRightBtn) {
-            scrollRightBtn.addEventListener('click', () => smoothScroll(350));
-        }
-        
-        // Barre de progression
-        function updateProgress() {
-            if (!progressBar) return;
-            const scrollLeft = scrollWrapper.scrollLeft;
-            const scrollWidth = scrollWrapper.scrollWidth - scrollWrapper.clientWidth;
-            const progress = scrollWidth > 0 ? (scrollLeft / scrollWidth) * 100 : 0;
-            progressBar.style.width = Math.max(0, Math.min(100, progress)) + '%';
-        }
-        
-        scrollWrapper.addEventListener('scroll', updateProgress);
-        updateProgress();
-        
-        // Drag & drop
-        let isScrolling = false;
-        let startX = 0;
-        let scrollLeft = 0;
-        
-        scrollWrapper.addEventListener('mousedown', (e) => {
-            isScrolling = true;
-            startX = e.pageX - scrollWrapper.offsetLeft;
-            scrollLeft = scrollWrapper.scrollLeft;
-            scrollWrapper.style.cursor = 'grabbing';
-            e.preventDefault();
-        });
-        
-        scrollWrapper.addEventListener('mouseleave', () => {
-            isScrolling = false;
-            scrollWrapper.style.cursor = 'grab';
-        });
-        
-        scrollWrapper.addEventListener('mouseup', () => {
-            isScrolling = false;
-            scrollWrapper.style.cursor = 'grab';
-        });
-        
-        scrollWrapper.addEventListener('mousemove', (e) => {
-            if (!isScrolling) return;
-            e.preventDefault();
-            const x = e.pageX - scrollWrapper.offsetLeft;
-            const walk = (x - startX) * 1.5;
-            scrollWrapper.scrollLeft = scrollLeft - walk;
-        });
-        
-        console.log('Solutions initialized successfully!');
-    }
-    
-    // Initialiser immédiatement
-    initSolutions();
-    
-    // Réessayer après un court délai si nécessaire
-    setTimeout(initSolutions, 500);
-});
-</script>
+
+
 
 <!-- Triangle Section (conservée de votre design original) -->
 <div class="container-xxl py-5">
@@ -542,6 +466,134 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Observer les cartes de service
     const serviceCards = document.querySelectorAll('.service-card');
+    serviceCards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = `all 0.6s ease ${index * 0.1}s`;
+        observer.observe(card);
+        
+        // Effet hover
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-10px)';
+            this.style.boxShadow = '0 15px 35px rgba(0, 0, 0, 0.1)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+            this.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
+        });
+    });
+    
+    // Animation du triangle (conservée)
+    const triangleWrapper = document.querySelector('.triangle-wrapper');
+    const triangleSections = document.querySelectorAll('.triangle-section');
+    
+    if (triangleWrapper) {
+        triangleWrapper.addEventListener('mousemove', (e) => {
+            const rect = triangleWrapper.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateX = (y - centerY) / 10;
+            const rotateY = (x - centerX) / 10;
+            
+            triangleWrapper.style.transform = `perspective(1000px) rotateX(${-rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+        
+        triangleWrapper.addEventListener('mouseleave', () => {
+            triangleWrapper.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+            triangleWrapper.style.transition = 'transform 0.5s ease';
+        });
+        
+        triangleWrapper.addEventListener('mouseenter', () => {
+            triangleWrapper.style.transition = 'none';
+        });
+    }
+    
+    triangleSections.forEach(section => {
+        section.addEventListener('click', function() {
+            this.style.transform = 'scale(0.98)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 200);
+            
+            const pageURL = this.getAttribute('data-page');
+            if (pageURL) {
+                setTimeout(() => {
+                    window.location.href = pageURL;
+                }, 300);
+            }
+        });
+    });
+    
+    // Smooth scroll pour les liens ancres
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            
+            if (target) {
+                const headerOffset = 100;
+                const elementPosition = target.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+});
+
+// Arrêter le spinner au chargement de la page
+window.addEventListener('load', function() {
+    const spinner = document.getElementById('spinner');
+    if (spinner) {
+        spinner.classList.remove('show');
+        setTimeout(() => {
+            spinner.style.display = 'none';
+        }, 100);
+    }
+});
+</script>
+<!-- JavaScript pour les animations - VERSION CORRIGÉE -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // CORRECTION DU SPINNER - l'arrêter immédiatement
+    const spinner = document.getElementById('spinner');
+    if (spinner) {
+        spinner.classList.remove('show');
+        setTimeout(() => {
+            spinner.style.display = 'none';
+        }, 500);
+    }
+    
+    // Animation des éléments au scroll (SEULEMENT pour les sections non-hero)
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            // Ignorer la section hero pour éviter les conflits
+            if (entry.target.closest('.hero-section')) {
+                return;
+            }
+            
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+    
+    // Observer les cartes de service (mais pas la section hero)
+    const serviceCards = document.querySelectorAll('.solution-card');
     serviceCards.forEach((card, index) => {
         card.style.opacity = '0';
         card.style.transform = 'translateY(30px)';
