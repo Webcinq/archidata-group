@@ -1,283 +1,206 @@
-/* ===============================
-   HERO CONTENT SLIDER - VERSION CORRIGÉE
-   =============================== */
-
-(function() {
-    'use strict';
+// Hero Content Slider - SOLUTION DÉFINITIVE
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🚀 Hero Slider Starting...');
     
-    // Éviter les conflits avec d'autres scripts
-    let heroSliderInitialized = false;
-    
-    // Configuration du slider
-    const HERO_CONFIG = {
-        autoChangeInterval: 5000, // 5 secondes entre les changements
-        transitionDuration: 800,   // Durée de la transition
-        restartDelay: 3000,        // Délai avant redémarrage après interaction
-        animationDelays: {
-            title: 100,
-            subtitle: 400,
-            description: 700
-        }
-    };
-
-    // Fonction principale d'initialisation
-    function initHeroContentSlider() {
-        // Éviter la double initialisation
-        if (heroSliderInitialized) {
-            console.log('Hero slider already initialized');
-            return;
-        }
-
-        // Vérifier que les éléments existent
-        const contentItems = document.querySelectorAll('.hero-content-item');
-        const contentDots = document.querySelectorAll('.content-dot');
+    // Attendre que tout soit chargé
+    setTimeout(function() {
         
-        if (!contentItems.length || !contentDots.length) {
-            console.log('Hero content slider elements not found');
+        // Éléments du slider
+        const slides = document.querySelectorAll('.hero-content-item');
+        const dots = document.querySelectorAll('.content-dot');
+        
+        // Vérification de l'existence des éléments
+        if (slides.length === 0 || dots.length === 0) {
+            console.error('❌ Éléments du slider non trouvés');
+            console.log('Slides trouvés:', slides.length);
+            console.log('Dots trouvés:', dots.length);
             return;
         }
-
-        heroSliderInitialized = true;
-        console.log('Initializing Hero Content Slider with', contentItems.length, 'items');
-
-        // Variables du slider
-        let currentContent = 0;
-        let contentInterval = null;
-        let isTransitioning = false;
-
-        // Fonction pour changer le contenu
-        function changeContent(newIndex) {
-            if (isTransitioning || newIndex === currentContent) {
-                return;
-            }
-
-            isTransitioning = true;
-            console.log('Changing content from', currentContent, 'to', newIndex);
-
-            // Désactiver le contenu actuel
-            const currentItem = contentItems[currentContent];
-            const currentDot = contentDots[currentContent];
-            
-            currentItem.classList.remove('active');
-            currentItem.classList.add('exit-left');
-            currentDot.classList.remove('active');
-
-            // Activer le nouveau contenu après délai
-            setTimeout(() => {
-                // Nettoyer l'ancien contenu
-                currentItem.classList.remove('exit-left');
-                
-                // Mettre à jour l'index
-                currentContent = newIndex;
-                
-                // Activer le nouveau contenu
-                const newItem = contentItems[currentContent];
-                const newDot = contentDots[currentContent];
-                
-                newItem.classList.add('active');
-                newDot.classList.add('active');
-
-                // Réanimer les éléments
-                animateContentElements();
-                
-                // Libérer le verrou de transition
-                setTimeout(() => {
-                    isTransitioning = false;
-                }, 200);
-                
-            }, HERO_CONFIG.transitionDuration / 2);
-        }
-
-        // Animation des éléments du contenu
-        function animateContentElements() {
-            const currentItem = contentItems[currentContent];
-            const title = currentItem.querySelector('.hero-title');
-            const subtitle = currentItem.querySelector('.hero-subtitle');
-            const description = currentItem.querySelector('.hero-description');
-
-            // Réinitialiser toutes les animations
-            [title, subtitle, description].forEach(el => {
-                if (el) {
-                    el.style.animation = 'none';
-                    el.style.opacity = '0';
-                    el.style.transform = 'translateY(20px)';
-                }
+        
+        console.log(`✅ Slider initialisé: ${slides.length} slides, ${dots.length} dots`);
+        
+        let currentSlide = 0;
+        let autoSlideTimer = null;
+        const slideInterval = 15000; // 15 secondes
+        
+        // Fonction pour réinitialiser tous les slides
+        function resetAllSlides() {
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active');
+                slide.style.opacity = '0';
+                slide.style.visibility = 'hidden';
+                slide.style.transform = 'translateX(50px)';
+                slide.style.zIndex = '1';
+                console.log(`Reset slide ${index}`);
             });
-
-            // Forcer le reflow
-            if (title) title.offsetHeight;
-
-            // Redémarrer les animations avec des délais échelonnés
-            setTimeout(() => {
-                if (title) {
-                    title.style.animation = 'slideInTitle 1s ease forwards';
-                }
-            }, HERO_CONFIG.animationDelays.title);
-
-            setTimeout(() => {
-                if (subtitle) {
-                    subtitle.style.animation = 'slideInSubtitle 1s ease forwards';
-                }
-            }, HERO_CONFIG.animationDelays.subtitle);
-
-            setTimeout(() => {
-                if (description) {
-                    description.style.animation = 'slideInDescription 1s ease forwards';
-                }
-            }, HERO_CONFIG.animationDelays.description);
-        }
-
-        // Gestion de l'auto-rotation
-        function startAutoRotation() {
-            if (contentInterval) {
-                clearInterval(contentInterval);
-            }
             
-            contentInterval = setInterval(() => {
-                if (!isTransitioning) {
-                    const nextIndex = (currentContent + 1) % contentItems.length;
-                    changeContent(nextIndex);
-                }
-            }, HERO_CONFIG.autoChangeInterval);
-            
-            console.log('Auto rotation started');
+            dots.forEach((dot, index) => {
+                dot.classList.remove('active');
+                console.log(`Reset dot ${index}`);
+            });
         }
-
-        function stopAutoRotation() {
-            if (contentInterval) {
-                clearInterval(contentInterval);
-                contentInterval = null;
-                console.log('Auto rotation stopped');
+        
+        // Fonction pour activer un slide spécifique
+        function activateSlide(index) {
+            if (index < 0 || index >= slides.length) return;
+            
+            console.log(`🎯 Activation du slide ${index}`);
+            
+            const targetSlide = slides[index];
+            const targetDot = dots[index];
+            
+            // Activer le slide
+            targetSlide.classList.add('active');
+            targetSlide.style.opacity = '1';
+            targetSlide.style.visibility = 'visible';
+            targetSlide.style.transform = 'translateX(0)';
+            targetSlide.style.zIndex = '5';
+            
+            // Activer le dot
+            targetDot.classList.add('active');
+            
+            // Mettre à jour l'index actuel
+            currentSlide = index;
+            
+            console.log(`✅ Slide ${index} activé`);
+        }
+        
+        // Fonction principale pour changer de slide
+        function changeSlide(targetIndex) {
+            if (targetIndex === currentSlide) return;
+            
+            console.log(`🔄 Changement: ${currentSlide} → ${targetIndex}`);
+            
+            // Réinitialiser tous les slides
+            resetAllSlides();
+            
+            // Petite pause pour s'assurer que le reset est appliqué
+            setTimeout(() => {
+                activateSlide(targetIndex);
+            }, 50);
+        }
+        
+        // Auto-slide
+        function startAutoSlide() {
+            if (autoSlideTimer) clearInterval(autoSlideTimer);
+            
+            autoSlideTimer = setInterval(() => {
+                const nextSlide = (currentSlide + 1) % slides.length;
+                console.log(`⏰ Auto-changement vers slide ${nextSlide}`);
+                changeSlide(nextSlide);
+            }, slideInterval);
+            
+            console.log('▶️ Auto-slide démarré');
+        }
+        
+        function stopAutoSlide() {
+            if (autoSlideTimer) {
+                clearInterval(autoSlideTimer);
+                autoSlideTimer = null;
+                console.log('⏹️ Auto-slide arrêté');
             }
         }
-
-        function restartAutoRotation() {
-            stopAutoRotation();
-            setTimeout(() => {
-                if (heroSliderInitialized) {
-                    startAutoRotation();
-                }
-            }, HERO_CONFIG.restartDelay);
-        }
-
-        // Navigation par les points indicateurs
-        contentDots.forEach((dot, index) => {
-            dot.addEventListener('click', (e) => {
-                e.preventDefault();
-                console.log('Content dot clicked:', index);
-                changeContent(index);
-                restartAutoRotation();
+        
+        // Event listeners pour les dots
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', function() {
+                console.log(`🖱️ Clic sur dot ${index}`);
+                changeSlide(index);
+                
+                // Arrêter l'auto-slide et le redémarrer après 3 secondes
+                stopAutoSlide();
+                setTimeout(startAutoSlide, 3000);
             });
         });
-
-        // Gestion du survol de la section hero
+        
+        // Gestion des événements de survol pour pause/resume
         const heroSection = document.querySelector('.hero-section');
+        
         if (heroSection) {
-            let hoverTimeout;
-            
-            heroSection.addEventListener('mouseenter', () => {
-                clearTimeout(hoverTimeout);
-                stopAutoRotation();
+            heroSection.addEventListener('mouseenter', function() {
+                stopAutoSlide();
+                console.log('🖱️ Survol détecté - pause');
             });
             
-            heroSection.addEventListener('mouseleave', () => {
-                hoverTimeout = setTimeout(() => {
-                    if (heroSliderInitialized) {
-                        startAutoRotation();
-                    }
-                }, 1000);
+            heroSection.addEventListener('mouseleave', function() {
+                setTimeout(startAutoSlide, 1000);
+                console.log('🖱️ Fin survol - reprise dans 1s');
             });
         }
-
-        // Gestion de la visibilité de la page
-        function handleVisibilityChange() {
-            if (document.hidden) {
-                stopAutoRotation();
-            } else {
-                setTimeout(() => {
-                    if (heroSliderInitialized) {
-                        startAutoRotation();
-                    }
-                }, 1000);
-            }
-        }
-
-        document.addEventListener('visibilitychange', handleVisibilityChange);
-
-        // Support clavier
-        function handleKeydown(e) {
-            if (!heroSection || !heroSection.matches(':hover')) return;
+        
+        // Gestion des événements tactiles pour mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        heroSection.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+            stopAutoSlide();
+        });
+        
+        heroSection.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+            setTimeout(startAutoSlide, 2000);
+        });
+        
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
             
-            if (e.key === 'ArrowLeft') {
-                e.preventDefault();
-                const prevIndex = (currentContent - 1 + contentItems.length) % contentItems.length;
-                changeContent(prevIndex);
-                restartAutoRotation();
-            } else if (e.key === 'ArrowRight') {
-                e.preventDefault();
-                const nextIndex = (currentContent + 1) % contentItems.length;
-                changeContent(nextIndex);
-                restartAutoRotation();
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    // Swipe gauche - slide suivant
+                    const nextSlide = (currentSlide + 1) % slides.length;
+                    changeSlide(nextSlide);
+                } else {
+                    // Swipe droite - slide précédent
+                    const prevSlide = currentSlide === 0 ? slides.length - 1 : currentSlide - 1;
+                    changeSlide(prevSlide);
+                }
             }
         }
-
-        document.addEventListener('keydown', handleKeydown);
-
-        // Nettoyage lors du déchargement
-        function cleanup() {
-            heroSliderInitialized = false;
-            stopAutoRotation();
-            document.removeEventListener('visibilitychange', handleVisibilityChange);
-            document.removeEventListener('keydown', handleKeydown);
-        }
-
-        window.addEventListener('beforeunload', cleanup);
-
-        // Animation initiale
+        
+        // INITIALISATION FORCÉE
+        console.log('🎬 Initialisation du slider...');
+        
+        // 1. Reset complet
+        resetAllSlides();
+        
+        // 2. Attendre un peu puis activer le premier slide
         setTimeout(() => {
-            animateContentElements();
-        }, 500);
-
-        // Démarrer l'auto-rotation après un délai
-        setTimeout(() => {
-            if (heroSliderInitialized) {
-                startAutoRotation();
-            }
-        }, HERO_CONFIG.restartDelay);
-
-        console.log('Hero Content Slider initialized successfully');
-    }
-
-    // Fonction utilitaire pour s'assurer que le DOM est prêt
-    function domReady(callback) {
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', callback);
-        } else {
-            callback();
+            activateSlide(0);
+            
+            // 3. Démarrer l'auto-slide après 3 secondes
+            setTimeout(startAutoSlide, 3000);
+            
+            console.log('🎉 Hero Slider prêt !');
+        }, 200);
+        
+    }, 500); // Délai initial de 500ms
+    
+    // Fonction pour arrêter le spinner s'il existe
+    function stopSpinner() {
+        const spinner = document.getElementById('spinner');
+        if (spinner) {
+            spinner.classList.remove('show');
+            setTimeout(() => {
+                spinner.style.display = 'none';
+            }, 300);
         }
     }
+    
+    // Arrêter le spinner
+    stopSpinner();
+    
+});
 
-    // Fonction utilitaire pour attendre que tous les scripts soient chargés
-    function waitForScriptsAndInit() {
-        // Attendre un petit délai pour s'assurer que tous les autres scripts sont chargés
+// S'assurer que le spinner s'arrête au chargement complet de la page
+window.addEventListener('load', function() {
+    const spinner = document.getElementById('spinner');
+    if (spinner) {
+        spinner.classList.remove('show');
         setTimeout(() => {
-            initHeroContentSlider();
+            spinner.style.display = 'none';
         }, 100);
     }
-
-    // Initialisation avec gestion des conflits
-    domReady(waitForScriptsAndInit);
-
-    // Réinitialisation si appelée depuis l'extérieur
-    window.initHeroSlider = function() {
-        if (!heroSliderInitialized) {
-            initHeroContentSlider();
-        }
-    };
-
-    // Export pour les modules (si nécessaire)
-    if (typeof module !== 'undefined' && module.exports) {
-        module.exports = { initHeroContentSlider };
-    }
-
-})();
+});

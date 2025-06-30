@@ -1,8 +1,7 @@
 @extends('layout')
 @section('content')
 
-<!-- Hero Section exact comme l'image - FULL SCREEN -->
-  <!-- Hero Section avec slider de contenu - REMPLACE l'ancienne section hero -->
+<!-- Hero Section avec slider de contenu - VERSION CORRIGÉE -->
 <section class="hero-section" id="accueil">
     <!-- Particles -->
     <div class="particles">
@@ -18,7 +17,7 @@
             <div class="hero-content-slider">
                 
                 <!-- Contenu 1 - BIM & Construction -->
-                <div class="hero-content-item active">
+                <div class="hero-content-item active" data-slide="0">
                     <h1 class="hero-title">CONSTRUISEZ L'AVENIR AVEC PRÉCISION</h1>
                     <p class="hero-subtitle">Solutions intelligentes pour la construction moderne</p>
                     <p class="hero-description">
@@ -27,7 +26,7 @@
                 </div>
 
                 <!-- Contenu 2 - Jumeaux Numériques -->
-                <div class="hero-content-item">
+                <div class="hero-content-item" data-slide="1">
                     <h1 class="hero-title">CRÉEZ DES JUMEAUX NUMÉRIQUES INTELLIGENTS</h1>
                     <p class="hero-subtitle">Technologie avancée pour l'optimisation des bâtiments</p>
                     <p class="hero-description">
@@ -36,7 +35,7 @@
                 </div>
 
                 <!-- Contenu 3 - Formation & Expertise -->
-                <div class="hero-content-item">
+                <div class="hero-content-item" data-slide="2">
                     <h1 class="hero-title">MAÎTRISEZ LE BIM DE DEMAIN</h1>
                     <p class="hero-subtitle">Formation et accompagnement personnalisés</p>
                     <p class="hero-description">
@@ -47,7 +46,7 @@
             </div>
             
             <!-- Boutons fixes (ne changent jamais) -->
-            <div class="hero-buttons fade-in-up fade-in-up-delay-3">
+            <div class="hero-buttons">
                 <a href="{{route('a-propos')}}" class="btn-primary-hero">
                     EN SAVOIR PLUS
                 </a>
@@ -61,9 +60,9 @@
 
     <!-- Indicateurs de contenu -->
     <div class="content-indicators">
-        <div class="content-dot active" data-content="0"></div>
-        <div class="content-dot" data-content="1"></div>
-        <div class="content-dot" data-content="2"></div>
+        <div class="content-dot active" data-slide="0"></div>
+        <div class="content-dot" data-slide="1"></div>
+        <div class="content-dot" data-slide="2"></div>
     </div>
 
     <!-- Stats Bar -->
@@ -93,9 +92,7 @@
     </div>
 </section>
 
-   
-
-<!-- Section Solutions Corrigée - Remplacer votre section solutions existante -->
+<!-- Section Solutions - CONSERVÉE TELLE QUELLE -->
 <section id="solutions" class="solutions-section">
     <div class="solutions-container">
         <!-- En-tête de section -->
@@ -247,9 +244,6 @@
         </div>
     </div>
 </section>
-
-
-
 
 <!-- Triangle Section (conservée de votre design original) -->
 <div class="container-xxl py-5">
@@ -436,257 +430,5 @@
         </div>
     </div>
 </section>
-
-<!-- JavaScript pour les animations et correction du spinner -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // CORRECTION DU SPINNER - l'arrêter immédiatement
-    const spinner = document.getElementById('spinner');
-    if (spinner) {
-        spinner.classList.remove('show');
-        setTimeout(() => {
-            spinner.style.display = 'none';
-        }, 500);
-    }
-    
-    // Animation des éléments au scroll
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, observerOptions);
-    
-    // Observer les cartes de service
-    const serviceCards = document.querySelectorAll('.service-card');
-    serviceCards.forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = `all 0.6s ease ${index * 0.1}s`;
-        observer.observe(card);
-        
-        // Effet hover
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-10px)';
-            this.style.boxShadow = '0 15px 35px rgba(0, 0, 0, 0.1)';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0)';
-            this.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
-        });
-    });
-    
-    // Animation du triangle (conservée)
-    const triangleWrapper = document.querySelector('.triangle-wrapper');
-    const triangleSections = document.querySelectorAll('.triangle-section');
-    
-    if (triangleWrapper) {
-        triangleWrapper.addEventListener('mousemove', (e) => {
-            const rect = triangleWrapper.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            
-            const rotateX = (y - centerY) / 10;
-            const rotateY = (x - centerX) / 10;
-            
-            triangleWrapper.style.transform = `perspective(1000px) rotateX(${-rotateX}deg) rotateY(${rotateY}deg)`;
-        });
-        
-        triangleWrapper.addEventListener('mouseleave', () => {
-            triangleWrapper.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
-            triangleWrapper.style.transition = 'transform 0.5s ease';
-        });
-        
-        triangleWrapper.addEventListener('mouseenter', () => {
-            triangleWrapper.style.transition = 'none';
-        });
-    }
-    
-    triangleSections.forEach(section => {
-        section.addEventListener('click', function() {
-            this.style.transform = 'scale(0.98)';
-            setTimeout(() => {
-                this.style.transform = 'scale(1)';
-            }, 200);
-            
-            const pageURL = this.getAttribute('data-page');
-            if (pageURL) {
-                setTimeout(() => {
-                    window.location.href = pageURL;
-                }, 300);
-            }
-        });
-    });
-    
-    // Smooth scroll pour les liens ancres
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            
-            if (target) {
-                const headerOffset = 100;
-                const elementPosition = target.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-});
-
-// Arrêter le spinner au chargement de la page
-window.addEventListener('load', function() {
-    const spinner = document.getElementById('spinner');
-    if (spinner) {
-        spinner.classList.remove('show');
-        setTimeout(() => {
-            spinner.style.display = 'none';
-        }, 100);
-    }
-});
-</script>
-<!-- JavaScript pour les animations - VERSION CORRIGÉE -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // CORRECTION DU SPINNER - l'arrêter immédiatement
-    const spinner = document.getElementById('spinner');
-    if (spinner) {
-        spinner.classList.remove('show');
-        setTimeout(() => {
-            spinner.style.display = 'none';
-        }, 500);
-    }
-    
-    // Animation des éléments au scroll (SEULEMENT pour les sections non-hero)
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            // Ignorer la section hero pour éviter les conflits
-            if (entry.target.closest('.hero-section')) {
-                return;
-            }
-            
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, observerOptions);
-    
-    // Observer les cartes de service (mais pas la section hero)
-    const serviceCards = document.querySelectorAll('.solution-card');
-    serviceCards.forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = `all 0.6s ease ${index * 0.1}s`;
-        observer.observe(card);
-        
-        // Effet hover
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-10px)';
-            this.style.boxShadow = '0 15px 35px rgba(0, 0, 0, 0.1)';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0)';
-            this.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
-        });
-    });
-    
-    // Animation du triangle (conservée)
-    const triangleWrapper = document.querySelector('.triangle-wrapper');
-    const triangleSections = document.querySelectorAll('.triangle-section');
-    
-    if (triangleWrapper) {
-        triangleWrapper.addEventListener('mousemove', (e) => {
-            const rect = triangleWrapper.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            
-            const rotateX = (y - centerY) / 10;
-            const rotateY = (x - centerX) / 10;
-            
-            triangleWrapper.style.transform = `perspective(1000px) rotateX(${-rotateX}deg) rotateY(${rotateY}deg)`;
-        });
-        
-        triangleWrapper.addEventListener('mouseleave', () => {
-            triangleWrapper.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
-            triangleWrapper.style.transition = 'transform 0.5s ease';
-        });
-        
-        triangleWrapper.addEventListener('mouseenter', () => {
-            triangleWrapper.style.transition = 'none';
-        });
-    }
-    
-    triangleSections.forEach(section => {
-        section.addEventListener('click', function() {
-            this.style.transform = 'scale(0.98)';
-            setTimeout(() => {
-                this.style.transform = 'scale(1)';
-            }, 200);
-            
-            const pageURL = this.getAttribute('data-page');
-            if (pageURL) {
-                setTimeout(() => {
-                    window.location.href = pageURL;
-                }, 300);
-            }
-        });
-    });
-    
-    // Smooth scroll pour les liens ancres
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            
-            if (target) {
-                const headerOffset = 100;
-                const elementPosition = target.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-});
-
-// Arrêter le spinner au chargement de la page
-window.addEventListener('load', function() {
-    const spinner = document.getElementById('spinner');
-    if (spinner) {
-        spinner.classList.remove('show');
-        setTimeout(() => {
-            spinner.style.display = 'none';
-        }, 100);
-    }
-});
-</script>
 
 @endsection
