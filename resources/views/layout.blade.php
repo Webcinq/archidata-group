@@ -23,15 +23,23 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-  <link href="{{asset('css/style.css')}}" rel="stylesheet">
-<link href="{{asset('css/triangle.css')}}" rel="stylesheet">
-
-
+    <link href="{{asset('css/style.css')}}" rel="stylesheet">
+    <link href="{{asset('css/triangle.css')}}" rel="stylesheet">
 </head>
 
 <body>
-    <!-- Navbar Responsive -->
-    <nav class="navbar navbar-expand-lg navbar-dark top-navbar fixed-top">
+    <!-- Top Bar (Nouvelle barre en haut) -->
+    <div class="top-bar" id="topBar">
+        <div class="top-bar-container">
+            <a href="#" class="user-space">
+                <i class="fas fa-user-circle"></i>
+                VOTRE ESPACE
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Navbar (Navbar principal modifié) -->
+    <nav class="navbar navbar-expand-lg navbar-dark main-navbar fixed-top" id="mainNavbar">
         <div class="container-fluid navbar-container">
             <!-- Logo -->
             <a class="navbar-brand logo-section" href="{{ route('index') }}">
@@ -46,58 +54,48 @@
             </button>
             
             <!-- Navigation Menu -->
-        <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav nav-menu mx-auto">
-        <li class="nav-item">
-            <a href="{{ route('index') }}" class="nav-item nav-link {{ request()->routeIs('index') ? 'active' : '' }}">Accueil</a>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle {{ request()->is('solutions/*') ? 'active' : '' }}" href="#" id="solutionsDropdown" role="button" data-bs-toggle="dropdown">
-                NOS SOLUTIONS
-            </a>
-            <ul class="dropdown-menu solutions-dropdown">
-                <li><a class="dropdown-item" href="{{route('solutions.bim-data-management')}}"><i class="fas fa-cogs"></i> BIM & DATA Management</a></li>
-                <li><a class="dropdown-item" href="{{route('solutions.doe-bim')}}"><i class="fas fa-file-alt"></i> Le DOE BIM</a></li>
-                <li><a class="dropdown-item"  href="{{ route('solutions.scan-modelisation') }}"><i class="fas fa-cube"></i> SCAN & Modélisation BIM</a></li>
-                <li><a class="dropdown-item" href="{{ route('solutions.jumeaux-numeriques') }}"><i class="fas fa-city"></i> Jumeaux Numériques</a></li>
-                <li><a class="dropdown-item" href="{{ route('solutions.synthese-bim') }}"><i class="fas fa-project-diagram"></i> Synthèse BIM</a></li>
-                <li><a class="dropdown-item" href="{{ route('solutions.cim-management') }}"><i class="fas fa-map"></i> CIM Management</a></li>
-                <li><a class="dropdown-item" href="{{ route('solutions.data-management') }}"><i class="fas fa-database"></i> DATA Management</a></li>
-                <li><a class="dropdown-item" href="{{ route('solutions.conseil-accompagnement') }}"><i class="fas fa-graduation-cap"></i> Conseil & Accompagnement</a></li>
-            </ul>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link {{ request()->routeIs('secteurs') ? 'active' : '' }}" href="{{route('secteurs')}}">SECTEURS D'ACTIVITÉS</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link {{ request()->routeIs('etudes-cas') ? 'active' : '' }}" href="{{route('etudes-cas')}}">ÉTUDES DE CAS</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link {{ request()->routeIs('a-propos') ? 'active' : '' }}" href="{{route('a-propos')}}">À PROPOS</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link {{ request()->routeIs('blog-ressources') ? 'active' : '' }}" href="{{route('blog-ressources')}}">BLOG/RESSOURCES</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}" href="{{route('contact')}}">CONTACT</a>
-        </li>
-    </ul>
-    
-    <!-- User Space Button -->
-    <a href="#" class="user-space">
-        <i class="fas fa-user-circle"></i>
-        VOTRE ESPACE
-    </a>
-    </div>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav nav-menu mx-auto">
+                    <li class="nav-item">
+                        <a href="{{ route('index') }}" class="nav-item nav-link {{ request()->routeIs('index') ? 'active' : '' }}">Accueil</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle {{ request()->is('solutions/*') ? 'active' : '' }}" href="#" id="solutionsDropdown" role="button" data-bs-toggle="dropdown">
+                            NOS SOLUTIONS
+                        </a>
+                        <ul class="dropdown-menu solutions-dropdown">
+                            <li><a class="dropdown-item" href="{{route('solutions.bim-data-management')}}"><i class="fas fa-cogs"></i> BIM & DATA Management</a></li>
+                            <li><a class="dropdown-item" href="{{route('solutions.doe-bim')}}"><i class="fas fa-file-alt"></i> Le DOE BIM</a></li>
+                            <li><a class="dropdown-item" href="{{ route('solutions.scan-modelisation') }}"><i class="fas fa-cube"></i> SCAN & Modélisation BIM</a></li>
+                            <li><a class="dropdown-item" href="{{ route('solutions.jumeaux-numeriques') }}"><i class="fas fa-city"></i> Jumeaux Numériques</a></li>
+                            <li><a class="dropdown-item" href="{{ route('solutions.synthese-bim') }}"><i class="fas fa-project-diagram"></i> Synthèse BIM</a></li>
+                            <li><a class="dropdown-item" href="{{ route('solutions.cim-management') }}"><i class="fas fa-map"></i> CIM Management</a></li>
+                            <li><a class="dropdown-item" href="{{ route('solutions.data-management') }}"><i class="fas fa-database"></i> DATA Management</a></li>
+                            <li><a class="dropdown-item" href="{{ route('solutions.conseil-accompagnement') }}"><i class="fas fa-graduation-cap"></i> Conseil & Accompagnement</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('secteurs') ? 'active' : '' }}" href="{{route('secteurs')}}">SECTEURS D'ACTIVITÉS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('etudes-cas') ? 'active' : '' }}" href="{{route('etudes-cas')}}">ÉTUDES DE CAS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('a-propos') ? 'active' : '' }}" href="{{route('a-propos')}}">À PROPOS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('blog-ressources') ? 'active' : '' }}" href="{{route('blog-ressources')}}">BLOG/RESSOURCES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}" href="{{route('contact')}}">CONTACT</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-
-    <!-- Hero Section -->
- 
+    <!-- Contenu de la page -->
     @yield('content')
-
 
     <!-- Footer -->
     <footer class="footer">
@@ -126,12 +124,6 @@
                     <a class="btn-link" href="{{route('solutions.doe-bim')}}">Le DOE BIM</a>
                     <a class="btn-link" href="{{route('solutions.scan-modelisation')}}">SCAN & Modélisation BIM</a>
                     <a class="btn-link" href="{{route('solutions.jumeaux-numeriques')}}">Jumeaux Numériques</a>
-                    {{-- <a class="btn-link" href="{{route('solutions.synthese-bim')}}">Synthèse BIM</a>
-                    <a class="btn-link" href="{{route('solutions.cim-management')}}">CIM Management</a>
-                    <a class="btn-link" href="{{route('solutions.data-management')}}">Data Management</a>
-                    <a class="btn-link" href="{{route('solutions.conseil-accompagnement')}}">Conseil & Accompagnement</a> --}}
-                    
-
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h4>Newsletter</h4>
@@ -163,28 +155,31 @@
     <!-- JavaScript -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="{{ asset('js/main.js') }}"></script>
-<script src="{{ asset('js/hero.js') }}"></script>
-
+    <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/hero.js') }}"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Spinner
             const spinner = document.getElementById('spinner');
-            setTimeout(() => {
-                spinner.style.display = 'none';
-            }, 1000);
+            if (spinner) {
+                setTimeout(() => {
+                    spinner.style.display = 'none';
+                }, 1000);
+            }
 
-            // Navbar scroll effect
-            const navbar = document.querySelector('.top-navbar');
+            // Références aux navbars
+            const topBar = document.getElementById('topBar');
+            const mainNavbar = document.getElementById('mainNavbar');
             
+            // Navbar scroll effect pour les deux navbars
             window.addEventListener('scroll', function() {
-                if (window.scrollY > 100) {
-                    navbar.style.background = 'rgba(10, 22, 40, 0.98)';
-                    navbar.style.backdropFilter = 'blur(20px)';
+                if (window.scrollY > 50) {
+                    if (topBar) topBar.classList.add('scrolled');
+                    if (mainNavbar) mainNavbar.classList.add('scrolled');
                 } else {
-                    navbar.style.background = 'transparent';
-                    navbar.style.backdropFilter = 'none';
+                    if (topBar) topBar.classList.remove('scrolled');
+                    if (mainNavbar) mainNavbar.classList.remove('scrolled');
                 }
             });
 
@@ -207,14 +202,14 @@
                 });
             });
 
-            // Smooth scroll for anchor links
+            // Smooth scroll pour les liens d'ancrage avec compensation des deux navbars
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     e.preventDefault();
                     const target = document.querySelector(this.getAttribute('href'));
                     
                     if (target) {
-                        const headerOffset = 80;
+                        const headerOffset = 120; // Espace pour les deux navbars
                         const elementPosition = target.getBoundingClientRect().top;
                         const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
                         
