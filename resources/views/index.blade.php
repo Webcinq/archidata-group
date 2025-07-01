@@ -66,30 +66,27 @@
     </div>
 
     <!-- Stats Bar -->
-    <div class="stats-bar">
-        <div class="stats-scroll">
-            <div class="stat-item">
-                <span class="stat-number">500+</span>
-                <span class="stat-text">Projets réalisés</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number">15</span>
-                <span class="stat-text">Années d'expérience</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number">200+</span>
-                <span class="stat-text">Clients satisfaits</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number">50+</span>
-                <span class="stat-text">Formations dispensées</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-number">95%</span>
-                <span class="stat-text">Taux de satisfaction</span>
-            </div>
+  <div class="stats-bar">
+    <div class="stats-scroll">
+        <div class="stat-item">
+            <span class="stat-number">+250 000 m²</span>
+            <span class="stat-text">Modélisés</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">+20%</span>
+            <span class="stat-text">Réduction des coûts de rework</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">+20</span>
+            <span class="stat-text">Projets livrés avec succès</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">Jusqu’à 30%</span>
+            <span class="stat-text">Gain sur les délais de livraison</span>
         </div>
     </div>
+</div>
+
 </section>
 
 <!-- Section Solutions - CONSERVÉE TELLE QUELLE -->
