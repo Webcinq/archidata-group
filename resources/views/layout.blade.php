@@ -139,10 +139,7 @@
             <div class="row">
                 <div class="col-md-6 text-center text-md-start">
                     &copy; 2024 <a href="#" style="color: var(--accent-green);">ARCHIDATA</a>. Tous droits réservés.
-                </div>
-                <div class="col-md-6 text-center text-md-end">
-                    Designé par <a href="#" style="color: var(--accent-green);">Webcinq</a>
-                </div>
+ 
             </div>
         </div>
     </footer>
