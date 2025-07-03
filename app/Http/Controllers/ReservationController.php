@@ -94,7 +94,7 @@ class ReservationController extends Controller
     {
         try {
             // Email à l'entreprise
-            Mail::to('noreply@archidata-groupe.com')
+            Mail::to('contact@archidata-groupe.com')
                 ->send(new ReservationNotification($reservation, 'entreprise'));
 
             // Email de confirmation au client
