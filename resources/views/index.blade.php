@@ -257,7 +257,7 @@
                         <div class="divider divider-horizontal-2"></div>
                         
                         <!-- Top section -->
-                        <div class="triangle-section section-top" data-page="first_stage">
+                        <a href="{{ route('first_stage') }}" class="triangle-section section-top" data-page="transparence">
                             <div class="section-content">
                                 <div class="icon-container">
                                     <div class="icon">◉</div>
@@ -267,10 +267,10 @@
                                     <div class="section-subtitle">Communication claire</div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                         
                         <!-- Middle section -->
-                        <div class="triangle-section section-middle" data-page="couts">
+                        <a href="{{ route('couts') }}" class="triangle-section section-middle" data-page="couts">
                             <div class="section-content">
                                 <div class="icon-container">
                                     <div class="icon">⌂</div>
@@ -280,10 +280,10 @@
                                     <div class="section-subtitle">Suivi quantitatif</div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                         
                         <!-- Bottom section -->
-                        <div class="triangle-section section-bottom" data-page="delais">
+                        <a href="{{ route('delais') }}" class="triangle-section section-bottom" data-page="delais">
                             <div class="section-content">
                                 <div class="icon-container">
                                     <div class="icon">✓</div>
@@ -293,7 +293,7 @@
                                     <div class="section-subtitle">Simulations BIM avancées</div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -398,15 +398,7 @@
                             </div>
 
                             
-                            <div class="col-12 col-sm-6">
-                                <input type="date" name="date_service" class="form-control border-0 @error('date_service') is-invalid @enderror"
-                                       placeholder="Date de Service" value="{{ old('date_service') }}"
-                                       min="{{ date('Y-m-d', strtotime('+1 day')) }}" style="height: 55px;" required>
-                                @error('date_service')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            
+                       
                             <div class="col-12">
                                 <textarea name="demande_speciale" class="form-control border-0 @error('demande_speciale') is-invalid @enderror" 
                                           placeholder="Demande Spéciale" rows="4">{{ old('demande_speciale') }}</textarea>
@@ -427,5 +419,20 @@
         </div>
     </div>
 </section>
+<style>
+    /* Styles pour les liens du triangle */
+.triangle-section {
+    text-decoration: none;
+    color: inherit;
+  
+}
+
+.triangle-section:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+</style>
 
 @endsection

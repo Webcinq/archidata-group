@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Reservation;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
@@ -42,7 +43,6 @@ class ReservationController extends Controller
         'DATA Management',
         'Conseil & Accompagnement',
     ]),
-        'date_service' => 'required|date|after:today',
         'demande_speciale' => 'nullable|string|max:1000'
     ], [
         // ... vos messages d'erreur
@@ -63,7 +63,7 @@ class ReservationController extends Controller
             'nom' => $request->nom,
             'email' => $request->email,
             'service' => $request->service,
-            'date_service' => $request->date_service,
+            'date_service' => Carbon::now()->addDay()->toDateString(), // format: 'YYYY-MM-DD'
             'demande_speciale' => $request->demande_speciale,
             'statut' => 'en_attente'
         ]);
@@ -94,7 +94,7 @@ class ReservationController extends Controller
     {
         try {
             // Email à l'entreprise
-            Mail::to('contact@archidata-groupe.com')
+            Mail::to('connect@archidata-groupe.com')
                 ->send(new ReservationNotification($reservation, 'entreprise'));
 
             // Email de confirmation au client

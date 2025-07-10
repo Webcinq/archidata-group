@@ -175,7 +175,7 @@
             <h2 class="section-title">Notre Mission</h2>
             <p class="text-light lead mb-4">ArchiData Africa est une société experte en management de projets BIM et en optimisation numérique du cycle de vie du bâtiment. Nous accompagnons les acteurs de la construction, de l'architecture et de l'ingénierie dans la mise en œuvre de solutions BIM avancées, répondant aux standards internationaux et aux exigences locales.</p>
             
-            <p class="text-light mb-4">Grâce à une approche intégrée du BIM, combinée à une expertise en data management et en automatisation intelligente, ArchiData Africa améliore la qualité, la coordination et la performance globale des projets, de la conception à l'exploitation.</p>
+            <p class="text-light lead mb-4">Grâce à une approche intégrée du BIM, combinée à une expertise en data management et en automatisation intelligente, ArchiData Africa améliore la qualité, la coordination et la performance globale des projets, de la conception à l'exploitation.</p>
         </div>
 
         <!-- Nos Engagements Section -->

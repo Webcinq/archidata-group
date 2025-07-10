@@ -30,7 +30,7 @@ class ContactController extends Controller
             'message' => $request->message
         ];
 
-        Mail::to('contact@archidata-groupe.com')->send(new ContactMail($details));
+        Mail::to('connect@archidata-groupe.com')->send(new ContactMail($details));
 
         return back()->with('success', 'Merci pour votre message. Nous vous répondrons dans les plus brefs délais.');
     }

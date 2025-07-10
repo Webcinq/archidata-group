@@ -8,7 +8,7 @@
     <meta content="Solutions BIM et Data Management pour la construction intelligente" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="{{asset('img/image67.png')}}" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -59,6 +59,9 @@
                     <li class="nav-item">
                         <a href="{{ route('index') }}" class="nav-item nav-link {{ request()->routeIs('index') ? 'active' : '' }}">Accueil</a>
                     </li>
+                        <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('secteurs') ? 'active' : '' }}" href="{{route('secteurs')}}">SECTEURS D'ACTIVITÉS</a>
+                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle {{ request()->is('solutions/*') ? 'active' : '' }}" href="#" id="solutionsDropdown" role="button" data-bs-toggle="dropdown">
                             NOS SOLUTIONS
@@ -74,9 +77,7 @@
                             <li><a class="dropdown-item" href="{{ route('solutions.conseil-accompagnement') }}"><i class="fas fa-graduation-cap"></i> Conseil & Accompagnement</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('secteurs') ? 'active' : '' }}" href="{{route('secteurs')}}">SECTEURS D'ACTIVITÉS</a>
-                    </li>
+                
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('etudes-cas') ? 'active' : '' }}" href="{{route('etudes-cas')}}">ÉTUDES DE CAS</a>
                     </li>

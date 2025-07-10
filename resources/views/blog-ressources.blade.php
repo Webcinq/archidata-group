@@ -41,20 +41,18 @@
     border-color: rgba(90, 201, 144, 0.4);
 }
 
-.article-image-placeholder {
+.article-image {
     width: 100%;
-    height: 300px;
-    background: linear-gradient(145deg, 
-        rgba(23, 34, 77, 0.8) 0%, 
-        rgba(43, 40, 45, 0.9) 100%);
+    object-fit: contain;
     border-radius: 15px;
-    border: 2px dashed rgba(90, 201, 144, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    border: 2px solid rgba(90, 201, 144, 0.3);
     margin-bottom: 25px;
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.article-image:hover {
+    border-color: rgba(90, 201, 144, 0.5);
 }
 
 .hashtags {
@@ -104,13 +102,7 @@
         <div class="article-card">
             <div class="row">
                 <div class="col-md-4">
-                    <div class="article-image-placeholder">
-                        <div class="text-center">
-                            <i class="fa fa-image fa-3x mb-3" style="color: #5AC990;"></i>
-                            <div>Image Article 1</div>
-                            <small>Place pour l'image de l'article</small>
-                        </div>
-                    </div>
+                    <img src="img/article-1.png" alt="Article 1 - BIM & Data Management" class="article-image">
                 </div>
                 <div class="col-md-8">
                     <h2 class="section-title text-white">🚀 ARCHIDATA AFRICA : Pour une gestion intelligente et durable des bâtiments grâce au BIM & Data Management</h2>
@@ -162,13 +154,7 @@
         <div class="article-card">
             <div class="row">
                 <div class="col-md-4">
-                    <div class="article-image-placeholder">
-                        <div class="text-center">
-                            <i class="fa fa-image fa-3x mb-3" style="color: #4facfe;"></i>
-                            <div>Image Article 2</div>
-                            <small>Place pour l'image de l'article</small>
-                        </div>
-                    </div>
+                    <img src="img/article-2.png" alt="Article 2 - Gestion de projet BTP" class="article-image">
                 </div>
                 <div class="col-md-8">
                     <h2 class="section-title text-white">ARCHIDATA Africa repousse les limites de la gestion de projet dans le secteur du BTP</h2>
