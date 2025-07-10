@@ -335,85 +335,93 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('reserver') }}" method="POST">
-                        @csrf
-                        <div class="row g-3">
-                            <div class="col-12 col-sm-6">
-                                <input type="text" name="nom" class="form-control border-0 @error('nom') is-invalid @enderror" 
-                                       placeholder="Votre Nom" value="{{ old('nom') }}" style="height: 55px;" required>
-                                @error('nom')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            
-                            <div class="col-12 col-sm-6">
-                                <input type="email" name="email" class="form-control border-0 @error('email') is-invalid @enderror" 
-                                       placeholder="Votre Email" value="{{ old('email') }}" style="height: 55px;" required>
-                                @error('email')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            
-                            <div class="col-12 col-sm-6">
-    <select name="service" class="form-select border-0 @error('service') is-invalid @enderror" 
-            style="height: 55px;" required>
-        <option value="">Choisissez un Service</option>
+               <form action="{{ route('reserver') }}" method="POST">
+    @csrf
 
-        <option value="BIM & DATA Management" {{ old('service') == 'BIM & DATA Management' ? 'selected' : '' }}>
-            BIM & DATA Management
-        </option>
-        
-        <option value="Le DOE BIM" {{ old('service') == 'Le DOE BIM' ? 'selected' : '' }}>
-            Le DOE BIM
-        </option>
-        
-        <option value="SCAN & Modélisation BIM" {{ old('service') == 'SCAN & Modélisation BIM' ? 'selected' : '' }}>
-            SCAN & Modélisation BIM
-        </option>
-        
-        <option value="Jumeaux Numériques" {{ old('service') == 'Jumeaux Numériques' ? 'selected' : '' }}>
-            Jumeaux Numériques
-        </option>
-        
-        <option value="Synthèse BIM" {{ old('service') == 'Synthèse BIM' ? 'selected' : '' }}>
-            Synthèse BIM
-        </option>
-        
-        <option value="CIM Management" {{ old('service') == 'CIM Management' ? 'selected' : '' }}>
-            CIM Management
-        </option>
-        
-        <option value="DATA Management" {{ old('service') == 'DATA Management' ? 'selected' : '' }}>
-            DATA Management
-        </option>
-        
-        <option value="Conseil & Accompagnement" {{ old('service') == 'Conseil & Accompagnement' ? 'selected' : '' }}>
-            Conseil & Accompagnement
-        </option>
-    </select>
+    <div class="row g-3">
+        {{-- Champ Nom --}}
+        <div class="col-12 col-sm-6">
+            <input 
+                type="text" 
+                name="nom" 
+                class="form-control border-0 @error('nom') is-invalid @enderror" 
+                placeholder="Votre Nom" 
+                value="{{ old('nom') }}" 
+                style="height: 55px;" 
+                required
+            >
+            @error('nom')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
 
-    @error('service')
-        <div class="invalid-feedback">{{ $message }}</div>
-    @enderror
-                            </div>
+        {{-- Champ Email --}}
+        <div class="col-12 col-sm-6">
+            <input 
+                type="email" 
+                name="email" 
+                class="form-control border-0 @error('email') is-invalid @enderror" 
+                placeholder="Votre Email" 
+                value="{{ old('email') }}" 
+                style="height: 55px;" 
+                required
+            >
+            @error('email')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
 
-                            
-                       
-                            <div class="col-12">
-                                <textarea name="demande_speciale" class="form-control border-0 @error('demande_speciale') is-invalid @enderror" 
-                                          placeholder="Demande Spéciale" rows="4">{{ old('demande_speciale') }}</textarea>
-                                @error('demande_speciale')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            
-                            <div class="col-12">
-                                <button style="background-color: #4dd0a7; border: none;" class="btn w-100 py-3" type="submit">
-                                    <span style="color: white; font-weight: 600;">Réserver Maintenant</span>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+        {{-- Champ Service (pleine largeur) --}}
+        <div class="col-12">
+            <select 
+                name="service" 
+                class="form-select border-0 @error('service') is-invalid @enderror" 
+                style="height: 55px;" 
+                required
+            >
+                <option value="">Choisissez un Service</option>
+                <option value="BIM & DATA Management" {{ old('service') == 'BIM & DATA Management' ? 'selected' : '' }}>BIM & DATA Management</option>
+                <option value="Le DOE BIM" {{ old('service') == 'Le DOE BIM' ? 'selected' : '' }}>Le DOE BIM</option>
+                <option value="SCAN & Modélisation BIM" {{ old('service') == 'SCAN & Modélisation BIM' ? 'selected' : '' }}>SCAN & Modélisation BIM</option>
+                <option value="Jumeaux Numériques" {{ old('service') == 'Jumeaux Numériques' ? 'selected' : '' }}>Jumeaux Numériques</option>
+                <option value="Synthèse BIM" {{ old('service') == 'Synthèse BIM' ? 'selected' : '' }}>Synthèse BIM</option>
+                <option value="CIM Management" {{ old('service') == 'CIM Management' ? 'selected' : '' }}>CIM Management</option>
+                <option value="DATA Management" {{ old('service') == 'DATA Management' ? 'selected' : '' }}>DATA Management</option>
+                <option value="Conseil & Accompagnement" {{ old('service') == 'Conseil & Accompagnement' ? 'selected' : '' }}>Conseil & Accompagnement</option>
+            </select>
+            @error('service')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+
+        {{-- Champ Demande Spéciale --}}
+        <div class="col-12">
+            <textarea 
+                name="demande_speciale" 
+                class="form-control border-0 @error('demande_speciale') is-invalid @enderror" 
+                placeholder="Demande Spéciale" 
+                rows="4"
+            >{{ old('demande_speciale') }}</textarea>
+            @error('demande_speciale')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+
+        {{-- Bouton --}}
+        <div class="col-12">
+            <button 
+                type="submit" 
+                class="btn w-100 py-3" 
+                style="background-color: #4dd0a7; border: none;"
+            >
+                <span style="color: white; font-weight: 600;">Réserver Maintenant</span>
+            </button>
+        </div>
+    </div>
+</form>
+
+
+
                 </div>
             </div>
         </div>
