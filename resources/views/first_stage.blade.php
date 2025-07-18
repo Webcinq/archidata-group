@@ -292,6 +292,107 @@
     color: #ffffff;
 }
 
+/* Section Image Styles */
+.transparence-image-showcase-card {
+    background: linear-gradient(145deg, 
+        rgba(43, 40, 45, 0.95) 0%, 
+        rgba(23, 34, 77, 0.9) 100%);
+    border-radius: 30px;
+    padding: 40px;
+    border: 2px solid rgba(90, 201, 144, 0.3);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+    position: relative;
+    overflow: hidden;
+    animation: transparenceImageSlideUp 1.2s ease-out;
+    margin-bottom: 60px;
+}
+
+@keyframes transparenceImageSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.transparence-image-showcase-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(90, 201, 144, 0.1), 
+        transparent);
+    transition: left 1s ease;
+}
+
+.transparence-image-showcase-card:hover::before {
+    left: 100%;
+}
+
+.transparence-image-showcase-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(90, 201, 144, 0.6);
+    box-shadow: 0 35px 90px rgba(0, 0, 0, 0.5);
+}
+
+.transparence-image-container {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(90, 201, 144, 0.3);
+}
+
+.transparence-main-showcase-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 20px;
+    transition: all 0.6s ease;
+    filter: brightness(0.9) contrast(1.1);
+}
+
+.transparence-image-container:hover .transparence-main-showcase-image {
+    transform: scale(1.05);
+    filter: brightness(1) contrast(1.2);
+}
+
+.transparence-image-overlay-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(90, 201, 144, 0.9));
+    padding: 30px;
+    transform: translateY(100%);
+    transition: all 0.4s ease;
+}
+
+.transparence-image-container:hover .transparence-image-overlay-info {
+    transform: translateY(0);
+}
+
+.transparence-image-overlay-info h4 {
+    color: #ffffff;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.transparence-image-overlay-info p {
+    color: #e0e6ed;
+    font-size: 1rem;
+    margin: 0;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
 /* Breadcrumb styling */
 .breadcrumb {
     background: transparent;
@@ -370,6 +471,18 @@
     .step-description {
         font-size: 1rem;
     }
+    
+    .transparence-main-showcase-image {
+        height: 250px;
+    }
+    
+    .transparence-image-overlay-info h4 {
+        font-size: 1.2rem;
+    }
+    
+    .transparence-image-overlay-info p {
+        font-size: 0.9rem;
+    }
 }
 </style>
 
@@ -412,6 +525,21 @@
                                 <h4>Une communication claire entre toutes les parties prenantes</h4>
                                 <p class="step-description">Pour éviter les imprévus et assurer une coordination optimale. Nos outils de communication intégrés facilitent les échanges et garantissent que chaque acteur dispose des informations nécessaires au bon moment.</p>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Section Image -->
+        <div class="row justify-content-center mt-5">
+            <div class="col-lg-10">
+                <div class="transparence-image-showcase-card">
+                    <div class="transparence-image-container">
+                        <img src="{{ asset('img/image.png') }}" alt="Environnement de Données Collaboratif" class="transparence-main-showcase-image">
+                        <div class="transparence-image-overlay-info">
+                            <h4>Plateforme Collaborative CDE</h4>
+                            <p>Environnement de données commun pour tous les intervenants</p>
                         </div>
                     </div>
                 </div>

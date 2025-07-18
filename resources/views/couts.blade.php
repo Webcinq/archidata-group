@@ -248,6 +248,153 @@
     color: #ffffff;
 }
 
+/* Section Image Styles */
+.image-showcase-card {
+    background: linear-gradient(145deg, 
+        rgba(43, 40, 45, 0.95) 0%, 
+        rgba(23, 34, 77, 0.9) 100%);
+    border-radius: 30px;
+    padding: 40px;
+    border: 2px solid rgba(79, 172, 254, 0.3);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+    position: relative;
+    overflow: hidden;
+    animation: imageSlideUp 1.2s ease-out;
+    margin-bottom: 60px;
+}
+
+@keyframes imageSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.image-showcase-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(79, 172, 254, 0.1), 
+        transparent);
+    transition: left 1s ease;
+}
+
+.image-showcase-card:hover::before {
+    left: 100%;
+}
+
+.image-showcase-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(79, 172, 254, 0.6);
+    box-shadow: 0 35px 90px rgba(0, 0, 0, 0.5);
+}
+
+.image-container {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(79, 172, 254, 0.3);
+}
+
+.main-showcase-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 20px;
+    transition: all 0.6s ease;
+    filter: brightness(0.9) contrast(1.1);
+}
+
+.image-container:hover .main-showcase-image {
+    transform: scale(1.05);
+    filter: brightness(1) contrast(1.2);
+}
+
+.image-overlay-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(79, 172, 254, 0.9));
+    padding: 30px;
+    transform: translateY(100%);
+    transition: all 0.4s ease;
+}
+
+.image-container:hover .image-overlay-info {
+    transform: translateY(0);
+}
+
+.image-overlay-info h4 {
+    color: #ffffff;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.image-overlay-info p {
+    color: #e0e6ed;
+    font-size: 1rem;
+    margin: 0;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Breadcrumb */
+.breadcrumb {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    content: "›";
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.2rem;
+}
+
+.breadcrumb a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.breadcrumb a:hover {
+    color: #5AC990;
+    text-shadow: 0 0 10px rgba(90, 201, 144, 0.8);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+    animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes particleFloat {
+    0% { background-position: 0 0, 0 0, 0 0; }
+    100% { background-position: 50px 50px, 25px 25px, 30px 30px; }
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .couts-hero {
@@ -279,6 +426,18 @@
     
     .feature-description {
         font-size: 1rem;
+    }
+    
+    .main-showcase-image {
+        height: 250px;
+    }
+    
+    .image-overlay-info h4 {
+        font-size: 1.2rem;
+    }
+    
+    .image-overlay-info p {
+        font-size: 0.9rem;
     }
 }
 </style>
@@ -338,6 +497,21 @@
                                     <p class="feature-description">Pour éviter les dépassements. Grâce à notre approche prédictive et à l'analyse des données historiques, nous identifions les risques budgétaires en amont et mettons en place des stratégies de mitigation efficaces.</p>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Section Image -->
+        <div class="row justify-content-center mt-5">
+            <div class="col-lg-10">
+                <div class="image-showcase-card">
+                    <div class="image-container">
+                        <img src="{{ asset('img/image1.png') }}" alt="Maîtrise des Coûts BIM" class="main-showcase-image">
+                        <div class="image-overlay-info">
+                            <h4>Visualisation des Coûts en Temps Réel</h4>
+                            <p>Tableau de bord interactif pour le suivi budgétaire</p>
                         </div>
                     </div>
                 </div>

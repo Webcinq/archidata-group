@@ -1,4 +1,4 @@
-{{-- resources/views/contact-improved.blade.php --}}
+{{-- resources/views/contact.blade.php --}}
 @extends('layout')
 @section('content')
 <style>
@@ -446,16 +446,18 @@
 
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <select class="form-control" id="project_type" name="project_type">
-                                        <option value="">Sélectionnez...</option>
-                                        <option value="Résidentiel" {{ old('project_type') == 'Résidentiel' ? 'selected' : '' }}>Résidentiel</option>
-                                        <option value="Commercial" {{ old('project_type') == 'Commercial' ? 'selected' : '' }}>Commercial</option>
-                                        <option value="Industriel" {{ old('project_type') == 'Industriel' ? 'selected' : '' }}>Industriel</option>
-                                        <option value="Hospitalier" {{ old('project_type') == 'Hospitalier' ? 'selected' : '' }}>Hospitalier</option>
-                                        <option value="Éducatif" {{ old('project_type') == 'Éducatif' ? 'selected' : '' }}>Éducatif</option>
-                                        <option value="Infrastructure" {{ old('project_type') == 'Infrastructure' ? 'selected' : '' }}>Infrastructure</option>
-                                    </select>
-                                    <label for="project_type">Typologie de projet</label>
+                                 <select class="form-control" id="project_type" name="project_type">
+                                    <option value="">Sélectionnez...</option>
+                                    <option value="BIM & DATA Management" {{ old('project_type') == 'BIM & DATA Management' ? 'selected' : '' }}>BIM & DATA Management</option>
+                                    <option value="Le DOE BIM" {{ old('project_type') == 'Le DOE BIM' ? 'selected' : '' }}>Le DOE BIM</option>
+                                    <option value="SCAN & Modélisation BIM" {{ old('project_type') == 'SCAN & Modélisation BIM' ? 'selected' : '' }}>SCAN & Modélisation BIM</option>
+                                    <option value="Jumeaux Numériques" {{ old('project_type') == 'Jumeaux Numériques' ? 'selected' : '' }}>Jumeaux Numériques</option>
+                                    <option value="Synthèse BIM" {{ old('project_type') == 'Synthèse BIM' ? 'selected' : '' }}>Synthèse BIM</option>
+                                    <option value="CIM Management" {{ old('project_type') == 'CIM Management' ? 'selected' : '' }}>CIM Management</option>
+                                    <option value="DATA Management" {{ old('project_type') == 'DATA Management' ? 'selected' : '' }}>DATA Management</option>
+                                    <option value="Conseil & Accompagnement" {{ old('project_type') == 'Conseil & Accompagnement' ? 'selected' : '' }}>Conseil & Accompagnement</option>
+                                </select>
+                                    <label for="project_type">solutions de nos projet</label>
                                 </div>
                             </div>
                             
@@ -467,18 +469,25 @@
                             </div>
                             
                             <!-- CAPTCHA -->
-                            <div class="col-12">
-                                <div class="captcha">
-                                    <span>{!! captcha_img() !!}</span>
+                         <div class="col-12">
+                            <div class="captcha">
+                                <div class="d-flex align-items-center gap-3">
+                                    <span class="captcha-question" style="color: #5AC990; font-size: 1.2rem; font-weight: bold;">
+                                        Calcul simple : {{ session('captcha_question', '3 + 5 = ?') }}
+                                    </span>
                                     <button type="button" class="btn btn-sm btn-outline-light" id="reload">
-                                        <i class="fa fa-sync-alt"></i> Recharger
+                                        <i class="fa fa-sync-alt"></i> Nouveau calcul
                                     </button>
                                 </div>
                             </div>
-                            
-                            <div class="col-12">
-                                <input id="captcha" type="text" class="form-control" placeholder="Entrez le code CAPTCHA" name="captcha" required>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <input id="captcha" type="number" class="form-control" placeholder="Entrez le résultat" name="captcha" required>
+                                <label for="captcha">Résultat du calcul *</label>
                             </div>
+                        </div>
                             
                             <div class="col-12">
                                 <button type="submit" class="contact-btn w-100">
@@ -498,8 +507,61 @@
         fetch('/reload-captcha')
             .then(response => response.json())
             .then(data => {
-                document.querySelector('.captcha span').innerHTML = data.captcha;
+                document.querySelector('.captcha-question').textContent = 'Calcul simple : ' + data.captcha;
+                document.getElementById('captcha').value = '';
+            })
+            .catch(error => {
+                console.error('Erreur lors du rechargement du CAPTCHA:', error);
             });
     });
 </script>
+<style>
+    .captcha {
+    background: rgba(43, 40, 45, 0.8);
+    padding: 20px;
+    border-radius: 15px;
+    border: 2px solid rgba(90, 201, 144, 0.3);
+    margin-bottom: 20px;
+}
+
+.captcha-question {
+    background: rgba(90, 201, 144, 0.1);
+    padding: 15px 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(90, 201, 144, 0.3);
+    color: #5AC990 !important;
+    font-size: 1.2rem !important;
+    font-weight: bold !important;
+    text-align: center;
+    min-width: 200px;
+}
+
+#reload {
+    background: rgba(79, 172, 254, 0.2);
+    border: 1px solid rgba(79, 172, 254, 0.4);
+    color: #4facfe;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+#reload:hover {
+    background: rgba(79, 172, 254, 0.3);
+    border-color: rgba(79, 172, 254, 0.6);
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+/* Style pour le champ de saisie du résultat */
+#captcha {
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+#captcha:focus {
+    border-color: rgba(90, 201, 144, 0.8);
+    box-shadow: 0 0 20px rgba(90, 201, 144, 0.4);
+}
+</style>
 @endsection 

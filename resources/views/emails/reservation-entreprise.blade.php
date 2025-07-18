@@ -50,12 +50,7 @@
             <div class="info-row">
                 <span class="label">Date de la demande :</span> {{ $reservation->created_at->format('d/m/Y à H:i') }}
             </div>
-            
-            <p style="margin-top: 20px;">
-                <a href="{{ url('/admin/reservations') }}" style="background-color: #124698; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">
-                    Gérer cette réservation
-                </a>
-            </p>
+      
         </div>
     </div>
 </body>
