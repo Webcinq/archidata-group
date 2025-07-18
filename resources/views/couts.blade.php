@@ -461,6 +461,20 @@
 <!-- Content Section -->
 <div class="couts-content">
     <div class="container">
+         <!-- Section Image -->
+        <div class="row justify-content-center mt-5">
+            <div class="col-lg-10">
+                <div class="image-showcase-card">
+                    <div class="image-container">
+                        <img src="{{ asset('img/image1.png') }}" alt="Maîtrise des Coûts BIM" class="main-showcase-image">
+                        <div class="image-overlay-info">
+                            <h4>Visualisation des Coûts en Temps Réel</h4>
+                            <p>Tableau de bord interactif pour le suivi budgétaire</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row justify-content-center">
             <div class="col-lg-10">
                 <div class="couts-main-card">
@@ -503,20 +517,7 @@
             </div>
         </div>
         
-        <!-- Section Image -->
-        <div class="row justify-content-center mt-5">
-            <div class="col-lg-10">
-                <div class="image-showcase-card">
-                    <div class="image-container">
-                        <img src="{{ asset('img/image1.png') }}" alt="Maîtrise des Coûts BIM" class="main-showcase-image">
-                        <div class="image-overlay-info">
-                            <h4>Visualisation des Coûts en Temps Réel</h4>
-                            <p>Tableau de bord interactif pour le suivi budgétaire</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+       
     </div>
 </div>
 @endsection

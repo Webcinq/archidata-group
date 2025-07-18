@@ -517,6 +517,20 @@
 <!-- Content Section -->
 <div class="delais-content">
     <div class="container">
+           <!-- Section Image -->
+        <div class="row justify-content-center mt-5">
+            <div class="col-lg-10">
+                <div class="delais-image-showcase-card">
+                    <div class="delais-image-container">
+                        <img src="{{ asset('img/image2.png') }}" alt="Simulation BIM et Planification" class="delais-main-showcase-image">
+                        <div class="delais-image-overlay-info">
+                            <h4>Simulation 4D - Planification Temporelle</h4>
+                            <p>Visualisation de la séquence de construction optimisée</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row justify-content-center">
             <div class="col-lg-10">
                 <div class="delais-main-card">
@@ -559,20 +573,7 @@
             </div>
         </div>
         
-        <!-- Section Image -->
-        <div class="row justify-content-center mt-5">
-            <div class="col-lg-10">
-                <div class="delais-image-showcase-card">
-                    <div class="delais-image-container">
-                        <img src="{{ asset('img/image2.png') }}" alt="Simulation BIM et Planification" class="delais-main-showcase-image">
-                        <div class="delais-image-overlay-info">
-                            <h4>Simulation 4D - Planification Temporelle</h4>
-                            <p>Visualisation de la séquence de construction optimisée</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+     
     </div>
 </div>
 @endsection

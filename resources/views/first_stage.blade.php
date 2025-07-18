@@ -505,6 +505,21 @@
 <!-- Content Section -->
 <div class="transparence-content">
     <div class="container">
+
+             <!-- Section Image -->
+        <div class="row justify-content-center mt-5">
+            <div class="col-lg-10">
+                <div class="transparence-image-showcase-card">
+                    <div class="transparence-image-container">
+                        <img src="{{ asset('img/image.png') }}" alt="Environnement de Données Collaboratif" class="transparence-main-showcase-image">
+                        <div class="transparence-image-overlay-info">
+                            <h4>Plateforme Collaborative CDE</h4>
+                            <p>Environnement de données commun pour tous les intervenants</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row justify-content-center">
             <div class="col-lg-10">
                 <div class="transparence-main-card">
@@ -531,20 +546,7 @@
             </div>
         </div>
         
-        <!-- Section Image -->
-        <div class="row justify-content-center mt-5">
-            <div class="col-lg-10">
-                <div class="transparence-image-showcase-card">
-                    <div class="transparence-image-container">
-                        <img src="{{ asset('img/image.png') }}" alt="Environnement de Données Collaboratif" class="transparence-main-showcase-image">
-                        <div class="transparence-image-overlay-info">
-                            <h4>Plateforme Collaborative CDE</h4>
-                            <p>Environnement de données commun pour tous les intervenants</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+   
     </div>
 </div>
 @endsection
