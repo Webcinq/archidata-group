@@ -1560,7 +1560,7 @@ body {
 /* Large screens (1400px+) */
 @media (min-width: 1400px) {
     .logo-section img {
-        height: 90px;
+        height: 130px;
     }
     
     .top-navbar {
@@ -1568,14 +1568,14 @@ body {
     }
     
     .hero-section {
-        padding-top: 120px;
+        padding-top: 130px;
     }
 }
 
 /* Desktop (1200px - 1399px) */
 @media (max-width: 1399px) and (min-width: 1200px) {
     .logo-section img {
-        height: 80px;
+        height: 95px;
     }
     
     .top-navbar {
@@ -1583,14 +1583,14 @@ body {
     }
     
     .hero-section {
-        padding-top: 110px;
+        padding-top: 125px;
     }
 }
 
 /* Tablet landscape (992px - 1199px) */
 @media (max-width: 1199px) and (min-width: 992px) {
     .logo-section img {
-        height: 75px;
+        height: 90px;
     }
     
     .top-navbar {
@@ -1598,7 +1598,7 @@ body {
     }
     
     .hero-section {
-        padding-top: 100px;
+        padding-top: 115px;
     }
     
     .navbar-container {
@@ -1609,7 +1609,7 @@ body {
 /* Tablet portrait (768px - 991px) */
 @media (max-width: 991px) and (min-width: 768px) {
     .logo-section img {
-        height: 70px;
+        height: 85px;
     }
     
     .top-navbar {
@@ -1617,7 +1617,7 @@ body {
     }
     
     .hero-section {
-        padding-top: 90px;
+        padding-top: 105px;
     }
     
     .navbar-container {
@@ -1628,7 +1628,7 @@ body {
 /* Mobile large (576px - 767px) */
 @media (max-width: 767px) and (min-width: 576px) {
     .logo-section img {
-        height: 65px;
+        height: 80px;
     }
     
     .top-navbar {
@@ -1636,7 +1636,7 @@ body {
     }
     
     .hero-section {
-        padding-top: 85px;
+        padding-top: 100px;
     }
     
     .navbar-container {
@@ -1647,7 +1647,7 @@ body {
 /* Mobile small (moins de 576px) */
 @media (max-width: 575px) {
     .logo-section img {
-        height: 60px;
+        height: 75px;
     }
     
     .top-navbar {
@@ -1655,7 +1655,7 @@ body {
     }
     
     .hero-section {
-        padding-top: 80px;
+        padding-top: 95px;
     }
     
     .navbar-container {
@@ -1670,7 +1670,7 @@ body {
 /* Zoom 125% */
 @media (resolution: 120dpi) and (max-resolution: 144dpi) {
     .logo-section img {
-        height: clamp(60px, 7vw, 75px);
+        height: clamp(70px, 7vw, 85px);
     }
     
     .hero-section {
@@ -1696,7 +1696,7 @@ body {
 /* Zoom 200% et plus */
 @media (resolution: 192dpi) {
     .logo-section img {
-        height: clamp(45px, 5vw, 65px);
+        height: clamp(55px, 5vw, 75px);
     }
     
     .hero-section {
@@ -2173,7 +2173,7 @@ body {
 
 /* LOGO PLUS PETIT */
 .logo-section img {
-    height: clamp(60px, 6vw, 70px);
+    height: clamp(90px, 6vw, 70px);
     width: auto;
     transition: var(--transition);
     max-width: 180px;
@@ -2181,7 +2181,7 @@ body {
 }
 
 .main-navbar.scrolled .logo-section img {
-    height: clamp(45px, 5vw, 60px);
+    height: clamp(60px, 5vw, 70px);
 }
 
 /* MENU NAVIGATION PLUS COMPACT */
