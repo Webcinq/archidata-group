@@ -522,7 +522,7 @@
             <div class="col-lg-10">
                 <div class="delais-image-showcase-card">
                     <div class="delais-image-container">
-                        <img src="{{ asset('img/image2.png') }}" alt="Simulation BIM et Planification" class="delais-main-showcase-image">
+                        <img src="{{ asset('img/new/delais.jpg') }}" alt="Simulation BIM et Planification" class="delais-main-showcase-image">
                         <div class="delais-image-overlay-info">
                             <h4>Simulation 4D - Planification Temporelle</h4>
                             <p>Visualisation de la séquence de construction optimisée</p>

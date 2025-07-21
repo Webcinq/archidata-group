@@ -466,7 +466,7 @@
             <div class="col-lg-10">
                 <div class="image-showcase-card">
                     <div class="image-container">
-                        <img src="{{ asset('img/image1.png') }}" alt="Maîtrise des Coûts BIM" class="main-showcase-image">
+                        <img src="{{ asset('img/new/couts.jpg') }}" alt="Maîtrise des Coûts BIM" class="main-showcase-image">
                         <div class="image-overlay-info">
                             <h4>Visualisation des Coûts en Temps Réel</h4>
                             <p>Tableau de bord interactif pour le suivi budgétaire</p>
