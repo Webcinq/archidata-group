@@ -152,9 +152,9 @@
 
 <!-- Hero Section -->
 <div class="about-hero">
-    <div class="container">
+    <div class="container" style="margin-top: 116px">
         <div class="hero-content">
-            <nav aria-label="breadcrumb">
+            <nav  aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ route('index') }}">Accueil</a></li>
                     <li class="breadcrumb-item"><a href="{{ route('a-propos') }}">À Propos</a></li>
