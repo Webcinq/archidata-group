@@ -588,7 +588,7 @@
 
 <!-- Hero Section -->
 <div class="solution-hero" style="background-image: url('@yield('hero_image', '/img/default-solution-bg.jpg')');">
-    <div class="container" style="    margin-top: 20px;">
+    <div class="container"   style="margin-top: 116px;">
         <div class="hero-content">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb breadcrumb-custom">
