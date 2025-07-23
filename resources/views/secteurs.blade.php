@@ -80,12 +80,7 @@
 <div class="secteurs-hero">
     <div class="container" style="margin-top: 116px;">
         <div class="hero-content">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('index') }}">Accueil</a></li>
-                    <li class="breadcrumb-item active">Secteurs d'Activités</li>
-                </ol>
-            </nav>
+         
             <h1 class="display-4 font-weight-bold mb-4">Secteurs d'Activités</h1>
             <p class="lead">Nos solutions BIM adaptées à tous les secteurs de la construction</p>
         </div>

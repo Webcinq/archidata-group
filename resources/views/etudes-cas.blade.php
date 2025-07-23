@@ -97,12 +97,7 @@
 <div class="cases-hero">
     <div class="container" style="margin-top: 116px">
         <div class="hero-content">
-            <nav  aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('index') }}">Accueil</a></li>
-                    <li class="breadcrumb-item active">Études de Cas</li>
-                </ol>
-            </nav>
+         
             <h1 class="display-4 font-weight-bold mb-4">Études de Cas</h1>
             <p class="lead">Découvrez nos projets phares et les résultats obtenus</p>
         </div>

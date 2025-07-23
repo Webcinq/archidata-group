@@ -311,14 +311,9 @@
 
 <!-- Hero Section -->
 <div class="contact-hero">
-    <div class="container">
+    <div class="container" style="margin-top: 116px;">
         <div class="hero-content">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('index') }}">Accueil</a></li>
-                    <li class="breadcrumb-item active">Contact</li>
-                </ol>
-            </nav>
+          
             <h1 class="display-4 font-weight-bold mb-4">Contactez-nous</h1>
             <p class="lead">Transformons ensemble vos projets BIM en succès</p>
         </div>
