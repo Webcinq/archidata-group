@@ -234,10 +234,7 @@
                 </div>
             </div>
             
-            <!-- Barre de progression -->
-            <div class="scroll-progress">
-                <div class="scroll-progress-bar" id="progressBar"></div>
-            </div>
+          
         </div>
     </div>
 </section>
