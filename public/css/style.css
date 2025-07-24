@@ -1894,7 +1894,7 @@ body {
 .hero-content-slider {
     position: relative;
     width: 100%;
-    min-height: 324px;
+    min-height: 281px;
     overflow: hidden;
 }
 
@@ -1928,7 +1928,7 @@ body {
 
 /* Styles des textes dans les slides */
 .hero-content-item .hero-title {
-    font-size: clamp(2.5rem, 6vw, 4rem) !important;
+    font-size: clamp(2.5rem, 6vw, 3rem) !important;
     font-weight: 800 !important;
     line-height: 1.1 !important;
     margin-bottom: 25px !important;
@@ -2155,7 +2155,7 @@ body {
     background: transparent;
     backdrop-filter: none;
     transition: var(--transition);
-    padding: 10px 0;
+    padding: 0px 0;
     z-index: 9999;
     position: fixed;
     top: 45px; /* Positionnement sous la top-bar */
@@ -2173,7 +2173,7 @@ body {
 
 /* LOGO PLUS PETIT */
 .logo-section img {
-    height: clamp(90px, 6vw, 70px);
+    height: clamp(117px, 6vw, 70px);
     width: auto;
     transition: var(--transition);
     max-width: 180px;
@@ -2181,7 +2181,7 @@ body {
 }
 
 .main-navbar.scrolled .logo-section img {
-    height: clamp(60px, 5vw, 70px);
+    height: clamp(125px, 5vw, 70px);
 }
 
 /* MENU NAVIGATION PLUS COMPACT */
@@ -2387,4 +2387,106 @@ body {
     display: none !important    ;
 
 }
+}
+/* ===============================
+   AJOUTS FONT-SIZE POUR NAVIGATION
+   =============================== */
+
+/* Option 1: Si vous utilisez des .nav-item (Bootstrap) */
+.nav-item {
+    font-size: 14px; /* Taille de base */
+}
+
+.nav-item .nav-link {
+    font-size: inherit; /* Hérite de .nav-item */
+}
+
+/* Option 2: Tailles responsives pour les nav-item */
+.nav-item {
+    font-size: clamp(12px, 1.5vw, 14px); /* Responsive entre 12px et 14px */
+}
+
+/* Option 3: Ajuster directement .nav-link (existant dans votre code) */
+.nav-link {
+    color: var(--text-white) !important;
+    font-size: 14px; /* Augmenté de 13px à 14px */
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 8px 0 !important;
+    position: relative;
+    transition: var(--transition);
+}
+
+/* Option 4: Différentes tailles selon les breakpoints */
+/* Desktop */
+@media (min-width: 992px) {
+    .nav-item {
+        font-size: 14px;
+    }
+}
+
+/* Tablet */
+@media (max-width: 991px) and (min-width: 768px) {
+    .nav-item {
+        font-size: 13px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+    .nav-item {
+        font-size: 15px; /* Plus grand sur mobile pour faciliter le tap */
+    }
+}
+
+/* Option 5: Variantes de tailles */
+.nav-item.nav-item-small {
+    font-size: 12px;
+}
+
+.nav-item.nav-item-normal {
+    font-size: 14px;
+}
+
+.nav-item.nav-item-large {
+    font-size: 16px;
+}
+
+/* Option 6: Spécifique pour dropdown items */
+.dropdown-menu .nav-item,
+.dropdown-item {
+    font-size: 13px; /* Légèrement plus petit dans les dropdowns */
+}
+
+/* Option 7: Navigation principale vs secondaire */
+.main-navbar .nav-item {
+    font-size: 14px;
+}
+
+.top-bar .nav-item {
+    font-size: 11px; /* Plus petit pour la barre du haut */
+}
+
+/* Option 8: Avec line-height adapté */
+.nav-item {
+    font-size: 14px;
+    line-height: 1.4; /* Améliore la lisibilité */
+}
+
+/* Option 9: Pour le menu mobile collapse */
+.navbar-collapse .nav-item {
+    font-size: 15px; /* Plus grand dans le menu mobile */
+    text-align: center;
+}
+
+/* Option 10: États hover/active avec font-size */
+.nav-item:hover {
+    font-size: 14.5px; /* Légère augmentation au survol */
+    transition: font-size 0.3s ease;
+}
+
+.nav-item.active {
+    font-size: 15px; /* Plus grand quand actif */
+    font-weight: 600;
 }
