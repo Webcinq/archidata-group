@@ -30,7 +30,7 @@
                     <h1 class="hero-title">CRÉEZ DES JUMEAUX NUMÉRIQUES INTELLIGENTS</h1>
                     <p class="hero-subtitle">Technologie avancée pour l'optimisation des bâtiments</p>
                     <p class="hero-description">
-                        Transformez vos infrastructures en écosystèmes connectés. Optimisez la gestion, anticipez la maintenance et maximisez les performances énergétiques.
+                        Transformez vos infrastructures en écosystèmes connectés. Optimisez la gestion.
                     </p>
                 </div>
 
