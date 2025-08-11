@@ -105,6 +105,8 @@
                         <li>Rénovation énergétique</li>
                         <li>Extensions et surélévations</li>
                     </ul>
+                    <a href="{{ route('blog-ressources' ) }}" class="btn btn-sm btn-filter">Lire la suite</a>
+
                 </div>
             </div>
 
@@ -122,6 +124,8 @@
                         <li>Espaces de coworking</li>
                         <li>Hôtels et restaurants</li>
                     </ul>
+                                        <a href="{{ route('blog-ressources' ) }}" class="btn btn-sm btn-filter">Lire la suite</a>
+
                 </div>
             </div>
 

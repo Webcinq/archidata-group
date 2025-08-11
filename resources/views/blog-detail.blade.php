@@ -1,176 +1,373 @@
+{{-- resources/views/blog-detail.blade.php (mise à jour) --}}
 @extends('layout')
+
+@section('title', $article->titre)
+@section('meta-description', $article->meta_description ?: $article->extrait)
+@section('meta-keywords', $article->meta_keywords)
+
 @section('content')
-    <style>
-        .image {
-            width: 1000px;
-            height: 500px;
-            object-fit: cover;
-        }
-        
-        @media (max-width: 768px) {
-            .image {
-                width: 350px;
-                height: 300px;
-            }
-        }
-        
-        .service-detail {
-            margin-bottom: 50px;
-            padding: 30px;
-            background-color: #f8f9fa;
-            border-radius: 10px;
-        }
-        
-        .service-detail h3 {
-            color: #0B2154;
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-        
-        .service-detail p {
-            text-align: justify;
-            margin-bottom: 15px;
-            line-height: 1.6;
-        }
-        
-        .service-detail ul {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-        
-        .service-detail ul li {
-            margin-bottom: 10px;
-        }
-    </style>
-    <div class="container-fluid page-header mb-5 py-5">
-        <div class="container" style="margin-top: 116px;">
-            <h1 class="display-3 text-white mb-3 animated slideInDown">Nos Services</h1>
-            <nav aria-label="breadcrumb animated slideInDown">
-                <ol class="breadcrumb text-uppercase">
-                    <li class="breadcrumb-item"><a class="text-white" href="#">Accueil</a></li>
-                    <li class="breadcrumb-item text-white active" aria-current="page">Services</li>
-                </ol>
-            </nav>
+<style>
+.article-hero {
+    min-height: 70vh;
+    background: linear-gradient(135deg, 
+        rgba(11, 33, 84, 0.9) 0%, 
+        rgba(18, 70, 152, 0.8) 30%, 
+        rgba(90, 201, 144, 0.7) 60%,
+        rgba(43, 40, 45, 0.8) 100%);
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+@if($article->image)
+.article-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('{{ $article->image_url }}');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.2;
+    z-index: -1;
+}
+@endif
+
+.article-content {
+    background: linear-gradient(to bottom, 
+        #0b2154 0%, 
+        #1a1a2e 30%, 
+        #16213e  70%, 
+        #0b2154 100%);
+    min-height: 100vh;
+    padding: 80px 0;
+}
+
+.article-body {
+    background: linear-gradient(145deg, 
+        rgba(43, 40, 45, 0.95) 0%, 
+        rgba(23, 34, 77, 0.9) 100%);
+    border-radius: 20px;
+    padding: 50px;
+    margin-bottom: 40px;
+    border: 1px solid rgba(90, 201, 144, 0.2);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.article-body h1, .article-body h2, .article-body h3, .article-body h4 {
+    color: #ffffff;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.article-body h1 { font-size: 2.5rem; }
+.article-body h2 { font-size: 2rem; }
+.article-body h3 { font-size: 1.75rem; }
+.article-body h4 { font-size: 1.5rem; }
+
+.article-body p {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.8;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.article-body ul, .article-body ol {
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 20px;
+    padding-left: 30px;
+}
+
+.article-body li {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.article-body blockquote {
+    background: rgba(90, 201, 144, 0.1);
+    border-left: 4px solid #5AC990;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 30px 0;
+    font-style: italic;
+}
+
+.article-body blockquote p {
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.article-body strong {
+    color: #5AC990;
+    font-weight: 600;
+}
+
+.article-meta-header {
+    background: rgba(43, 40, 45, 0.9);
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 40px;
+    border: 1px solid rgba(90, 201, 144, 0.2);
+}
+
+.hashtags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.hashtag {
+    background: linear-gradient(145deg, #5AC990, #4facfe);
+    color: #0b2154;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.similar-articles {
+    background: rgba(23, 34, 77, 0.6);
+    border-radius: 15px;
+    padding: 40px;
+    margin-top: 50px;
+    border: 1px solid rgba(79, 172, 254, 0.2);
+}
+
+.similar-article-card {
+    background: rgba(43, 40, 45, 0.8);
+    border-radius: 15px;
+    padding: 25px;
+    border: 1px solid rgba(90, 201, 144, 0.2);
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.similar-article-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(90, 201, 144, 0.4);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.section-title {
+    color: #ffffff;
+    font-weight: 700;
+    margin-bottom: 30px;
+    position: relative;
+    padding-bottom: 15px;
+    text-shadow: 0 0 20px rgba(90, 201, 144, 0.5);
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, 
+        #4facfe 0%, 
+        #5AC990 50%, 
+        #00f2fe 100%);
+    border-radius: 2px;
+    box-shadow: 0 0 20px rgba(90, 201, 144, 0.6);
+}
+
+.breadcrumb-custom {
+    background: rgba(43, 40, 45, 0.6);
+    border-radius: 25px;
+    padding: 10px 20px;
+    margin-bottom: 30px;
+}
+
+.breadcrumb-custom a {
+    color: #5AC990;
+    text-decoration: none;
+}
+
+.breadcrumb-custom a:hover {
+    color: #ffffff;
+}
+
+.author-info {
+    background: rgba(79, 172, 254, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 30px 0;
+    border-left: 4px solid #4facfe;
+}
+</style>
+
+<!-- Hero Section -->
+<div class="article-hero">
+    <div class="container" style="margin-top: 116px;">
+        <div class="hero-content text-white">
+           
+            
+            <h1 class="display-4 font-weight-bold mb-4">{{ $article->titre }}</h1>
+            <p class="lead">{{ $article->description_courte }}</p>
+            
+            @if($article->secteur_activite)
+                <span class="badge badge-info px-3 py-2">
+                    <i class="fas fa-tag"></i> {{ ucfirst($article->secteur_activite) }}
+                </span>
+            @endif
         </div>
     </div>
-    
+</div>
+
+<!-- Content Section -->
+<div class="article-content">
     <div class="container">
-        <!-- Introduction -->
-        <div class="row mb-5">
-            <div class="col-12 text-center">
-                <h2 class="mb-4">Nos Services Professionnels</h2>
-                <p>
-                    Notre entreprise propose une gamme complète de services BIM (Building Information Modeling) pour vous accompagner dans tous vos projets de construction et de gestion de bâtiments. Découvrez ci-dessous nos services spécialisés.
-                </p>
+        <!-- Métadonnées de l'article -->
+        <div class="article-meta-header">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <div class="d-flex align-items-center text-white">
+                        <div class="mr-4">
+                            <i class="fas fa-calendar-alt text-primary mr-2"></i>
+                            Publié le {{ $article->date_publication->format('d M Y à H:i') }}
+                        </div>
+                        <div class="mr-4">
+                            <i class="fas fa-user text-primary mr-2"></i>
+                            Par {{ $article->user->name }}
+                        </div>
+                        <div>
+                            <i class="fas fa-clock text-primary mr-2"></i>
+                            {{ ceil(str_word_count(strip_tags($article->contenu)) / 200) }} min de lecture
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 text-right">
+                    <!-- Boutons de partage -->
+                    <div class="d-inline-flex">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(request()->fullUrl()) }}" 
+                           target="_blank" class="btn btn-outline-primary btn-sm mr-2">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://twitter.com/intent/tweet?url={{ urlencode(request()->fullUrl()) }}&text={{ urlencode($article->titre) }}" 
+                           target="_blank" class="btn btn-outline-info btn-sm mr-2">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ urlencode(request()->fullUrl()) }}" 
+                           target="_blank" class="btn btn-outline-success btn-sm">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            @if($article->hashtags && count($article->hashtags) > 0)
+            <div class="hashtags">
+                @foreach($article->hashtags as $tag)
+                    <span class="hashtag">#{{ $tag }}</span>
+                @endforeach
+            </div>
+            @endif
+        </div>
+
+        <!-- Image principale (si différente de l'hero) -->
+        @if($article->image)
+        <div class="text-center mb-5">
+            <img src="{{ $article->image_url }}" alt="{{ $article->titre }}" 
+                 class="img-fluid rounded shadow" style="max-height: 500px; width: 100%; object-fit: cover;">
+        </div>
+        @endif
+
+        <!-- Contenu de l'article -->
+        <div class="article-body">
+            {!! $article->contenu !!}
+        </div>
+
+        <!-- Informations sur l'auteur -->
+        <div class="author-info">
+            <div class="row align-items-center">
+                <div class="col-md-2">
+                    <img src="https://ui-avatars.com/api/?name={{ urlencode($article->user->name) }}&background=0B2154&color=fff&size=80" 
+                         class="rounded-circle" width="80" height="80">
+                </div>
+                <div class="col-md-10">
+                    <h5 class="text-white mb-2">{{ $article->user->name }}</h5>
+                    <p class="text-light mb-0">
+                        Auteur expert en BIM et technologies de construction chez ArchiData Africa. 
+                        Passionné par l'innovation dans le secteur du bâtiment et la transformation digitale.
+                    </p>
+                </div>
             </div>
         </div>
-        
-        <!-- Service 1: BIM Management et Synthèse -->
-        <div class="service-detail" id="bim-management">
+
+        <!-- Articles similaires -->
+        @if($articlesSimilaires->count() > 0)
+        <div class="similar-articles">
+            <h2 class="section-title">Articles Similaires</h2>
             <div class="row">
-                <div class="col-lg-4 mb-4 mb-lg-0">
-                    <img class="img-fluid w-100 rounded" src="{{asset('img/service-1.png')}}" alt="BIM Management et Synthèse">
+                @foreach($articlesSimilaires as $similaire)
+                <div class="col-md-4 mb-4">
+                    <div class="similar-article-card">
+                        @if($similaire->image)
+                            <img src="{{ $similaire->image_url }}" class="img-fluid rounded mb-3" 
+                                 style="height: 180px; width: 100%; object-fit: cover;">
+                        @endif
+                        <h6 class="text-white mb-3">{{ Str::limit($similaire->titre, 80) }}</h6>
+                        <p class="text-light small mb-3">{{ Str::limit($similaire->description_courte, 120) }}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">{{ $similaire->date_publication->format('d M Y') }}</small>
+                            <a href="{{ route('blog.show', $similaire->slug) }}" class="btn btn-sm btn-outline-primary">
+                                Lire <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-lg-8">
-                    <h3>BIM Management et Synthèse</h3>
-                    <p>
-                        Notre service de BIM Management et Synthèse offre une coordination complète de vos projets de construction en utilisant la modélisation des informations du bâtiment. Nous assurons la mise en place d'une méthodologie BIM efficace, adaptée à vos besoins spécifiques et conforme aux standards internationaux.
-                    </p>
-                    <p>
-                        Grâce à notre expertise, nous identifions et résolvons les conflits potentiels avant même le début de la construction, ce qui permet de réduire considérablement les coûts et les délais du projet.
-                    </p>
-                    <ul>
-                        <li><strong>Coordination BIM :</strong> Gestion des maquettes numériques entre les différents corps de métier</li>
-                        <li><strong>Détection de clash :</strong> Identification et résolution des conflits entre les différents systèmes du bâtiment</li>
-                        <li><strong>Mise en place de protocoles BIM :</strong> Élaboration de conventions BIM sur mesure pour vos projets</li>
-                        <li><strong>Synthèse technique :</strong> Intégration de toutes les disciplines dans un modèle cohérent</li>
-                    </ul>
-                </div>
+                @endforeach
             </div>
         </div>
-        
-        <!-- Service 2: Conseil et Formation -->
-        <div class="service-detail" id="conseil-formation">
-            <div class="row">
-                <div class="col-lg-8">
-                    <h3>Conseil et Formation</h3>
-                    <p>
-                        Notre équipe d'experts vous accompagne dans votre transition vers le BIM grâce à des services de conseil stratégique et des programmes de formation adaptés à tous les niveaux de compétence. Nous vous aidons à définir et mettre en œuvre une stratégie BIM qui correspond parfaitement à vos objectifs d'entreprise.
-                    </p>
-                    <p>
-                        Que vous soyez débutant ou utilisateur avancé des technologies BIM, nos formations sur mesure permettent à vos équipes de maîtriser les outils et méthodes nécessaires pour exceller dans leurs projets.
-                    </p>
-                    <ul>
-                        <li><strong>Audit et diagnostic BIM :</strong> Évaluation de votre maturité BIM et recommandations personnalisées</li>
-                        <li><strong>Formation aux logiciels BIM :</strong> Formations spécialisées sur Revit, Navisworks, BIM 360 et autres outils</li>
-                        <li><strong>Accompagnement au changement :</strong> Mise en place de nouvelles méthodes de travail collaboratives</li>
-                        <li><strong>Développement de compétences :</strong> Programmes de formation continue pour vos équipes</li>
-                    </ul>
-                </div>
-                <div class="col-lg-4">
-                    <img class="img-fluid w-100 rounded" src="{{asset('img/service-2.png')}}" alt="Conseil et Formation">
-                </div>
+        @endif
+
+        <!-- Navigation entre articles -->
+        <div class="row mt-5">
+            <div class="col-6">
+                <!-- Article précédent -->
+                @php
+                    $articlePrecedent = \App\Models\Article::actif()->publie()
+                        ->where('date_publication', '<', $article->date_publication)
+                        ->orderBy('date_publication', 'desc')
+                        ->first();
+                @endphp
+                @if($articlePrecedent)
+                    <a href="{{ route('blog.show', $articlePrecedent->slug) }}" 
+                       class="btn btn-outline-light">
+                        <i class="fas fa-arrow-left mr-2"></i> Article précédent
+                    </a>
+                @endif
+            </div>
+            <div class="col-6 text-right">
+                <!-- Article suivant -->
+                @php
+                    $articleSuivant = \App\Models\Article::actif()->publie()
+                        ->where('date_publication', '>', $article->date_publication)
+                        ->orderBy('date_publication', 'asc')
+                        ->first();
+                @endphp
+                @if($articleSuivant)
+                    <a href="{{ route('blog.show', $articleSuivant->slug) }}" 
+                       class="btn btn-outline-light">
+                        Article suivant <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                @endif
             </div>
         </div>
-        
-        <!-- Service 3: BIM GEM et Modélisation -->
-        <div class="service-detail" id="bim-gem">
-            <div class="row">
-                <div class="col-lg-4 mb-4 mb-lg-0">
-                    <img class="img-fluid w-100 rounded" src="{{asset('img/service-3.png')}}" alt="BIM GEM et Modélisation">
-                </div>
-                <div class="col-lg-8">
-                    <h3>BIM GEM et Modélisation</h3>
-                    <p>
-                        Notre service de BIM GEM (Gestion-Exploitation-Maintenance) et Modélisation vous aide à tirer pleinement parti de vos modèles BIM tout au long du cycle de vie de votre bâtiment. Nous créons des modèles 3D détaillés et riches en informations qui servent de base fiable pour la gestion efficace de vos actifs immobiliers.
-                    </p>
-                    <p>
-                        Nous transformons vos bâtiments existants en maquettes numériques précises grâce à des techniques de relevé avancées, facilitant ainsi leur maintenance et leur rénovation future.
-                    </p>
-                    <ul>
-                        <li><strong>Modélisation BIM :</strong> Création de maquettes numériques précises et détaillées</li>
-                        <li><strong>Scan to BIM :</strong> Conversion de nuages de points en modèles BIM exploitables</li>
-                        <li><strong>Enrichissement de données :</strong> Intégration d'informations techniques et de maintenance dans les maquettes</li>
-                        <li><strong>Préparation de livrables DOE numériques :</strong> Documentation complète pour l'exploitation du bâtiment</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Service 4: Facility Management -->
-        <div class="service-detail" id="facility-management">
-            <div class="row">
-                <div class="col-lg-8">
-                    <h3>Facility Management</h3>
-                    <p>
-                        Notre service de Facility Management basé sur le BIM vous permet d'optimiser la gestion quotidienne de vos installations et de réduire significativement les coûts d'exploitation. Nous mettons en place des systèmes intelligents qui facilitent la maintenance préventive et corrective de vos bâtiments.
-                    </p>
-                    <p>
-                        Grâce à l'intégration des données BIM dans vos processus de gestion, vous bénéficiez d'un accès instantané à toutes les informations techniques de vos installations, ce qui permet une prise de décision rapide et éclairée.
-                    </p>
-                    <ul>
-                        <li><strong>GMAO connectée au BIM :</strong> Gestion de la maintenance assistée par ordinateur liée aux maquettes numériques</li>
-                        <li><strong>Tableaux de bord de performance :</strong> Suivi en temps réel des indicateurs clés de vos bâtiments</li>
-                        <li><strong>Gestion des espaces :</strong> Optimisation de l'utilisation des surfaces et planification des déménagements</li>
-                        <li><strong>Gestion des actifs :</strong> Suivi du cycle de vie des équipements et planification des remplacements</li>
-                    </ul>
-                </div>
-                <div class="col-lg-4">
-                    <img class="img-fluid w-100 rounded" src="{{asset('img/service-1.png')}}" alt="Facility Management">
-                </div>
-            </div>
-        </div>
-        
-        <!-- Call to Action -->
-        <div class="row my-5">
-            <div class="col-12 text-center">
-                <h3 class="mb-4">Prêt à Transformer Vos Projets de Construction?</h3>
-                <p class="mb-4">
-                    Nos experts sont à votre disposition pour vous accompagner dans tous vos projets BIM, 
-                    de la conception à l'exploitation de vos bâtiments.
-                </p>
-                <a href="{{route('contact')}}" class="btn btn-primary py-3 px-5">Contactez-nous</a>
-            </div>
+
+        <!-- Retour au blog -->
+        <div class="text-center mt-5">
+            <a href="{{ route('blog') }}" class="btn btn-primary btn-lg">
+                <i class="fas fa-list mr-2"></i> Retour au Blog
+            </a>
         </div>
     </div>
+</div>
 @endsection

@@ -31,7 +31,7 @@
     <!-- Top Bar (Nouvelle barre en haut) -->
     <div class="top-bar" id="topBar">
         <div class="top-bar-container">
-            <a href="#" class="user-space">
+            <a href="{{route('admin.dashboard')}}" class="user-space">
                 <i class="fas fa-user-circle"></i>
                 VOTRE ESPACE
             </a>
