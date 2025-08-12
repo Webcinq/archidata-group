@@ -15,16 +15,17 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Upload Entire Laravel Project to FTP (no prep)
+      - name: Upload Entire Laravel Project to FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.1
         with:
           server: ${{ secrets.PROD_FTP_HOST }}
           username: ${{ secrets.PROD_FTP_USERNAME }}
           password: ${{ secrets.PROD_FTP_PASSWORD }}
           local-dir: ./
-          server-dir: ${{ secrets.PROD_FTP_PATH }}
           exclude: |
             deploy.php
+            .git/
+            .github/
             */storage/*
             */.git*/
             */node_modules/*
