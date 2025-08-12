@@ -24,20 +24,27 @@ jobs:
           local-dir: ./
           exclude: |
             deploy.php
-            .git/
-            .github/
             */storage/*
-            */.git*/
             */node_modules/*
             */.env*
-            */.github/*
             */tests/*
             */vendor/*
             */README.md*
             */package.json*
             */webpack.mix.js*
-          delete: true
+            .git/**
+            .github/**
+            **/.git/**
+            **/.github/**
+            .gitignore
+            **/.gitignore
+            **/node_modules/**
+            **/tests/**
+            **/.env
+            **/.idea/**
+            **/.well-known/**
+          dangerous-clean-slate: false
 
       - name: Trigger Laravel Deployment
         run: curl -X POST "https://archidata-groupe.com/deploy.php" \
-            -d "key=${{ secrets.DEPLOY_SECRET }}"
+            -d "secret=${{ secrets.DEPLOY_SECRET }}"
