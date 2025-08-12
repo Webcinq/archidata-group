@@ -1,4 +1,4 @@
-{{-- resources/views/blog.blade.php (mise à jour) --}}
+{{-- resources/views/blog.blade.php (mise à jour avec filtre actif) --}}
 @extends('layout')
 @section('content')
 <style>
@@ -154,6 +154,25 @@
     border-radius: 2px;
     box-shadow: 0 0 20px rgba(90, 201, 144, 0.6);
 }
+
+.filter-info {
+    background: rgba(90, 201, 144, 0.1);
+    border: 1px solid rgba(90, 201, 144, 0.3);
+    border-radius: 10px;
+    padding: 15px 20px;
+    margin-bottom: 30px;
+    color: #ffffff;
+}
+
+.filter-badge {
+    background: linear-gradient(145deg, #5AC990, #4facfe);
+    color: #0b2154;
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-weight: 600;
+    display: inline-block;
+    margin-right: 10px;
+}
 </style>
 
 <!-- Hero Section -->
@@ -161,7 +180,13 @@
     <div class="container" style="margin-top: 116px;">
         <div class="hero-content">
             <h1 class="display-4 font-weight-bold mb-4">Blog & Ressources</h1>
-            <p class="lead">Articles sur le BIM, la donnée, les jumeaux numériques - Actualités & Insights</p>
+            <p class="lead">
+                @if(isset($filtreActuel) && $filtreActuel)
+                    Articles sur le secteur {{ $filtreActuel['nom'] }}
+                @else
+                    Articles sur le BIM, la donnée, les jumeaux numériques - Actualités & Insights
+                @endif
+            </p>
         </div>
     </div>
 </div>
@@ -169,6 +194,22 @@
 <!-- Content Section -->
 <div class="blog-content">
     <div class="container">
+        
+        <!-- Information sur le filtre actuel -->
+        @if(isset($filtreActuel) && $filtreActuel)
+        <div class="filter-info">
+            <div class="d-flex align-items-center justify-content-between">
+                <div>
+                    <i class="fas fa-filter me-2"></i>
+                    Filtre actif : <span class="filter-badge">{{ $filtreActuel['nom'] }}</span>
+                    <span class="text-light">{{ $articles->total() }} article(s) trouvé(s)</span>
+                </div>
+                <a href="{{ route('blog') }}" class="btn btn-sm btn-outline-light">
+                    <i class="fas fa-times me-1"></i> Supprimer le filtre
+                </a>
+            </div>
+        </div>
+        @endif
         
         <!-- Barre de recherche et filtres -->
         <div class="search-filter-bar">
@@ -284,16 +325,25 @@
                     <h3 class="text-white mb-3">Aucun article trouvé</h3>
                     <p class="text-light mb-4">
                         @if(request('search') || request('secteur'))
-                            Aucun article ne correspond à vos critères de recherche.
+                            @if(request('secteur'))
+                                Aucun article n'est disponible pour le secteur "{{ $secteurs[request('secteur')] ?? request('secteur') }}".
+                            @else
+                                Aucun article ne correspond à vos critères de recherche.
+                            @endif
                         @else
                             Aucun article n'est disponible pour le moment.
                         @endif
                     </p>
-                    @if(request('search') || request('secteur'))
-                        <a href="{{ route('blog') }}" class="btn btn-filter">
-                            <i class="fas fa-list"></i> Voir tous les articles
+                    <div class="d-flex justify-content-center gap-3">
+                        @if(request('search') || request('secteur'))
+                            <a href="{{ route('blog') }}" class="btn btn-filter">
+                                <i class="fas fa-list"></i> Voir tous les articles
+                            </a>
+                        @endif
+                        <a href="{{ route('secteurs') }}" class="btn btn-outline-light">
+                            <i class="fas fa-building"></i> Découvrir nos secteurs
                         </a>
-                    @endif
+                    </div>
                 </div>
             </div>
             @endforelse
@@ -304,6 +354,30 @@
         <div class="d-flex justify-content-center mt-5">
             <div class="pagination-wrapper">
                 {{ $articles->appends(request()->query())->links() }}
+            </div>
+        </div>
+        @endif
+
+        <!-- Liens vers les secteurs si pas de filtre actif -->
+        @if(!request('secteur') && !request('search'))
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="article-card text-center">
+                    <h3 class="text-white mb-4">Explorer par secteur d'activité</h3>
+                    <p class="text-light mb-4">Découvrez nos articles spécialisés selon votre domaine d'activité</p>
+                    <div class="d-flex flex-wrap justify-content-center gap-2">
+                        @foreach($secteurs as $key => $secteur)
+                            <a href="{{ route('blog', ['secteur' => $key]) }}" class="btn btn-sm btn-outline-light mb-2">
+                                {{ $secteur }}
+                            </a>
+                        @endforeach
+                    </div>
+                    <div class="mt-3">
+                        <a href="{{ route('secteurs') }}" class="btn btn-filter">
+                            <i class="fas fa-building me-2"></i>Voir tous nos secteurs
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
         @endif

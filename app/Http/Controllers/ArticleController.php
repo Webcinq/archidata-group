@@ -1,5 +1,5 @@
 <?php
-// app/Http/Controllers/ArticleController.php
+// app/Http/Controllers/ArticleController.php (mise à jour de la méthode blog)
 
 namespace App\Http\Controllers;
 
@@ -34,9 +34,24 @@ class ArticleController extends Controller
 
         $articles = $query->orderBy('date_publication', 'desc')->paginate(9);
         $secteurs = Article::getSecteursActivite();
-        $articlesFeatured = Article::actif()->publie()->featured()->take(3)->get();
+        
+        // Ne pas afficher les articles en vedette si on filtre
+        $articlesFeatured = collect();
+        if (!$request->has('secteur') && !$request->has('search')) {
+            $articlesFeatured = Article::actif()->publie()->featured()->take(3)->get();
+        }
 
-        return view('blog', compact('articles', 'secteurs', 'articlesFeatured'));
+        // Informations sur le filtre actuel
+        $filtreActuel = null;
+        if ($request->has('secteur') && $request->secteur) {
+            $filtreActuel = [
+                'type' => 'secteur',
+                'valeur' => $request->secteur,
+                'nom' => $secteurs[$request->secteur] ?? ucfirst($request->secteur)
+            ];
+        }
+
+        return view('blog', compact('articles', 'secteurs', 'articlesFeatured', 'filtreActuel'));
     }
 
     /**
@@ -50,7 +65,7 @@ class ArticleController extends Controller
                          ->with('user')
                          ->firstOrFail();
 
-        // Articles similaires
+        // Articles similaires du même secteur
         $articlesSimilaires = Article::actif()
                                    ->publie()
                                    ->where('id', '!=', $article->id)
@@ -122,8 +137,8 @@ class ArticleController extends Controller
             'meta_keywords' => 'nullable|string|max:255',
             'date_publication' => 'nullable|date'
         ]);
+        
         $validated['date_publication'] = $validated['date_publication'] ?? now();
-
 
         // Gestion de l'upload d'image
         if ($request->hasFile('image')) {

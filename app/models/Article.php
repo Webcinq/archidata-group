@@ -1,5 +1,4 @@
 <?php
-// app/Models/Article.php
 
 namespace App\Models;
 

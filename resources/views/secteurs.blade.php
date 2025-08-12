@@ -1,3 +1,4 @@
+{{-- resources/views/secteurs.blade.php (mise à jour avec liens filtrés) --}}
 @extends('layout')
 @section('content')
 <style>
@@ -12,6 +13,20 @@
     display: flex;
     align-items: center;
     overflow: hidden;
+}
+.btn-filter {
+    background: linear-gradient(145deg, #5AC990, #4facfe);
+    border: none;
+    color: #0b2154;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.btn-filter:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(90, 201, 144, 0.4);
 }
 
 .secteurs-content {
@@ -80,7 +95,6 @@
 <div class="secteurs-hero">
     <div class="container" style="margin-top: 116px;">
         <div class="hero-content">
-         
             <h1 class="display-4 font-weight-bold mb-4">Secteurs d'Activités</h1>
             <p class="lead">Nos solutions BIM adaptées à tous les secteurs de la construction</p>
         </div>
@@ -99,14 +113,16 @@
                     </div>
                     <h3 class="text-white mb-3">Résidentiel</h3>
                     <p class="text-light mb-3">Solutions BIM pour logements individuels et collectifs, rénovation énergétique et extension.</p>
+
                     <ul class="secteur-features">
                         <li>Maisons individuelles</li>
                         <li>Immeubles collectifs</li>
                         <li>Rénovation énergétique</li>
                         <li>Extensions et surélévations</li>
                     </ul>
-                    <a href="{{ route('blog-ressources' ) }}" class="btn btn-sm btn-filter">Lire la suite</a>
-
+                    <a href="{{ route('blog', ['secteur' => 'residentiel']) }}" class="btn btn-sm btn-filter">
+                        Voir les articles
+                    </a>
                 </div>
             </div>
 
@@ -124,8 +140,9 @@
                         <li>Espaces de coworking</li>
                         <li>Hôtels et restaurants</li>
                     </ul>
-                                        <a href="{{ route('blog-ressources' ) }}" class="btn btn-sm btn-filter">Lire la suite</a>
-
+                    <a href="{{ route('blog', ['secteur' => 'tertiaire']) }}" class="btn btn-sm btn-filter">
+                        Voir les articles
+                    </a>
                 </div>
             </div>
 
@@ -143,6 +160,9 @@
                         <li>Sites pétrochimiques</li>
                         <li>Installations minières</li>
                     </ul>
+                    <a href="{{ route('blog', ['secteur' => 'industriel']) }}" class="btn btn-sm btn-filter">
+                        Voir les articles
+                    </a>
                 </div>
             </div>
 
@@ -160,6 +180,9 @@
                         <li>Centres de soins</li>
                         <li>Laboratoires médicaux</li>
                     </ul>
+                    <a href="{{ route('blog', ['secteur' => 'hospitalier']) }}" class="btn btn-sm btn-filter">
+                        Voir les articles
+                    </a>
                 </div>
             </div>
 
@@ -177,6 +200,9 @@
                         <li>Centres de formation</li>
                         <li>Bibliothèques et médiathèques</li>
                     </ul>
+                    <a href="{{ route('blog', ['secteur' => 'educatif']) }}" class="btn btn-sm btn-filter">
+                        Voir les articles
+                    </a>
                 </div>
             </div>
 
@@ -194,6 +220,9 @@
                         <li>Aéroports et gares</li>
                         <li>Réseaux urbains</li>
                     </ul>
+                    <a href="{{ route('blog', ['secteur' => 'infrastructure']) }}" class="btn btn-sm btn-filter">
+                        Voir les articles
+                    </a>
                 </div>
             </div>
         </div>
@@ -204,9 +233,14 @@
                 <div class="secteur-card">
                     <h3 class="text-white mb-4">Votre secteur n'est pas listé ?</h3>
                     <p class="text-light mb-4">Nos experts BIM s'adaptent à tous les domaines de la construction. Contactez-nous pour découvrir comment nous pouvons vous accompagner.</p>
-                    <a href="{{ route('contact') }}" class="btn btn-lg" style="background-color: #5AC990; color: white;">
-                        <i class="fa fa-envelope me-2"></i>Nous Contacter
-                    </a>
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="{{ route('contact') }}" class="btn btn-lg" style="background-color: #5AC990; color: white;">
+                            <i class="fa fa-envelope me-2"></i>Nous Contacter
+                        </a>
+                        <a href="{{ route('blog') }}" class="btn btn-lg btn-filter">
+                            <i class="fa fa-newspaper me-2"></i>Tous les articles
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
