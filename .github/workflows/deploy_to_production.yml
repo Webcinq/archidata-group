@@ -39,5 +39,5 @@ jobs:
           delete: true
 
       - name: Trigger Laravel Deployment
-        run: curl -X POST "https://${{ secrets.SITE_URL }}/deploy.php" \
+        run: curl -X POST "https://archidata-groupe.com/deploy.php" \
             -d "key=${{ secrets.DEPLOY_SECRET }}"
