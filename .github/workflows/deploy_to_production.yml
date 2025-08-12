@@ -46,5 +46,7 @@ jobs:
           dangerous-clean-slate: false
 
       - name: Trigger Laravel Deployment
-        run: curl -X POST "https://archidata-groupe.com/deploy.php" \
-            -d "secret=${{ secrets.DEPLOY_SECRET }}"
+        run: |
+          curl -X POST "https://archidata-groupe.com/deploy.php" \
+               -d "secret=${{ secrets.DEPLOY_SECRET }}"
+
