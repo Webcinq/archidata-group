@@ -1,5 +1,3 @@
-
-
 name: Deploy To production
 
 on:
@@ -11,60 +9,34 @@ jobs:
   deploy:
     name: Deploy via FTP
     runs-on: ubuntu-latest
+    environment: FTP__archidata__secret
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: 8.2
-          extensions: mbstring, exif, pcntl, bcmath, gd, intl, pdo, mysql
-          tools: composer
-
-      - name: Install Dependencies
-        run: composer install --no-dev --optimize-autoloader
-
-      - name: Prepare Deploy Files
-        run: |
-          rm -rf storage  # Remove local storage to avoid accidental uploads
-          mkdir -p ARCHIDATAmain  # Create ARCHIDATAmain folder
-          shopt -s extglob
-          mv !(public|ARCHIDATAmain) ARCHIDATAmain/  # Move all files except public/ into ARCHIDATAmain/
-          echo "Moved Laravel files to ARCHIDATAmain/"
-
-      - name: Upload ARCHIDATAmain Folder to FTP
+      - name: Upload Entire Laravel Project to FTP (no prep)
         uses: SamKirkland/FTP-Deploy-Action@v4.3.1
         with:
           server: ${{ secrets.PROD_FTP_HOST }}
-          username: ${{ secrets.PROD_FTP_USERNAME }} 
+          username: ${{ secrets.PROD_FTP_USERNAME }}
           password: ${{ secrets.PROD_FTP_PASSWORD }}
-          local-dir: ./ARCHIDATAmain/
-          server-dir: ${{ secrets.PROD_FTP_PATH }}/ARCHIDATAmain/
+          local-dir: ./
+          server-dir: ${{ secrets.PROD_FTP_PATH }}
           exclude: |
-            **/storage/** 
-            **/.git**/
-            **/node_modules/** 
-            **/.env**
-            **/.github/**
-            **/tests/**
-            **/vendor/**
-            **/README.md**
-            **/package.json**
-            **/webpack.mix.js**
-          delete: true  
+            deploy.php
+            */storage/*
+            */.git*/
+            */node_modules/*
+            */.env*
+            */.github/*
+            */tests/*
+            */vendor/*
+            */README.md*
+            */package.json*
+            */webpack.mix.js*
+          delete: true
 
-      - name: Upload Public Folder to Root
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.1
-        with:
-          server: ${{ secrets.PROD_FTP_HOST }}
-          username: ${{ secrets.PROD_FTP_USERNAME }} 
-          password: ${{ secrets.PROD_FTP_PASSWORD }}
-          local-dir: ./public/
-          server-dir: ${{ secrets.PROD_FTP_PUBLIC_PATH }}/
-          exclude: |
-            **/storage/** 
- 
-      # - name: Trigger Laravel Deployment
-      #   run: curl -X GET "https://${{ secrets.SITE_URL }}/deploy?key=${{ secrets.DEPLOY_SECRET }}"
+      - name: Trigger Laravel Deployment
+        run: curl -X POST "https://${{ secrets.SITE_URL }}/deploy.php" \
+            -d "key=${{ secrets.DEPLOY_SECRET }}"
